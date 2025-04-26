@@ -35,13 +35,16 @@ dependencies:
   #otp
   pin_code_fields: ^8.0.1
   intl_phone_field: ^3.2.0
-  #UI ---> splash screen , app icon , responsive , bottom navigation bar , lottie
+  #UI ---> splash screen , app icon , responsive , bottom navigation bar , lottie , slider
   flutter_native_splash: ^2.4.4
   flutter_launcher_icons: ^0.14.3
   flutter_screenutil: ^5.6.0
   persistent_bottom_nav_bar: any
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   lottie:
+
+  # selecting images from the Android and iOS image library, and taking new pictures with the camera
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

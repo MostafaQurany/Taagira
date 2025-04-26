@@ -1,4 +1,5 @@
 // lib/features/add_car/ui/add_car_screen.dart
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Required for TextInputFormatters
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,7 @@ import 'package:taggira/core/widgets/custom_text_field.dart';
 import 'package:taggira/features/add_car/models/car_model.dart';
 import 'package:taggira/features/add_car/ui/widgets/add_car_radio_grops.dart';
 import 'package:taggira/features/add_car/ui/widgets/add_car_screen_basic_information.dart';
+import 'package:taggira/features/add_car/ui/widgets/add_car_screen_car_images.dart';
 import 'package:taggira/features/add_car/ui/widgets/add_car_screen_features_and_discreption.dart';
 import 'package:taggira/features/add_car/ui/widgets/add_car_screen_rental_details.dart';
 import 'package:taggira/features/add_car/ui/widgets/add_car_screen_scetion_divider.dart';
@@ -27,7 +29,6 @@ class AddCarScreen extends StatefulWidget {
 class _AddCarScreenState extends State<AddCarScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  final List<String> _selectedImagesPlaceholder = [];
 
   @override
   Widget build(BuildContext context) {
@@ -72,15 +73,8 @@ class _AddCarScreenState extends State<AddCarScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Section 1: Images
-                AddCarScreenSectionHeader(title: 'Car Images'),
-                Text(
-                  'Upload up to 6 images of the car.', // More descriptive text
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyMedium?.copyWith(color: AppColors.gray),
-                ),
-                hSpace(12.h),
-                _buildImagePickerSection(),
+                AddCarScreenCarImages(),
+
                 AddCarScreenScetionDivider(),
 
                 // Section 2: Basic Information
@@ -115,33 +109,6 @@ class _AddCarScreenState extends State<AddCarScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  // Image Picker Section (Same as before)
-  Widget _buildImagePickerSection() {
-    // ... (Keep the existing implementation for _buildImagePickerSection)
-    return Wrap(
-      spacing: 8.w,
-      runSpacing: 8.h,
-      children: [
-        ..._selectedImagesPlaceholder.asMap().entries.map((entry) {
-          int index = entry.key;
-          return Stack(/* ... existing Stack code ... */);
-        }),
-        if (_selectedImagesPlaceholder.length < 6)
-          GestureDetector(
-            onTap: () {
-              print('Add image tapped');
-              setState(() {
-                _selectedImagesPlaceholder.add(
-                  'new_image_${_selectedImagesPlaceholder.length + 1}',
-                );
-              });
-            },
-            child: Container(/* ... existing Container code ... */),
-          ),
-      ],
     );
   }
 }

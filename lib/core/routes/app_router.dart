@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taggira/core/di/di.dart'; // Assuming you use get_it (`sl`)
 import 'package:taggira/core/routes/routes.dart';
+import 'package:taggira/features/add_car/cubit/add_car_cubit.dart';
 import 'package:taggira/features/add_car/ui/add_car_screen.dart';
 import 'package:taggira/features/auth/cubit/auth_cubit.dart';
 import 'package:taggira/features/auth/ui/register_screen.dart';
@@ -13,7 +14,14 @@ class AppRouter {
   static final router = GoRouter(
     routes: [
       // RegisterScreen (no AuthCubit)
-      GoRoute(path: '/', builder: (context, state) => AddCarScreen()),
+      GoRoute(
+        path: '/',
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => AddCarCubit(),
+              child: AddCarScreen(),
+            ),
+      ),
       //GoRoute(path: '/', builder: (context, state) => RegisterScreen()),
 
       // SignUpScreen (with AuthCubit)
