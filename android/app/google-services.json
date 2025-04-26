@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "604631064676",
+    "firebase_url": "https://isaga-f9d50-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "isaga-f9d50",
+    "storage_bucket": "isaga-f9d50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604631064676:android:b34d193c7a1326bd973f71",
+        "android_client_info": {
+          "package_name": "com.example.taggira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604631064676-9id53fldl4slt9p498knu0the0d1m3me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsGCKx6oOjQ4FTE343lZsHUi3rf1n1Qeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604631064676-9id53fldl4slt9p498knu0the0d1m3me.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "604631064676-1rqrbmvapptflge57u12gpqa8aabpos7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.isaga"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604631064676:android:d1ade526324795fe973f71",
+        "android_client_info": {
+          "package_name": "com.tagira.tagira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604631064676-9id53fldl4slt9p498knu0the0d1m3me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsGCKx6oOjQ4FTE343lZsHUi3rf1n1Qeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604631064676-9id53fldl4slt9p498knu0the0d1m3me.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "604631064676-1rqrbmvapptflge57u12gpqa8aabpos7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.isaga"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

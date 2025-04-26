@@ -1,1 +1,9 @@
-{}
+{
+  "loginTo": "Login To",
+  "taagira": "Taagira",
+  "withPhoneNumber": "With Phone Number",
+  "phoneNumber": "Phone Number",
+  "enterTheValidPhoneNumber": "Enter the valid phone number",
+  "enterTheValidName": "Enter the valid name",
+  "name": "Name"
+}
