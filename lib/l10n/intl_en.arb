@@ -1,1 +1,20 @@
-{}
+{
+  "withTaagiranRentingIsEasy": "With Taagira\n  renting is easy",
+  "letsGetStarted": "Let's get started",
+  "signUpTo": "Sign Up To",
+  "taagira": "Taagira",
+  "withPhoneNumber": "With Phone Number",
+  "iAgreeToThe": "I Agree To The ",
+  "termsOfServices": "Terms Of Services ",
+  "and": "And ",
+  "privacyPolicy": "Privacy Policy.",
+  "signUp": "Sign Up",
+  "login": "Login",
+  "pleaseEnterValidPhoneNumber": "Please Enter Valid Phone Number",
+  "pleaseEnterValidNumber": "Please Enter Valid Number",
+  "phoneNumber": "Phone Number",
+  "loginTo": "Login To",
+  "enterTheValidPhoneNumber": "Enter the valid phone number",
+  "enterTheValidName": "Enter the valid name",
+  "name": "Name"
+}

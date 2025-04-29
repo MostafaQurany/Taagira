@@ -21,5 +21,40 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "and": MessageLookupByLibrary.simpleMessage("And "),
+    "enterTheValidName": MessageLookupByLibrary.simpleMessage(
+      "Enter the valid name",
+    ),
+    "enterTheValidPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "Enter the valid phone number",
+    ),
+    "iAgreeToThe": MessageLookupByLibrary.simpleMessage("I Agree To The "),
+    "letsGetStarted": MessageLookupByLibrary.simpleMessage(
+      "Let\'s get started",
+    ),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "loginTo": MessageLookupByLibrary.simpleMessage("Login To"),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "pleaseEnterValidNumber": MessageLookupByLibrary.simpleMessage(
+      "Please Enter Valid Number",
+    ),
+    "pleaseEnterValidPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "Please Enter Valid Phone Number",
+    ),
+    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy."),
+    "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "signUpTo": MessageLookupByLibrary.simpleMessage("Sign Up To"),
+    "taagira": MessageLookupByLibrary.simpleMessage("Taagira"),
+    "termsOfServices": MessageLookupByLibrary.simpleMessage(
+      "Terms Of Services ",
+    ),
+    "withPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "With Phone Number",
+    ),
+    "withTaagiranRentingIsEasy": MessageLookupByLibrary.simpleMessage(
+      "With Taagira\n  renting is easy",
+    ),
+  };
 }

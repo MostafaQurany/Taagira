@@ -1,4 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<uses-permission android:name="android.permission.CAMERA" />
+<!-- Optional but good practice if you might add gallery picking later -->
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<!-- For Android 13+ if targeting SDK 33 or higher -->
+<uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+
     <application
         android:label="taggira"
         android:name="${applicationName}"
