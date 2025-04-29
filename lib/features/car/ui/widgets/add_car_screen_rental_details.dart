@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_text_field.dart';
-import 'package:taggira/features/add_car/ui/widgets/add_car_screen_section_header.dart';
+import 'package:taggira/features/car/cubit/add_car_cubit.dart';
+import 'package:taggira/features/car/ui/widgets/add_car_screen_section_header.dart';
 
 class AddCarScreenRentalDetails extends StatefulWidget {
   const AddCarScreenRentalDetails({super.key});
@@ -14,10 +16,6 @@ class AddCarScreenRentalDetails extends StatefulWidget {
 }
 
 class _AddCarScreenRentalDetailsState extends State<AddCarScreenRentalDetails> {
-  final _priceController = TextEditingController();
-
-  final _locationController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +23,7 @@ class _AddCarScreenRentalDetailsState extends State<AddCarScreenRentalDetails> {
       children: [
         AddCarScreenSectionHeader(title: 'Rental Details'),
         CustomTextField(
-          controller: _priceController,
+          controller: context.read<AddCarCubit>().priceController,
           label: 'Price Per Day (EGP)', // Added currency hint
           hint: 'e.g., 500',
           keyboardType: TextInputType.number,
@@ -39,7 +37,7 @@ class _AddCarScreenRentalDetailsState extends State<AddCarScreenRentalDetails> {
         ),
         hSpace(16.h),
         CustomTextField(
-          controller: _locationController,
+          controller: context.read<AddCarCubit>().locationController,
           label: 'Location',
           hint: 'e.g., Cairo, Egypt',
           validator:

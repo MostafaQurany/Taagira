@@ -45,6 +45,8 @@ dependencies:
 
   # selecting images from the Android and iOS image library, and taking new pictures with the camera
   image_picker: ^1.1.2
+  # create the uniqe id 
+  uuid: ^4.4.0
 
 dev_dependencies:
   flutter_test:

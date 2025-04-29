@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taggira/core/theme/app_colors.dart';
 
 class AddCarDropDownMenu<T extends Enum> extends StatefulWidget {
   final String label;
@@ -26,21 +27,26 @@ class _AddCarDropDownMenuState<T extends Enum>
     return DropdownButtonFormField<T>(
       value: widget.value,
       decoration: InputDecoration(
-        // Uses theme decoration automatically now
         labelText: widget.label,
-        // labelStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.gray), // Can override if needed
+        labelStyle: Theme.of(
+          context,
+        ).textTheme.bodyMedium!.copyWith(color: AppColors.gray),
       ),
       items:
           widget.items.map((T item) {
             return DropdownMenuItem<T>(
               value: item,
-              // Simple display using enum name, capitalize first letter
-              child: Text(item.name[0].toUpperCase() + item.name.substring(1)),
-              // Or use your extension if you have one: child: Text(item.displayName),
+              child: Text(
+                item.name[0].toUpperCase() + item.name.substring(1),
+                style: Theme.of(
+                  context,
+                ).textTheme.headlineMedium!.copyWith(color: AppColors.primary),
+              ),
             );
           }).toList(),
       onChanged: widget.onChanged,
       validator: widget.validator,
+      dropdownColor: AppColors.darkerWhite,
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );
   }

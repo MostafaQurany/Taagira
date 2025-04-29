@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taggira/core/widgets/custom_text_field.dart';
-import 'package:taggira/features/add_car/ui/widgets/add_car_radio_grops.dart';
-import 'package:taggira/features/add_car/ui/widgets/add_car_screen_section_header.dart';
+import 'package:taggira/features/car/cubit/add_car_cubit.dart';
+import 'package:taggira/features/car/ui/widgets/add_car_radio_grops.dart';
+import 'package:taggira/features/car/ui/widgets/add_car_screen_section_header.dart';
 
 class AddCarScreenFeaturesAndDiscreption extends StatefulWidget {
   const AddCarScreenFeaturesAndDiscreption({super.key});
@@ -14,14 +16,6 @@ class AddCarScreenFeaturesAndDiscreption extends StatefulWidget {
 
 class _AddCarScreenFeaturesAndDiscreptionState
     extends State<AddCarScreenFeaturesAndDiscreption> {
-  final _descriptionController = TextEditingController();
-
-  bool? _hasGPS; // State now lives here
-  bool? _hasBluetooth; // State now lives here
-  bool? _hasAC; // State now lives here
-  bool _showFeatureValidationError =
-      false; // To trigger validation message display
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,28 +23,30 @@ class _AddCarScreenFeaturesAndDiscreptionState
 
       children: [
         AddCarRadioGrops(
-          hasGPS: _hasGPS,
-          hasBluetooth: _hasBluetooth,
-          hasAC: _hasAC,
+          hasGPS: context.read<AddCarCubit>().hasGPS,
+          hasBluetooth: context.read<AddCarCubit>().hasBluetooth,
+          hasAC: context.read<AddCarCubit>().hasAC,
           onGpsChanged:
               (value) => setState(() {
-                _hasGPS = value;
+                context.read<AddCarCubit>().hasGPS = value;
                 _validateFeatures(); // Re-validate on change
               }),
           onBluetoothChanged:
               (value) => setState(() {
-                _hasBluetooth = value;
+                context.read<AddCarCubit>().hasBluetooth = value;
                 _validateFeatures();
               }),
           onAcChanged:
               (value) => setState(() {
-                _hasAC = value;
+                context.read<AddCarCubit>().hasAC = value;
                 _validateFeatures();
               }),
         ),
         // Show validation error message controlled by _showFeatureValidationError
-        if (_showFeatureValidationError &&
-            (_hasGPS == null || _hasBluetooth == null || _hasAC == null))
+        if (context.read<AddCarCubit>().showFeatureValidationError &&
+            (context.read<AddCarCubit>().hasGPS == null ||
+                context.read<AddCarCubit>().hasBluetooth == null ||
+                context.read<AddCarCubit>().hasAC == null))
           Padding(
             padding: EdgeInsets.only(top: 8.h),
             child: Text(
@@ -64,7 +60,7 @@ class _AddCarScreenFeaturesAndDiscreptionState
         // Section 6: Description
         AddCarScreenSectionHeader(title: 'Description'),
         CustomTextField(
-          controller: _descriptionController,
+          controller: context.read<AddCarCubit>().descriptionController,
           label: 'Description',
           hint: 'Add details about the car condition, special features, etc...',
           maxLines: 4,
@@ -77,14 +73,16 @@ class _AddCarScreenFeaturesAndDiscreptionState
 
   bool _validateFeatures() {
     final bool isValid =
-        _hasGPS != null && _hasBluetooth != null && _hasAC != null;
+        context.read<AddCarCubit>().hasGPS != null &&
+        context.read<AddCarCubit>().hasBluetooth != null &&
+        context.read<AddCarCubit>().hasAC != null;
     if (!isValid) {
       // Only set the flag to true if we intend to show the error immediately
       // We'll set it true during the main _submitForm validation
     } else {
       // If features become valid, hide the error message
       setState(() {
-        _showFeatureValidationError = false;
+        context.read<AddCarCubit>().showFeatureValidationError = false;
       });
     }
     return isValid;

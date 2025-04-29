@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_text_field.dart';
-import 'package:taggira/features/add_car/models/car_model.dart';
-import 'package:taggira/features/add_car/ui/widgets/add_car_drop_down_menu.dart';
-import 'package:taggira/features/add_car/ui/widgets/add_car_screen_section_header.dart';
+import 'package:taggira/features/car/cubit/add_car_cubit.dart';
+import 'package:taggira/features/car/models/car_model.dart';
+import 'package:taggira/features/car/ui/widgets/add_car_drop_down_menu.dart';
+import 'package:taggira/features/car/ui/widgets/add_car_screen_section_header.dart';
 // Ensure correct import
 
 class AddCarScreenSpecifications extends StatefulWidget {
@@ -19,12 +21,6 @@ class AddCarScreenSpecifications extends StatefulWidget {
 
 class _AddCarScreenSpecificationsState
     extends State<AddCarScreenSpecifications> {
-  final _seatsController = TextEditingController();
-
-  CarType? _selectedCarType;
-  CarTransmission? _selectedTransmission;
-  CarFuelType? _selectedFuelType;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,37 +29,46 @@ class _AddCarScreenSpecificationsState
         AddCarScreenSectionHeader(title: 'Specifications'),
         AddCarDropDownMenu<CarType>(
           label: 'Car Type',
-          value: _selectedCarType,
+          value: context.read<AddCarCubit>().selectedCarType,
           items:
               CarType.values
                   .where((t) => t != CarType.other)
                   .toList(), // Exclude 'other' if not needed for selection
-          onChanged: (value) => setState(() => _selectedCarType = value),
+          onChanged:
+              (value) => setState(
+                () => context.read<AddCarCubit>().selectedCarType = value,
+              ),
           validator: (v) => v == null ? 'Car Type is required' : null,
         ),
         hSpace(16.h),
         AddCarDropDownMenu<CarTransmission>(
           label: 'Transmission',
-          value: _selectedTransmission,
+          value: context.read<AddCarCubit>().selectedTransmission,
           items:
               CarTransmission.values
                   .where((t) => t != CarTransmission.other)
                   .toList(),
-          onChanged: (value) => setState(() => _selectedTransmission = value),
+          onChanged:
+              (value) => setState(
+                () => context.read<AddCarCubit>().selectedTransmission = value,
+              ),
           validator: (v) => v == null ? 'Transmission is required' : null,
         ),
         hSpace(16.h),
         AddCarDropDownMenu<CarFuelType>(
           label: 'Fuel Type',
-          value: _selectedFuelType,
+          value: context.read<AddCarCubit>().selectedFuelType,
           items:
               CarFuelType.values.where((f) => f != CarFuelType.other).toList(),
-          onChanged: (value) => setState(() => _selectedFuelType = value),
+          onChanged:
+              (value) => setState(
+                () => context.read<AddCarCubit>().selectedFuelType = value,
+              ),
           validator: (v) => v == null ? 'Fuel Type is required' : null,
         ),
         hSpace(16.h),
         CustomTextField(
-          controller: _seatsController,
+          controller: context.read<AddCarCubit>().seatsController,
           label: 'Number of Seats',
           hint: 'e.g., 5',
           keyboardType: TextInputType.number,

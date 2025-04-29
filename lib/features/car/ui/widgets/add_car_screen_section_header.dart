@@ -14,7 +14,7 @@ class AddCarScreenSectionHeader extends StatelessWidget {
         title,
         style: Theme.of(
           context,
-        ).textTheme.titleMedium?.copyWith(color: AppColors.softPrimary),
+        ).textTheme.titleMedium?.copyWith(color: AppColors.primary),
       ),
     );
   }
