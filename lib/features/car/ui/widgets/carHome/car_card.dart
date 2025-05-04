@@ -22,6 +22,7 @@ class CarCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.r),
@@ -34,51 +35,47 @@ class CarCard extends StatelessWidget {
           ),
           hSize(h: 8),
           Text(
-            "${carModel.brand} ${carModel.model} ${carModel.year}",
-            maxLines: 2,
+            "${carModel.brand} ${carModel.year}",
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(
               context,
             ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
           ),
           Text(
-            "${carModel.type.name} • ${carModel.fuelType.name}",
+            " ${carModel.model} • ${carModel.type.name} ",
             style: Theme.of(
               context,
             ).textTheme.bodySmall!.copyWith(color: AppColors.gray),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
           SizedBox(height: 4.h),
-          Row(
-            children: [
-              Expanded(
-                flex: 4,
-                child: RichText(
-                  text: TextSpan(
-                    text: "${carModel.pricePerDay} ",
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: "EGP/day",
-                        style: Theme.of(
-                          context,
-                        ).textTheme.bodySmall!.copyWith(color: AppColors.gray),
-                      ),
-                    ],
-                  ),
-                ),
+          RichText(
+            text: TextSpan(
+              text: "${carModel.pricePerDay} ",
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                fontWeight: FontWeight.w500,
+                color: AppColors.orange,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.h),
+              children: [
+                TextSpan(
+                  text: "EGP/day",
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
-                child: Text("Rent Now"),
-                onPressed: () {
-                  //TODO: make the rent now screen
-                },
-              ),
-            ],
+              ],
+            ),
+          ),
+          Spacer(),
+          Divider(),
+          ElevatedButton(
+            onPressed: () {
+              //TODO: make the rent now screen
+            },
+            child: SizedBox(
+              width: double.infinity,
+              child: Center(child: Text("Rent Now")),
+            ),
           ),
         ],
       ),

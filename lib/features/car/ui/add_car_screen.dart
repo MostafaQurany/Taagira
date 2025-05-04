@@ -10,7 +10,7 @@ import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_button.dart';
 import 'package:taggira/core/widgets/custom_text_field.dart';
-import 'package:taggira/features/car/cubit/add_car_cubit.dart';
+import 'package:taggira/features/car/cubit/add_car_cubit/add_car_cubit.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 import 'package:taggira/features/car/ui/widgets/addCar/add_car_radio_grops.dart';
 import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_basic_information.dart';
@@ -43,7 +43,10 @@ class _AddCarScreenState extends State<AddCarScreen> {
         ),
         centerTitle: false,
         leading: GestureDetector(
-          onTap: () => context.pop(),
+          onTap: () {
+            context.read<AddCarCubit>().clear();
+            context.pop();
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

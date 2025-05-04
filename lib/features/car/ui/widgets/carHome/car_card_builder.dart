@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taggira/core/routes/routes.dart';
+import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 import 'package:taggira/features/car/ui/car_card_details_screen.dart';
 import 'package:taggira/features/car/ui/widgets/carHome/car_card.dart';
@@ -11,62 +14,59 @@ class CarCardBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      sliver: SliverGrid(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10.w,
-          mainAxisSpacing: 10.h,
-          childAspectRatio: 0.9,
-          mainAxisExtent: 200.h,
-        ),
-        delegate: SliverChildBuilderDelegate(childCount: 20, (context, index) {
-          return GestureDetector(
-            onTap: () {
-              context.pushNamed(
-                Routes.carCardDetailsScreen,
-                extra: CarModel(
-                  id: "id",
-                  ownerId: "ownerId",
-                  images: [],
-                  brand: "Toyota",
-                  model: "Camry",
-                  year: 2020,
-                  type: CarType.coupe,
-                  transmission: CarTransmission.automatic,
-                  fuelType: CarFuelType.petrol,
-                  seats: 6,
-                  color: "Color",
-                  pricePerDay: 2000,
-                  location: "Egypt",
-                  isAvailable: true,
-                  createdAt: DateTime.now(),
-                ),
+    return BlocBuilder<CarCubit, CarState>(
+      buildWhen:
+          (previous, current) =>
+              current is GetAllCarsLoading ||
+              current is GetAllCarsSuccess ||
+              current is GetAllCarsError,
+      builder: (context, state) {
+        return state.maybeWhen(
+          getAllCarsLoading: () {
+            return SliverToBoxAdapter(
+              child: const Center(child: CircularProgressIndicator()),
+            );
+          },
+          getAllCarsSuccess: (cars) {
+            final carsToShow = cars;
+            if (carsToShow.isEmpty) {
+              return const SliverToBoxAdapter(
+                child: Center(child: Text('No cars found.')),
               );
-            },
-            child: CarCard(
-              carModel: CarModel(
-                id: "id",
-                ownerId: "ownerId",
-                images: [],
-                brand: "Toyota",
-                model: "Camry",
-                year: 2020,
-                type: CarType.coupe,
-                transmission: CarTransmission.automatic,
-                fuelType: CarFuelType.petrol,
-                seats: 6,
-                color: "Color",
-                pricePerDay: 2000,
-                location: "Egypt",
-                isAvailable: true,
-                createdAt: DateTime.now(),
+            }
+            return SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              sliver: SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10.w,
+                  mainAxisSpacing: 20.h,
+                  childAspectRatio: 0.8,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  childCount: carsToShow.length,
+                  (context, index) {
+                    final car = carsToShow[index];
+                    return GestureDetector(
+                      onTap: () {
+                        context.pushNamed(
+                          Routes.carCardDetailsScreen,
+                          extra: car,
+                        );
+                      },
+                      child: CarCard(carModel: car),
+                    );
+                  },
+                ),
               ),
-            ),
-          );
-        }),
-      ),
+            );
+          },
+          getAllCarsError: (e) {
+            return SliverToBoxAdapter(child: Text(e));
+          },
+          orElse: () => SliverToBoxAdapter(child: SizedBox.shrink()),
+        );
+      },
     );
   }
 }

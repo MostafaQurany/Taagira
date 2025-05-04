@@ -22,7 +22,7 @@ class CarDataSource implements CarRepo {
   Future<void> addCar(CarModel carModel) async {
     try {
       await _carsCollection.doc(carModel.id).set(carModel.toJson());
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       rethrow;
     } catch (e) {
       rethrow;
@@ -33,7 +33,7 @@ class CarDataSource implements CarRepo {
   Future<void> deleteCar(String carId) async {
     try {
       await _carsCollection.doc(carId).delete();
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       rethrow;
     } catch (e) {
       rethrow;
@@ -53,7 +53,7 @@ class CarDataSource implements CarRepo {
       return querySnapshot.docs.map((doc) {
         return CarModel.fromJson(doc.data());
       }).toList();
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       rethrow;
     } catch (e) {
       rethrow;

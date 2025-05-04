@@ -6,6 +6,9 @@ class AppImges {
   static String carImagePlaceholder = _imagePath(
     'car_image_placeholder.png',
   );
+  static String personImagePlaceholder = _imagePath(
+    'person_image_placeholder.png',
+  );
   
   static _imagePath(String imageName) {
     return 'assets/images/$imageName';

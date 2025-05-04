@@ -1,4 +1,3 @@
-import 'package:taggira/core/utils/server/server_result.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 
 abstract class CarRepo {

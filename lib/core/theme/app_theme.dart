@@ -43,6 +43,18 @@ class AppTheme {
         ),
       ),
       dividerTheme: DividerThemeData(color: AppColors.lightGray, thickness: 1),
+
+      listTileTheme: ListTileThemeData(
+        titleTextStyle: AppThemeTextStyles.lightTextTheme.bodyLarge,
+        subtitleTextStyle: AppThemeTextStyles.lightTextTheme.bodyMedium,
+        iconColor: AppColors.black,
+        textColor: AppColors.black,
+      ),
+      chipTheme: ChipThemeData(
+        backgroundColor: AppColors.white,
+        selectedColor: AppColors.primary,
+        labelStyle: AppThemeTextStyles.lightTextTheme.bodyMedium,
+      ),
     );
   }
 
@@ -85,6 +97,17 @@ class AppTheme {
         ),
       ),
       dividerTheme: DividerThemeData(color: AppColors.lightGray, thickness: 1),
+      listTileTheme: ListTileThemeData(
+        titleTextStyle: AppThemeTextStyles.darkTextTheme.bodyLarge,
+        subtitleTextStyle: AppThemeTextStyles.darkTextTheme.bodyMedium,
+        iconColor: AppColors.white,
+        textColor: AppColors.white,
+      ),
+      chipTheme: ChipThemeData(
+        backgroundColor: AppColors.darkBackground,
+        selectedColor: AppColors.primary,
+        labelStyle: AppThemeTextStyles.darkTextTheme.bodyMedium,
+      ),
     );
   }
 }
