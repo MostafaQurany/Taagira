@@ -9,19 +9,20 @@ import 'package:taggira/features/auth/ui/register_screen.dart';
 import 'package:taggira/features/auth/ui/screens/login/login_screen.dart';
 import 'package:taggira/features/auth/ui/screens/otp/otp_screen.dart';
 import 'package:taggira/features/auth/ui/screens/sign%20up/sign_up_screen.dart';
+import 'package:taggira/features/car/ui/car_home_screen.dart';
 
 class AppRouter {
   static final router = GoRouter(
     routes: [
-      // RegisterScreen (no AuthCubit)
       GoRoute(
         path: '/',
         builder:
             (context, state) => BlocProvider(
               create: (context) => getIt<AddCarCubit>(),
-              child: AddCarScreen(),
+              child: CarHomeScreen(),
             ),
       ),
+      // RegisterScreen (no AuthCubit)
       //GoRoute(path: '/', builder: (context, state) => RegisterScreen()),
 
       // SignUpScreen (with AuthCubit)

@@ -8,7 +8,7 @@ import 'package:image_picker/image_picker.dart'; // Import image_picker
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/features/car/cubit/add_car_cubit.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_screen_section_header.dart';
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_section_header.dart';
 
 class AddCarScreenCarImages extends StatefulWidget {
   const AddCarScreenCarImages({super.key});

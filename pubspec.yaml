@@ -42,10 +42,11 @@ dependencies:
   persistent_bottom_nav_bar: any
   carousel_slider: ^5.0.0
   lottie:
+  lucide_icons: ^0.257.0
 
   # selecting images from the Android and iOS image library, and taking new pictures with the camera
   image_picker: ^1.1.2
-  # create the uniqe id 
+  # create the uniqe id
   uuid: ^4.4.0
 
 dev_dependencies:
