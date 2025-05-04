@@ -357,6 +357,7 @@ class AddCarCubit extends Cubit<AddCarState> {
       await _carRepo.addCar(carToAdd);
 
       // --- 4. Emit Success ---
+      clear();
       emit(const AddCarState.addCarSuccess('Car added successfully!'));
       // Optionally reset fields here after success if needed
     } catch (error) {
@@ -375,5 +376,26 @@ class AddCarCubit extends Cubit<AddCarState> {
     locationController.dispose();
     descriptionController.dispose();
     return super.close();
+  }
+
+  clear() {
+    selectedCategory = null;
+    selectedBrand = null;
+    selectedModel = null;
+    selectedYear = null;
+    selectedCarType = null;
+    selectedTransmission = null;
+    selectedFuelType = null;
+    selectedColor = null;
+    hasAC = null;
+    hasBluetooth = null;
+    hasGPS = null;
+    seatsController.clear();
+    priceController.clear();
+    locationController.clear();
+    descriptionController.clear();
+    for (var element in selectedImages) {
+      element = null;
+    }
   }
 }

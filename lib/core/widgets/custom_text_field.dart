@@ -13,7 +13,7 @@ class CustomTextField extends StatefulWidget {
   final Widget? prefixIcon;
   final bool? ignorePointers;
   final void Function()? onTap;
-  final String? Function(String? text) validator;
+  final String? Function(String? text)? validator;
   final TextInputType keyboardType;
   final FocusNode? focusNode;
   final TextInputAction? textInputAction;
@@ -21,11 +21,13 @@ class CustomTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLines;
 
+  final void Function(String)? onChange;
+
   const CustomTextField({
     super.key,
     required this.controller,
     required this.hint,
-    required this.validator,
+    this.validator,
     this.suffixIcon,
     this.prefixIcon,
     this.ignorePointers,
@@ -37,6 +39,7 @@ class CustomTextField extends StatefulWidget {
     this.label,
     this.inputFormatters,
     this.maxLines = 1,
+    this.onChange,
   });
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -103,6 +106,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       onTapOutside: (event) {
         widget.focusNode?.unfocus();
       },
+      onChanged: widget.onChange,
       validator: widget.validator,
     );
   }

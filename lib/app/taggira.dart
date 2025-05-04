@@ -19,7 +19,7 @@ class Taagira extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp.router(
           title: 'Flutter Demo',
-
+          debugShowCheckedModeBanner: false,
           //? App Theme
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,

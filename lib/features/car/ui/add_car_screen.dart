@@ -10,16 +10,16 @@ import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_button.dart';
 import 'package:taggira/core/widgets/custom_text_field.dart';
-import 'package:taggira/features/car/cubit/add_car_cubit.dart';
+import 'package:taggira/features/car/cubit/add_car_cubit/add_car_cubit.dart';
 import 'package:taggira/features/car/models/car_model.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_radio_grops.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_screen_basic_information.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_screen_car_images.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_screen_features_and_discreption.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_screen_rental_details.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_screen_scetion_divider.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_screen_section_header.dart';
-import 'package:taggira/features/car/ui/widgets/add_car_screen_specifications.dart'; // Ensure correct import
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_radio_grops.dart';
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_basic_information.dart';
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_car_images.dart';
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_features_and_discreption.dart';
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_rental_details.dart';
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_scetion_divider.dart';
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_section_header.dart';
+import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_specifications.dart'; // Ensure correct import
 
 class AddCarScreen extends StatefulWidget {
   const AddCarScreen({super.key});
@@ -43,7 +43,10 @@ class _AddCarScreenState extends State<AddCarScreen> {
         ),
         centerTitle: false,
         leading: GestureDetector(
-          onTap: () => context.pop(),
+          onTap: () {
+            context.read<AddCarCubit>().clear();
+            context.pop();
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
