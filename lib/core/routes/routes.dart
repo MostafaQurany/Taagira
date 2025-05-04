@@ -4,5 +4,6 @@ class Routes {
   static const String loginScreen = "LoginScreen";
   static const String otpScreen = "OTPScreen";
   static const String homeLayout = "HomeLayout";
-  static const String newLoginScreen = "New Login Screen";
+  static const String newLoginScreen = "NewLoginScreen";
+  static const String carCardDetailsScreen = "CarCardDetailsScreen";
 }
