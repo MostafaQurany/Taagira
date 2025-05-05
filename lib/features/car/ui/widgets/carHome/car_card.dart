@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/utils/extensions/app_extensions.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
-import 'package:taggira/core/widgets/custom_button.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 
 class CarCard extends StatelessWidget {
@@ -18,7 +17,7 @@ class CarCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(12.r),
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 6)],
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 6)],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,13 +33,27 @@ class CarCard extends StatelessWidget {
             ),
           ),
           hSize(h: 8),
-          Text(
-            "${carModel.brand} ${carModel.year}",
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  "${carModel.brand} ${carModel.year}",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Icon(
+                  carModel.isFavorite ?? false
+                      ? Icons.favorite
+                      : Icons.favorite_border_outlined,
+                ),
+              ),
+            ],
           ),
           Text(
             " ${carModel.model} • ${carModel.type.name} ",
@@ -66,13 +79,13 @@ class CarCard extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
-          Divider(),
+          const Spacer(),
+          const Divider(),
           ElevatedButton(
             onPressed: () {
               //TODO: make the rent now screen
             },
-            child: SizedBox(
+            child: const SizedBox(
               width: double.infinity,
               child: Center(child: Text("Rent Now")),
             ),

@@ -33,16 +33,16 @@ class RegisterScreen extends StatelessWidget {
                     "Lorem ipsum dolor sit amet consectetur. Elit cras mattis nibh habitasse consequat enim posuere",
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   SizedBox(
                     width: double.infinity,
                     child: TextButton(
                       style: TextButton.styleFrom(
                         backgroundColor: AppColors.white,
-                        padding: EdgeInsets.symmetric(vertical: 15),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: AppColors.primary,
                             width: 0.5,
                           ),

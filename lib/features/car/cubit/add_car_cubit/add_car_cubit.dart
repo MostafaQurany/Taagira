@@ -225,6 +225,7 @@ class AddCarCubit extends Cubit<AddCarState> {
   bool? hasGPS; // State now lives here
   bool? hasBluetooth; // State now lives here
   bool? hasAC; // State now lives here
+  bool? hasDriver;
   bool showFeatureValidationError =
       false; // To trigger validation message display
 
@@ -304,7 +305,10 @@ class AddCarCubit extends Cubit<AddCarState> {
       return;
     }
     // Validate features (ensure user interacted with switches)
-    if (hasGPS == null || hasBluetooth == null || hasAC == null) {
+    if (hasGPS == null ||
+        hasBluetooth == null ||
+        hasAC == null ||
+        hasDriver == null) {
       showFeatureValidationError = true; // Trigger UI message
       emit(
         const AddCarState.addCarError('Please specify all features (Yes/No).'),
@@ -348,6 +352,7 @@ class AddCarCubit extends Cubit<AddCarState> {
         createdAt: DateTime.now(), // Set creation timestamp
         description: descriptionController.text.trim(),
         hasAC: hasAC!,
+        hasDriver: hasDriver!,
         hasBluetooth: hasBluetooth!,
         hasGPS: hasGPS!,
         // rating defaults in model
@@ -388,6 +393,7 @@ class AddCarCubit extends Cubit<AddCarState> {
     selectedFuelType = null;
     selectedColor = null;
     hasAC = null;
+    hasDriver = null;
     hasBluetooth = null;
     hasGPS = null;
     seatsController.clear();

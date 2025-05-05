@@ -49,6 +49,8 @@ mixin _$CarModel {
   bool get hasAC => throw _privateConstructorUsedError;
   bool get hasBluetooth => throw _privateConstructorUsedError;
   bool get hasGPS => throw _privateConstructorUsedError;
+  bool get hasDriver => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
 
   /// Serializes this CarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -86,6 +88,8 @@ abstract class $CarModelCopyWith<$Res> {
     bool hasAC,
     bool hasBluetooth,
     bool hasGPS,
+    bool hasDriver,
+    bool isFavorite,
   });
 }
 
@@ -124,6 +128,8 @@ class _$CarModelCopyWithImpl<$Res, $Val extends CarModel>
     Object? hasAC = null,
     Object? hasBluetooth = null,
     Object? hasGPS = null,
+    Object? hasDriver = null,
+    Object? isFavorite = null,
   }) {
     return _then(
       _value.copyWith(
@@ -227,6 +233,16 @@ class _$CarModelCopyWithImpl<$Res, $Val extends CarModel>
                     ? _value.hasGPS
                     : hasGPS // ignore: cast_nullable_to_non_nullable
                         as bool,
+            hasDriver:
+                null == hasDriver
+                    ? _value.hasDriver
+                    : hasDriver // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            isFavorite:
+                null == isFavorite
+                    ? _value.isFavorite
+                    : isFavorite // ignore: cast_nullable_to_non_nullable
+                        as bool,
           )
           as $Val,
     );
@@ -263,6 +279,8 @@ abstract class _$$CarModelImplCopyWith<$Res>
     bool hasAC,
     bool hasBluetooth,
     bool hasGPS,
+    bool hasDriver,
+    bool isFavorite,
   });
 }
 
@@ -300,6 +318,8 @@ class __$$CarModelImplCopyWithImpl<$Res>
     Object? hasAC = null,
     Object? hasBluetooth = null,
     Object? hasGPS = null,
+    Object? hasDriver = null,
+    Object? isFavorite = null,
   }) {
     return _then(
       _$CarModelImpl(
@@ -403,6 +423,16 @@ class __$$CarModelImplCopyWithImpl<$Res>
                 ? _value.hasGPS
                 : hasGPS // ignore: cast_nullable_to_non_nullable
                     as bool,
+        hasDriver:
+            null == hasDriver
+                ? _value.hasDriver
+                : hasDriver // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        isFavorite:
+            null == isFavorite
+                ? _value.isFavorite
+                : isFavorite // ignore: cast_nullable_to_non_nullable
+                    as bool,
       ),
     );
   }
@@ -432,6 +462,8 @@ class _$CarModelImpl implements _CarModel {
     this.hasAC = false,
     this.hasBluetooth = false,
     this.hasGPS = false,
+    this.hasDriver = false,
+    this.isFavorite = false,
   }) : _images = images;
 
   factory _$CarModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -502,10 +534,16 @@ class _$CarModelImpl implements _CarModel {
   @override
   @JsonKey()
   final bool hasGPS;
+  @override
+  @JsonKey()
+  final bool hasDriver;
+  @override
+  @JsonKey()
+  final bool isFavorite;
 
   @override
   String toString() {
-    return 'CarModel(id: $id, ownerId: $ownerId, images: $images, brand: $brand, model: $model, year: $year, type: $type, transmission: $transmission, fuelType: $fuelType, seats: $seats, color: $color, pricePerDay: $pricePerDay, location: $location, rating: $rating, isAvailable: $isAvailable, createdAt: $createdAt, description: $description, hasAC: $hasAC, hasBluetooth: $hasBluetooth, hasGPS: $hasGPS)';
+    return 'CarModel(id: $id, ownerId: $ownerId, images: $images, brand: $brand, model: $model, year: $year, type: $type, transmission: $transmission, fuelType: $fuelType, seats: $seats, color: $color, pricePerDay: $pricePerDay, location: $location, rating: $rating, isAvailable: $isAvailable, createdAt: $createdAt, description: $description, hasAC: $hasAC, hasBluetooth: $hasBluetooth, hasGPS: $hasGPS, hasDriver: $hasDriver, isFavorite: $isFavorite)';
   }
 
   @override
@@ -540,7 +578,11 @@ class _$CarModelImpl implements _CarModel {
             (identical(other.hasAC, hasAC) || other.hasAC == hasAC) &&
             (identical(other.hasBluetooth, hasBluetooth) ||
                 other.hasBluetooth == hasBluetooth) &&
-            (identical(other.hasGPS, hasGPS) || other.hasGPS == hasGPS));
+            (identical(other.hasGPS, hasGPS) || other.hasGPS == hasGPS) &&
+            (identical(other.hasDriver, hasDriver) ||
+                other.hasDriver == hasDriver) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -567,6 +609,8 @@ class _$CarModelImpl implements _CarModel {
     hasAC,
     hasBluetooth,
     hasGPS,
+    hasDriver,
+    isFavorite,
   ]);
 
   /// Create a copy of CarModel
@@ -605,6 +649,8 @@ abstract class _CarModel implements CarModel {
     final bool hasAC,
     final bool hasBluetooth,
     final bool hasGPS,
+    final bool hasDriver,
+    final bool isFavorite,
   }) = _$CarModelImpl;
 
   factory _CarModel.fromJson(Map<String, dynamic> json) =
@@ -651,6 +697,10 @@ abstract class _CarModel implements CarModel {
   bool get hasBluetooth;
   @override
   bool get hasGPS;
+  @override
+  bool get hasDriver;
+  @override
+  bool get isFavorite;
 
   /// Create a copy of CarModel
   /// with the given fields replaced by the non-null parameter values.

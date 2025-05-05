@@ -57,7 +57,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           activeColor: AppColors.primary,
                           selectedColor: AppColors.primary,
                         ),
-                        animationDuration: Duration(milliseconds: 300),
+                        animationDuration: const Duration(milliseconds: 300),
                         onCompleted: (v) {
                           _enabled = true;
                           otp = v;

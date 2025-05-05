@@ -8,10 +8,14 @@ part 'car_cubit.freezed.dart';
 
 class CarCubit extends Cubit<CarState> {
   final CarRepo carRepo;
-  CarCubit(this.carRepo) : super(CarState.initial());
+  CarCubit(this.carRepo) : super(const CarState.initial());
   List<CarModel> _cars = [];
+  
+  
+  
+  
   fetchingCar() async {
-    emit(CarState.getAllCarsLoading());
+    emit(const CarState.getAllCarsLoading());
     try {
       final res = await carRepo.getAllCars();
       _cars = res;

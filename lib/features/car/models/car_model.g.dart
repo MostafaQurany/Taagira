@@ -29,6 +29,8 @@ _$CarModelImpl _$$CarModelImplFromJson(Map<String, dynamic> json) =>
       hasAC: json['hasAC'] as bool? ?? false,
       hasBluetooth: json['hasBluetooth'] as bool? ?? false,
       hasGPS: json['hasGPS'] as bool? ?? false,
+      hasDriver: json['hasDriver'] as bool? ?? false,
+      isFavorite: json['isFavorite'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$CarModelImplToJson(_$CarModelImpl instance) =>
@@ -53,6 +55,8 @@ Map<String, dynamic> _$$CarModelImplToJson(_$CarModelImpl instance) =>
       'hasAC': instance.hasAC,
       'hasBluetooth': instance.hasBluetooth,
       'hasGPS': instance.hasGPS,
+      'hasDriver': instance.hasDriver,
+      'isFavorite': instance.isFavorite,
     };
 
 const _$CarTypeEnumMap = {

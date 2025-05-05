@@ -71,6 +71,8 @@ class CarModel with _$CarModel {
     @Default(false) bool hasAC,
     @Default(false) bool hasBluetooth,
     @Default(false) bool hasGPS,
+    @Default(false) bool hasDriver,
+    @Default(false) bool isFavorite,
   }) = _CarModel;
 
   factory CarModel.fromJson(Map<String, dynamic> json) =>

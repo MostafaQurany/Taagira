@@ -37,15 +37,15 @@ class CustomPhoneField extends StatelessWidget {
     fillColor: AppColors.darkerWhite,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.lighterGray),
+      borderSide: const BorderSide(color: AppColors.lighterGray),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.primary),
+      borderSide: const BorderSide(color: AppColors.primary),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.lighterGray),
+      borderSide: const BorderSide(color: AppColors.lighterGray),
     ),
     hintStyle: TextStyle(
       color: AppColors.lightGray,

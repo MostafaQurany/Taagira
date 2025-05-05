@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? LoadingCircle()
+        ? const LoadingCircle()
         : SizedBox(
           width: double.infinity,
           height: 50.h,
@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
               foregroundColor: AppColors.white,
               disabledBackgroundColor: AppColors.softPrimary,
               disabledForegroundColor: AppColors.white,
-              padding: EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.symmetric(vertical: 15),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),

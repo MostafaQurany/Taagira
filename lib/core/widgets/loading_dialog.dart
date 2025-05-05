@@ -19,15 +19,15 @@ class LoadingDialog {
           backgroundColor: Colors.white,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
+          child: const Padding(
+            padding: EdgeInsets.all(20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 CircularProgressIndicator(
                   color: AppColors.primary,
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
                 Text(
                   "Loading...",
                   style: TextStyle(

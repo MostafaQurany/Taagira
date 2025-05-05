@@ -9,7 +9,7 @@ import 'package:taggira/features/auth/ui/screens/login/widgets/login_title_bar.d
 import 'package:taggira/generated/l10n.dart';
 
 class NewLoginScreen extends StatelessWidget {
-  const NewLoginScreen({Key? key}) : super(key: key);
+  const NewLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class NewLoginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      LoginTitleBar(),
+                      const LoginTitleBar(),
                       hSize(h: 24),
 
                       Text(
@@ -62,7 +62,7 @@ class NewLoginScreen extends StatelessWidget {
                         ),
                       ),
                       hSize(h: 24),
-                      LoginPhoneNumberField(),
+                      const LoginPhoneNumberField(),
                       hSize(h: 40),
                       CustomButton(
                         text: S.of(context).login,
