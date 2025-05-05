@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +25,7 @@ class _AddCarScreenSpecificationsState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AddCarScreenSectionHeader(title: 'Specifications'),
+        const AddCarScreenSectionHeader(title: 'Specifications'),
         AddCarDropDownMenu<CarType>(
           label: 'Car Type',
           value: context.read<AddCarCubit>().selectedCarType,

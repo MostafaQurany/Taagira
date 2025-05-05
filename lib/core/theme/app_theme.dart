@@ -9,7 +9,7 @@ class AppTheme {
       useMaterial3: true,
       brightness: Brightness.light,
       scaffoldBackgroundColor: AppColors.darkerWhite,
-      colorScheme: ColorScheme(
+      colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: AppColors.primary,
         onPrimary: AppColors.black,
@@ -20,7 +20,7 @@ class AppTheme {
         surface: AppColors.primary,
         onSurface: AppColors.white,
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.transparent,
         foregroundColor: AppColors.black,
         elevation: 0,
@@ -28,11 +28,11 @@ class AppTheme {
       ),
       textTheme: AppThemeTextStyles.lightTextTheme,
       inputDecorationTheme: AppThemeInputDecoration.inputDecorationLight,
-      buttonTheme: ButtonThemeData(
+      buttonTheme: const ButtonThemeData(
         buttonColor: AppColors.primary,
         textTheme: ButtonTextTheme.primary,
       ),
-      iconTheme: IconThemeData(color: AppColors.black),
+      iconTheme: const IconThemeData(color: AppColors.black),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
@@ -42,7 +42,7 @@ class AppTheme {
           ),
         ),
       ),
-      dividerTheme: DividerThemeData(color: AppColors.lightGray, thickness: 1),
+      dividerTheme: const DividerThemeData(color: AppColors.lightGray, thickness: 1),
 
       listTileTheme: ListTileThemeData(
         titleTextStyle: AppThemeTextStyles.lightTextTheme.bodyLarge,
@@ -63,7 +63,7 @@ class AppTheme {
       useMaterial3: true,
       brightness: Brightness.dark,
       scaffoldBackgroundColor: AppColors.darkBackground,
-      colorScheme: ColorScheme(
+      colorScheme: const ColorScheme(
         brightness: Brightness.dark,
         primary: AppColors.primary,
         onPrimary: AppColors.black,
@@ -74,7 +74,7 @@ class AppTheme {
         surface: AppColors.primary,
         onSurface: AppColors.white,
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.transparent,
         foregroundColor: AppColors.white,
         elevation: 0,
@@ -82,11 +82,11 @@ class AppTheme {
       ),
       textTheme: AppThemeTextStyles.darkTextTheme,
       inputDecorationTheme: AppThemeInputDecoration.inputDecorationDark,
-      buttonTheme: ButtonThemeData(
+      buttonTheme: const ButtonThemeData(
         buttonColor: AppColors.primary,
         textTheme: ButtonTextTheme.primary,
       ),
-      iconTheme: IconThemeData(color: AppColors.white),
+      iconTheme: const IconThemeData(color: AppColors.white),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
@@ -96,7 +96,7 @@ class AppTheme {
           ),
         ),
       ),
-      dividerTheme: DividerThemeData(color: AppColors.lightGray, thickness: 1),
+      dividerTheme: const DividerThemeData(color: AppColors.lightGray, thickness: 1),
       listTileTheme: ListTileThemeData(
         titleTextStyle: AppThemeTextStyles.darkTextTheme.bodyLarge,
         subtitleTextStyle: AppThemeTextStyles.darkTextTheme.bodyMedium,

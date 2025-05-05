@@ -21,7 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   bool isTermEnabled = false;
   String country = "20";
-  AuthCubit(this._authRepo) : super(AuthState.initial());
+  AuthCubit(this._authRepo) : super(const AuthState.initial());
 
   getOtp() async {
     emit(const AuthState.loadingGetOtp());
@@ -31,7 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
     res.when(
       success: (data) {
-        emit(AuthState.successGetOtp());
+        emit(const AuthState.successGetOtp());
       },
       error: (message) {
         emit(AuthState.errorGetOtp(message));

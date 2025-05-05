@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppConstance {
   static double screenSpacingTop = 60;
-  static EdgeInsetsGeometry screenPadding = EdgeInsets.only(
+  static EdgeInsetsGeometry screenPadding = const EdgeInsets.only(
     top: 85,
     right: 20,
     left: 20,
@@ -19,5 +19,5 @@ class AppConstance {
 }
 
 class AppCollections {
-  static final String userCollection = "user";
+  static const String userCollection = "user";
 }

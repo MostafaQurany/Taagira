@@ -25,7 +25,7 @@ class Taagira extends StatelessWidget {
           darkTheme: AppTheme.darkTheme,
 
           //? localization
-          localizationsDelegates: [
+          localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,

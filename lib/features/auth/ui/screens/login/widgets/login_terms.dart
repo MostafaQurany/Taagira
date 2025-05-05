@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/features/auth/cubit/auth_cubit.dart';
 
@@ -31,12 +30,12 @@ class _LoginTermsState extends State<LoginTerms> {
             switchOutCurve: Curves.bounceOut,
             child:
                 context.watch<AuthCubit>().isTermEnabled
-                    ? Icon(
+                    ? const Icon(
                       Icons.check_box,
                       key: ValueKey(true),
                       color: AppColors.primary,
                     )
-                    : Icon(
+                    : const Icon(
                       Icons.check_box_outline_blank_outlined,
                       key: ValueKey(false),
                       color: AppColors.gray,

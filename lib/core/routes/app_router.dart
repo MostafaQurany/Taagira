@@ -7,7 +7,6 @@ import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 import 'package:taggira/features/car/ui/add_car_screen.dart';
 import 'package:taggira/features/auth/cubit/auth_cubit.dart';
-import 'package:taggira/features/auth/ui/register_screen.dart';
 import 'package:taggira/features/auth/ui/screens/login/login_screen.dart';
 import 'package:taggira/features/auth/ui/screens/otp/otp_screen.dart';
 import 'package:taggira/features/auth/ui/screens/sign%20up/sign_up_screen.dart';
@@ -33,7 +32,7 @@ class AppRouter {
             builder:
                 (context, state) => BlocProvider(
                   create: (context) => getIt<CarCubit>(),
-                  child: CarHomeScreen(),
+                  child: const CarHomeScreen(),
                 ),
             routes: [
               GoRoute(
@@ -48,7 +47,7 @@ class AppRouter {
                 path: "/${Routes.addCarScreen}",
                 name: Routes.addCarScreen,
                 builder: (context, state) {
-                  return AddCarScreen();
+                  return const AddCarScreen();
                 },
               ),
             ],
@@ -68,7 +67,7 @@ class AppRouter {
               create:
                   (context) =>
                       getIt<AuthCubit>(), // Using get_it dependency injection
-              child: SignUpScreen(),
+              child: const SignUpScreen(),
             ),
       ),
 
@@ -79,7 +78,7 @@ class AppRouter {
         builder:
             (context, state) => BlocProvider(
               create: (context) => getIt<AuthCubit>(),
-              child: OtpScreen(),
+              child: const OtpScreen(),
             ),
       ),
 
@@ -90,7 +89,7 @@ class AppRouter {
         builder:
             (context, state) => BlocProvider(
               create: (context) => getIt<AuthCubit>(),
-              child: LoginScreen(),
+              child: const LoginScreen(),
             ),
       ),
     ],

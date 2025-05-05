@@ -28,7 +28,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           context.pushNamed(Routes.addCarScreen);
         },
@@ -98,7 +98,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                     CustomTextField(
                       controller: TextEditingController(),
                       hint: 'Search by brand, model, or year...',
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       onChange: (query) {
                         context.read<CarCubit>().searchCars(query);
                       },
@@ -126,7 +126,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                   ),
                 ),
               ),
-              CarCardBuilder(),
+              const CarCardBuilder(),
               SliverToBoxAdapter(child: SizedBox(height: 80.h)),
             ],
           ),

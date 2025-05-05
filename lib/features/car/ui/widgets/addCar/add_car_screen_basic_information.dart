@@ -62,8 +62,8 @@ class _AddCarScreenBasicInformationState
       showCheckmark: true,
       side:
           isSelected
-              ? BorderSide(color: AppColors.primary)
-              : BorderSide(
+              ? const BorderSide(color: AppColors.primary)
+              : const BorderSide(
                 color: AppColors.lightGray,
               ), // Border when not selected
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
@@ -89,7 +89,7 @@ class _AddCarScreenBasicInformationState
     if (mounted) {
       // Check if the widget is still in the tree
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Thank you for your suggestion!'),
           backgroundColor: AppColors.green, // Use a success color
         ),
@@ -146,7 +146,7 @@ class _AddCarScreenBasicInformationState
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel', style: TextStyle(color: AppColors.gray)),
+              child: const Text('Cancel', style: TextStyle(color: AppColors.gray)),
               onPressed: () {
                 brandController.clear();
                 modelController.clear();
@@ -302,7 +302,7 @@ class _AddCarScreenBasicInformationState
               padding: EdgeInsets.symmetric(vertical: 8.h),
               child: Text(
                 'No brands found for $context.read<AddCarCubit>().selectedCategory.',
-                style: TextStyle(color: AppColors.gray),
+                style: const TextStyle(color: AppColors.gray),
               ),
             )
           else
@@ -353,7 +353,7 @@ class _AddCarScreenBasicInformationState
               padding: EdgeInsets.symmetric(vertical: 8.h),
               child: Text(
                 'No models found for $context.read<AddCarCubit>().selectedBrand.',
-                style: TextStyle(color: AppColors.gray),
+                style: const TextStyle(color: AppColors.gray),
               ),
             )
           else
@@ -487,7 +487,7 @@ class _AddCarScreenBasicInformationState
                         BoxShadow(
                           color: Colors.black.withOpacity(0.15),
                           blurRadius: 3,
-                          offset: Offset(1, 2),
+                          offset: const Offset(1, 2),
                         ),
                       ],
                     ),

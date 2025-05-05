@@ -10,18 +10,22 @@ class AddCarRadioGrops extends StatefulWidget {
   final bool? hasGPS;
   final bool? hasBluetooth;
   final bool? hasAC;
+  final bool? hasDriver;
   final ValueChanged<bool?> onGpsChanged;
   final ValueChanged<bool?> onBluetoothChanged;
   final ValueChanged<bool?> onAcChanged;
+  final ValueChanged<bool?> onDriverChanged;
 
   const AddCarRadioGrops({
     super.key,
     required this.hasGPS,
     required this.hasBluetooth,
     required this.hasAC,
+    required this.hasDriver,
     required this.onGpsChanged,
     required this.onBluetoothChanged,
     required this.onAcChanged,
+    required this.onDriverChanged,
   });
 
   @override
@@ -34,12 +38,13 @@ class _AddCarRadioGropsState extends State<AddCarRadioGrops> {
     final bool showValidationError =
         widget.hasGPS == null ||
         widget.hasBluetooth == null ||
-        widget.hasAC == null;
+        widget.hasAC == null ||
+        widget.hasDriver == null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AddCarScreenSectionHeader(title: 'Features'),
+        const AddCarScreenSectionHeader(title: 'Features'),
 
         hSpace(8),
         _buildRadioGroup(
@@ -56,6 +61,11 @@ class _AddCarRadioGropsState extends State<AddCarRadioGrops> {
           label: 'Air Conditioning (AC):',
           groupValue: widget.hasAC, // Use passed value
           onChanged: widget.onAcChanged, // Use passed callback
+        ),
+        _buildRadioGroup(
+          label: 'With Driver:',
+          groupValue: widget.hasDriver, // Use passed value
+          onChanged: widget.onDriverChanged, // Use passed callback
         ),
         // Conditionally display validation message
         if (showValidationError)

@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taggira/core/routes/routes.dart';
-import 'package:taggira/core/theme/app_colors.dart';
-import 'package:taggira/core/theme/app_text_styles.dart';
-import 'package:taggira/core/utils/extensions/app_extensions.dart';
-import 'package:taggira/core/utils/helper/app_constance.dart';
 import 'package:taggira/core/widgets/custom_button.dart';
-import 'package:taggira/core/widgets/custom_text_field.dart';
 import 'package:taggira/features/auth/cubit/auth_cubit.dart';
 
 class SignUpScreenBotton extends StatefulWidget {
-  const SignUpScreenBotton({Key? key}) : super(key: key);
+  const SignUpScreenBotton({super.key});
 
   @override
   _SignUpScreenBottonState createState() => _SignUpScreenBottonState();

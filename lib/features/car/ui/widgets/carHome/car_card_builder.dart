@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
-import 'package:taggira/features/car/models/car_model.dart';
-import 'package:taggira/features/car/ui/car_card_details_screen.dart';
 import 'package:taggira/features/car/ui/widgets/carHome/car_card.dart';
 
 class CarCardBuilder extends StatelessWidget {
@@ -23,8 +20,8 @@ class CarCardBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           getAllCarsLoading: () {
-            return SliverToBoxAdapter(
-              child: const Center(child: CircularProgressIndicator()),
+            return const SliverToBoxAdapter(
+              child: Center(child: CircularProgressIndicator()),
             );
           },
           getAllCarsSuccess: (cars) {
@@ -64,7 +61,7 @@ class CarCardBuilder extends StatelessWidget {
           getAllCarsError: (e) {
             return SliverToBoxAdapter(child: Text(e));
           },
-          orElse: () => SliverToBoxAdapter(child: SizedBox.shrink()),
+          orElse: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
         );
       },
     );

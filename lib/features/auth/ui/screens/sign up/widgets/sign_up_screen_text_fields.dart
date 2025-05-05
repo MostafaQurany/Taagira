@@ -24,7 +24,7 @@ class SignUpScreenTextFieldsState extends State<SignUpScreenTextFields> {
             textInputAction: TextInputAction.next,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             hint: S.of(context).name,
-            prefixIcon: Icon(Icons.person_2),
+            prefixIcon: const Icon(Icons.person_2),
             validator: (text) {
               if (text!.isEmpty || text.length < 3) {
                 return S.of(context).enterTheValidName;
@@ -42,7 +42,7 @@ class SignUpScreenTextFieldsState extends State<SignUpScreenTextFields> {
                   keyboardType: TextInputType.phone,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   hint: S.of(context).phoneNumber,
-                  prefixIcon: Icon(Icons.phone),
+                  prefixIcon: const Icon(Icons.phone),
                   validator: (text) {
                     if (text!.isEmpty || text.length < 11) {
                       return S.of(context).enterTheValidPhoneNumber;

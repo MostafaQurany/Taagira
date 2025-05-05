@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                LoginTitleBar(),
+                const LoginTitleBar(),
                 hSize(h: 60),
                 Text(
                   "Just enter your phone number for easy login in",
@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ).textTheme.bodyMedium!.copyWith(color: AppColors.lightGray),
                 ),
                 hSize(h: 10),
-                LoginPhoneNumberField(),
+                const LoginPhoneNumberField(),
                 hSize(h: 150),
                 LoginGetOtpListener(
                   child: CustomButton(
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 hSize(h: 10),
-                LoginTerms(),
+                const LoginTerms(),
               ],
             ),
           ),

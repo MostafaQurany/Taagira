@@ -10,15 +10,15 @@ class AppThemeInputDecoration {
     prefixIconColor: AppColors.lighterGray,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.lighterGray),
+      borderSide: const BorderSide(color: AppColors.lighterGray),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.primary),
+      borderSide: const BorderSide(color: AppColors.primary),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.lighterGray),
+      borderSide: const BorderSide(color: AppColors.lighterGray),
     ),
     hintStyle: AppThemeTextStyles.lightTextTheme.bodyMedium!.copyWith(
       color: AppColors.lighterGray,
@@ -33,15 +33,15 @@ class AppThemeInputDecoration {
     prefixIconColor: AppColors.lighterGray,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.black),
+      borderSide: const BorderSide(color: AppColors.black),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.primary),
+      borderSide: const BorderSide(color: AppColors.primary),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: AppColors.lighterGray),
+      borderSide: const BorderSide(color: AppColors.lighterGray),
     ),
     hintStyle: TextStyle(
       color: AppColors.lightGray,

@@ -21,7 +21,7 @@ class _AddCarScreenRentalDetailsState extends State<AddCarScreenRentalDetails> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AddCarScreenSectionHeader(title: 'Rental Details'),
+        const AddCarScreenSectionHeader(title: 'Rental Details'),
         CustomTextField(
           controller: context.read<AddCarCubit>().priceController,
           label: 'Price Per Day (EGP)', // Added currency hint
