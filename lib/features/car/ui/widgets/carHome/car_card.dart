@@ -15,7 +15,7 @@ class CarCard extends StatelessWidget {
       width: 160.w,
       padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 6)],
       ),

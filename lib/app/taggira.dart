@@ -21,6 +21,7 @@ class Taagira extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           //? App Theme
+          themeMode: ThemeMode.dark,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
 

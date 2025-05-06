@@ -23,6 +23,7 @@ mixin _$AddCarState {
     required TResult Function() addCarloading,
     required TResult Function(String message) addCarSuccess,
     required TResult Function(String message) addCarError,
+    required TResult Function() addCarClear,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -30,6 +31,7 @@ mixin _$AddCarState {
     TResult? Function()? addCarloading,
     TResult? Function(String message)? addCarSuccess,
     TResult? Function(String message)? addCarError,
+    TResult? Function()? addCarClear,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -37,28 +39,32 @@ mixin _$AddCarState {
     TResult Function()? addCarloading,
     TResult Function(String message)? addCarSuccess,
     TResult Function(String message)? addCarError,
+    TResult Function()? addCarClear,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AddCarLoading value) addCarloading,
-    required TResult Function(_AddCarSuccess value) addCarSuccess,
-    required TResult Function(_AddCarError value) addCarError,
+    required TResult Function(AddCarLoading value) addCarloading,
+    required TResult Function(AddCarSuccess value) addCarSuccess,
+    required TResult Function(AddCarError value) addCarError,
+    required TResult Function(AddCarClear value) addCarClear,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AddCarLoading value)? addCarloading,
-    TResult? Function(_AddCarSuccess value)? addCarSuccess,
-    TResult? Function(_AddCarError value)? addCarError,
+    TResult? Function(AddCarLoading value)? addCarloading,
+    TResult? Function(AddCarSuccess value)? addCarSuccess,
+    TResult? Function(AddCarError value)? addCarError,
+    TResult? Function(AddCarClear value)? addCarClear,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AddCarLoading value)? addCarloading,
-    TResult Function(_AddCarSuccess value)? addCarSuccess,
-    TResult Function(_AddCarError value)? addCarError,
+    TResult Function(AddCarLoading value)? addCarloading,
+    TResult Function(AddCarSuccess value)? addCarSuccess,
+    TResult Function(AddCarError value)? addCarError,
+    TResult Function(AddCarClear value)? addCarClear,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -132,6 +138,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() addCarloading,
     required TResult Function(String message) addCarSuccess,
     required TResult Function(String message) addCarError,
+    required TResult Function() addCarClear,
   }) {
     return initial();
   }
@@ -143,6 +150,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? addCarloading,
     TResult? Function(String message)? addCarSuccess,
     TResult? Function(String message)? addCarError,
+    TResult? Function()? addCarClear,
   }) {
     return initial?.call();
   }
@@ -154,6 +162,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? addCarloading,
     TResult Function(String message)? addCarSuccess,
     TResult Function(String message)? addCarError,
+    TResult Function()? addCarClear,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -166,9 +175,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AddCarLoading value) addCarloading,
-    required TResult Function(_AddCarSuccess value) addCarSuccess,
-    required TResult Function(_AddCarError value) addCarError,
+    required TResult Function(AddCarLoading value) addCarloading,
+    required TResult Function(AddCarSuccess value) addCarSuccess,
+    required TResult Function(AddCarError value) addCarError,
+    required TResult Function(AddCarClear value) addCarClear,
   }) {
     return initial(this);
   }
@@ -177,9 +187,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AddCarLoading value)? addCarloading,
-    TResult? Function(_AddCarSuccess value)? addCarSuccess,
-    TResult? Function(_AddCarError value)? addCarError,
+    TResult? Function(AddCarLoading value)? addCarloading,
+    TResult? Function(AddCarSuccess value)? addCarSuccess,
+    TResult? Function(AddCarError value)? addCarError,
+    TResult? Function(AddCarClear value)? addCarClear,
   }) {
     return initial?.call(this);
   }
@@ -188,9 +199,10 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AddCarLoading value)? addCarloading,
-    TResult Function(_AddCarSuccess value)? addCarSuccess,
-    TResult Function(_AddCarError value)? addCarError,
+    TResult Function(AddCarLoading value)? addCarloading,
+    TResult Function(AddCarSuccess value)? addCarSuccess,
+    TResult Function(AddCarError value)? addCarError,
+    TResult Function(AddCarClear value)? addCarClear,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -227,7 +239,7 @@ class __$$AddCarLoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddCarLoadingImpl implements _AddCarLoading {
+class _$AddCarLoadingImpl implements AddCarLoading {
   const _$AddCarLoadingImpl();
 
   @override
@@ -251,6 +263,7 @@ class _$AddCarLoadingImpl implements _AddCarLoading {
     required TResult Function() addCarloading,
     required TResult Function(String message) addCarSuccess,
     required TResult Function(String message) addCarError,
+    required TResult Function() addCarClear,
   }) {
     return addCarloading();
   }
@@ -262,6 +275,7 @@ class _$AddCarLoadingImpl implements _AddCarLoading {
     TResult? Function()? addCarloading,
     TResult? Function(String message)? addCarSuccess,
     TResult? Function(String message)? addCarError,
+    TResult? Function()? addCarClear,
   }) {
     return addCarloading?.call();
   }
@@ -273,6 +287,7 @@ class _$AddCarLoadingImpl implements _AddCarLoading {
     TResult Function()? addCarloading,
     TResult Function(String message)? addCarSuccess,
     TResult Function(String message)? addCarError,
+    TResult Function()? addCarClear,
     required TResult orElse(),
   }) {
     if (addCarloading != null) {
@@ -285,9 +300,10 @@ class _$AddCarLoadingImpl implements _AddCarLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AddCarLoading value) addCarloading,
-    required TResult Function(_AddCarSuccess value) addCarSuccess,
-    required TResult Function(_AddCarError value) addCarError,
+    required TResult Function(AddCarLoading value) addCarloading,
+    required TResult Function(AddCarSuccess value) addCarSuccess,
+    required TResult Function(AddCarError value) addCarError,
+    required TResult Function(AddCarClear value) addCarClear,
   }) {
     return addCarloading(this);
   }
@@ -296,9 +312,10 @@ class _$AddCarLoadingImpl implements _AddCarLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AddCarLoading value)? addCarloading,
-    TResult? Function(_AddCarSuccess value)? addCarSuccess,
-    TResult? Function(_AddCarError value)? addCarError,
+    TResult? Function(AddCarLoading value)? addCarloading,
+    TResult? Function(AddCarSuccess value)? addCarSuccess,
+    TResult? Function(AddCarError value)? addCarError,
+    TResult? Function(AddCarClear value)? addCarClear,
   }) {
     return addCarloading?.call(this);
   }
@@ -307,9 +324,10 @@ class _$AddCarLoadingImpl implements _AddCarLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AddCarLoading value)? addCarloading,
-    TResult Function(_AddCarSuccess value)? addCarSuccess,
-    TResult Function(_AddCarError value)? addCarError,
+    TResult Function(AddCarLoading value)? addCarloading,
+    TResult Function(AddCarSuccess value)? addCarSuccess,
+    TResult Function(AddCarError value)? addCarError,
+    TResult Function(AddCarClear value)? addCarClear,
     required TResult orElse(),
   }) {
     if (addCarloading != null) {
@@ -319,8 +337,8 @@ class _$AddCarLoadingImpl implements _AddCarLoading {
   }
 }
 
-abstract class _AddCarLoading implements AddCarState {
-  const factory _AddCarLoading() = _$AddCarLoadingImpl;
+abstract class AddCarLoading implements AddCarState {
+  const factory AddCarLoading() = _$AddCarLoadingImpl;
 }
 
 /// @nodoc
@@ -360,7 +378,7 @@ class __$$AddCarSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddCarSuccessImpl implements _AddCarSuccess {
+class _$AddCarSuccessImpl implements AddCarSuccess {
   const _$AddCarSuccessImpl(this.message);
 
   @override
@@ -397,6 +415,7 @@ class _$AddCarSuccessImpl implements _AddCarSuccess {
     required TResult Function() addCarloading,
     required TResult Function(String message) addCarSuccess,
     required TResult Function(String message) addCarError,
+    required TResult Function() addCarClear,
   }) {
     return addCarSuccess(message);
   }
@@ -408,6 +427,7 @@ class _$AddCarSuccessImpl implements _AddCarSuccess {
     TResult? Function()? addCarloading,
     TResult? Function(String message)? addCarSuccess,
     TResult? Function(String message)? addCarError,
+    TResult? Function()? addCarClear,
   }) {
     return addCarSuccess?.call(message);
   }
@@ -419,6 +439,7 @@ class _$AddCarSuccessImpl implements _AddCarSuccess {
     TResult Function()? addCarloading,
     TResult Function(String message)? addCarSuccess,
     TResult Function(String message)? addCarError,
+    TResult Function()? addCarClear,
     required TResult orElse(),
   }) {
     if (addCarSuccess != null) {
@@ -431,9 +452,10 @@ class _$AddCarSuccessImpl implements _AddCarSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AddCarLoading value) addCarloading,
-    required TResult Function(_AddCarSuccess value) addCarSuccess,
-    required TResult Function(_AddCarError value) addCarError,
+    required TResult Function(AddCarLoading value) addCarloading,
+    required TResult Function(AddCarSuccess value) addCarSuccess,
+    required TResult Function(AddCarError value) addCarError,
+    required TResult Function(AddCarClear value) addCarClear,
   }) {
     return addCarSuccess(this);
   }
@@ -442,9 +464,10 @@ class _$AddCarSuccessImpl implements _AddCarSuccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AddCarLoading value)? addCarloading,
-    TResult? Function(_AddCarSuccess value)? addCarSuccess,
-    TResult? Function(_AddCarError value)? addCarError,
+    TResult? Function(AddCarLoading value)? addCarloading,
+    TResult? Function(AddCarSuccess value)? addCarSuccess,
+    TResult? Function(AddCarError value)? addCarError,
+    TResult? Function(AddCarClear value)? addCarClear,
   }) {
     return addCarSuccess?.call(this);
   }
@@ -453,9 +476,10 @@ class _$AddCarSuccessImpl implements _AddCarSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AddCarLoading value)? addCarloading,
-    TResult Function(_AddCarSuccess value)? addCarSuccess,
-    TResult Function(_AddCarError value)? addCarError,
+    TResult Function(AddCarLoading value)? addCarloading,
+    TResult Function(AddCarSuccess value)? addCarSuccess,
+    TResult Function(AddCarError value)? addCarError,
+    TResult Function(AddCarClear value)? addCarClear,
     required TResult orElse(),
   }) {
     if (addCarSuccess != null) {
@@ -465,8 +489,8 @@ class _$AddCarSuccessImpl implements _AddCarSuccess {
   }
 }
 
-abstract class _AddCarSuccess implements AddCarState {
-  const factory _AddCarSuccess(final String message) = _$AddCarSuccessImpl;
+abstract class AddCarSuccess implements AddCarState {
+  const factory AddCarSuccess(final String message) = _$AddCarSuccessImpl;
 
   String get message;
 
@@ -514,7 +538,7 @@ class __$$AddCarErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddCarErrorImpl implements _AddCarError {
+class _$AddCarErrorImpl implements AddCarError {
   const _$AddCarErrorImpl(this.message);
 
   @override
@@ -551,6 +575,7 @@ class _$AddCarErrorImpl implements _AddCarError {
     required TResult Function() addCarloading,
     required TResult Function(String message) addCarSuccess,
     required TResult Function(String message) addCarError,
+    required TResult Function() addCarClear,
   }) {
     return addCarError(message);
   }
@@ -562,6 +587,7 @@ class _$AddCarErrorImpl implements _AddCarError {
     TResult? Function()? addCarloading,
     TResult? Function(String message)? addCarSuccess,
     TResult? Function(String message)? addCarError,
+    TResult? Function()? addCarClear,
   }) {
     return addCarError?.call(message);
   }
@@ -573,6 +599,7 @@ class _$AddCarErrorImpl implements _AddCarError {
     TResult Function()? addCarloading,
     TResult Function(String message)? addCarSuccess,
     TResult Function(String message)? addCarError,
+    TResult Function()? addCarClear,
     required TResult orElse(),
   }) {
     if (addCarError != null) {
@@ -585,9 +612,10 @@ class _$AddCarErrorImpl implements _AddCarError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AddCarLoading value) addCarloading,
-    required TResult Function(_AddCarSuccess value) addCarSuccess,
-    required TResult Function(_AddCarError value) addCarError,
+    required TResult Function(AddCarLoading value) addCarloading,
+    required TResult Function(AddCarSuccess value) addCarSuccess,
+    required TResult Function(AddCarError value) addCarError,
+    required TResult Function(AddCarClear value) addCarClear,
   }) {
     return addCarError(this);
   }
@@ -596,9 +624,10 @@ class _$AddCarErrorImpl implements _AddCarError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AddCarLoading value)? addCarloading,
-    TResult? Function(_AddCarSuccess value)? addCarSuccess,
-    TResult? Function(_AddCarError value)? addCarError,
+    TResult? Function(AddCarLoading value)? addCarloading,
+    TResult? Function(AddCarSuccess value)? addCarSuccess,
+    TResult? Function(AddCarError value)? addCarError,
+    TResult? Function(AddCarClear value)? addCarClear,
   }) {
     return addCarError?.call(this);
   }
@@ -607,9 +636,10 @@ class _$AddCarErrorImpl implements _AddCarError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AddCarLoading value)? addCarloading,
-    TResult Function(_AddCarSuccess value)? addCarSuccess,
-    TResult Function(_AddCarError value)? addCarError,
+    TResult Function(AddCarLoading value)? addCarloading,
+    TResult Function(AddCarSuccess value)? addCarSuccess,
+    TResult Function(AddCarError value)? addCarError,
+    TResult Function(AddCarClear value)? addCarClear,
     required TResult orElse(),
   }) {
     if (addCarError != null) {
@@ -619,8 +649,8 @@ class _$AddCarErrorImpl implements _AddCarError {
   }
 }
 
-abstract class _AddCarError implements AddCarState {
-  const factory _AddCarError(final String message) = _$AddCarErrorImpl;
+abstract class AddCarError implements AddCarState {
+  const factory AddCarError(final String message) = _$AddCarErrorImpl;
 
   String get message;
 
@@ -629,4 +659,129 @@ abstract class _AddCarError implements AddCarState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddCarErrorImplCopyWith<_$AddCarErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddCarClearImplCopyWith<$Res> {
+  factory _$$AddCarClearImplCopyWith(
+    _$AddCarClearImpl value,
+    $Res Function(_$AddCarClearImpl) then,
+  ) = __$$AddCarClearImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddCarClearImplCopyWithImpl<$Res>
+    extends _$AddCarStateCopyWithImpl<$Res, _$AddCarClearImpl>
+    implements _$$AddCarClearImplCopyWith<$Res> {
+  __$$AddCarClearImplCopyWithImpl(
+    _$AddCarClearImpl _value,
+    $Res Function(_$AddCarClearImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AddCarState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$AddCarClearImpl implements AddCarClear {
+  const _$AddCarClearImpl();
+
+  @override
+  String toString() {
+    return 'AddCarState.addCarClear()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AddCarClearImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() addCarloading,
+    required TResult Function(String message) addCarSuccess,
+    required TResult Function(String message) addCarError,
+    required TResult Function() addCarClear,
+  }) {
+    return addCarClear();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? addCarloading,
+    TResult? Function(String message)? addCarSuccess,
+    TResult? Function(String message)? addCarError,
+    TResult? Function()? addCarClear,
+  }) {
+    return addCarClear?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? addCarloading,
+    TResult Function(String message)? addCarSuccess,
+    TResult Function(String message)? addCarError,
+    TResult Function()? addCarClear,
+    required TResult orElse(),
+  }) {
+    if (addCarClear != null) {
+      return addCarClear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(AddCarLoading value) addCarloading,
+    required TResult Function(AddCarSuccess value) addCarSuccess,
+    required TResult Function(AddCarError value) addCarError,
+    required TResult Function(AddCarClear value) addCarClear,
+  }) {
+    return addCarClear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(AddCarLoading value)? addCarloading,
+    TResult? Function(AddCarSuccess value)? addCarSuccess,
+    TResult? Function(AddCarError value)? addCarError,
+    TResult? Function(AddCarClear value)? addCarClear,
+  }) {
+    return addCarClear?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(AddCarLoading value)? addCarloading,
+    TResult Function(AddCarSuccess value)? addCarSuccess,
+    TResult Function(AddCarError value)? addCarError,
+    TResult Function(AddCarClear value)? addCarClear,
+    required TResult orElse(),
+  }) {
+    if (addCarClear != null) {
+      return addCarClear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddCarClear implements AddCarState {
+  const factory AddCarClear() = _$AddCarClearImpl;
 }

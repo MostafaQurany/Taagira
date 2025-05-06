@@ -5,9 +5,10 @@ part of 'add_car_cubit.dart';
 class AddCarState with _$AddCarState {
   const factory AddCarState.initial() = _Initial;
   const factory AddCarState.addCarloading() =
-      _AddCarLoading; // State during submission
+      AddCarLoading; // State during submission
   const factory AddCarState.addCarSuccess(String message) =
-      _AddCarSuccess; // State on successful submission
+      AddCarSuccess; // State on successful submission
   const factory AddCarState.addCarError(String message) =
-      _AddCarError; // State on validation or submission error
+      AddCarError; // State on validation or submission error
+  const factory AddCarState.addCarClear() = AddCarClear;
 }

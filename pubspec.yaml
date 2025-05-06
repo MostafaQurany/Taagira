@@ -48,6 +48,8 @@ dependencies:
   image_picker: ^1.1.2
   # create the uniqe id
   uuid: ^4.4.0
+  # helper for data picker 
+  syncfusion_flutter_datepicker: ^29.1.41
 
 dev_dependencies:
   flutter_test:
