@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/theme/app_text_styles.dart';
+import 'package:taggira/core/theme/app_theme_date_picker.dart';
 import 'package:taggira/core/theme/app_theme_input_decoration.dart';
 
 class AppTheme {
@@ -42,7 +43,10 @@ class AppTheme {
           ),
         ),
       ),
-      dividerTheme: const DividerThemeData(color: AppColors.lightGray, thickness: 1),
+      dividerTheme: const DividerThemeData(
+        color: AppColors.lightGray,
+        thickness: 1,
+      ),
 
       listTileTheme: ListTileThemeData(
         titleTextStyle: AppThemeTextStyles.lightTextTheme.bodyLarge,
@@ -51,10 +55,26 @@ class AppTheme {
         textColor: AppColors.black,
       ),
       chipTheme: ChipThemeData(
-        backgroundColor: AppColors.white,
+        backgroundColor: AppColors.lighterGray,
         selectedColor: AppColors.primary,
-        labelStyle: AppThemeTextStyles.lightTextTheme.bodyMedium,
+        labelStyle: AppThemeTextStyles.lightTextTheme.bodyMedium!.copyWith(
+          color: AppColors.white,
+        ),
       ),
+      cardColor: AppColors.white,
+
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: AppColors.white,
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.gray,
+        selectedIconTheme: IconThemeData(color: AppColors.primary),
+        unselectedIconTheme: IconThemeData(color: AppColors.gray),
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.shifting,
+      ),
+
+      datePickerTheme: lightDatePickerTheme,
     );
   }
 
@@ -96,7 +116,10 @@ class AppTheme {
           ),
         ),
       ),
-      dividerTheme: const DividerThemeData(color: AppColors.lightGray, thickness: 1),
+      dividerTheme: const DividerThemeData(
+        color: AppColors.lightGray,
+        thickness: 1,
+      ),
       listTileTheme: ListTileThemeData(
         titleTextStyle: AppThemeTextStyles.darkTextTheme.bodyLarge,
         subtitleTextStyle: AppThemeTextStyles.darkTextTheme.bodyMedium,
@@ -104,9 +127,22 @@ class AppTheme {
         textColor: AppColors.white,
       ),
       chipTheme: ChipThemeData(
-        backgroundColor: AppColors.darkBackground,
+        backgroundColor: AppColors.darkGray,
         selectedColor: AppColors.primary,
         labelStyle: AppThemeTextStyles.darkTextTheme.bodyMedium,
+      ),
+      datePickerTheme: darkDatePickerTheme,
+
+      cardColor: AppColors.darkGray,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: AppColors.darkBackground,
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.gray,
+        selectedIconTheme: IconThemeData(color: AppColors.primary),
+        unselectedIconTheme: IconThemeData(color: AppColors.gray),
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.shifting,
       ),
     );
   }

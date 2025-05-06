@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
@@ -186,7 +187,12 @@ class CarCardDetailsScreen extends StatelessWidget {
                 wSpace(30),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed(
+                        Routes.carPickDataRentScreen,
+                        extra: carModel,
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 12.h),
                     ),
@@ -203,11 +209,7 @@ class CarCardDetailsScreen extends StatelessWidget {
   }
 
   Widget _buildFeatureChip(IconData icon, String label) {
-    return Chip(
-      avatar: Icon(icon, size: 16),
-      label: Text(label),
-      backgroundColor: Colors.grey.shade200,
-    );
+    return Chip(avatar: Icon(icon, size: 16), label: Text(label));
   }
 
   Widget _buildReviewBar(String label, double rating) {

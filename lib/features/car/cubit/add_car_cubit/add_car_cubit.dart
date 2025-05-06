@@ -362,7 +362,6 @@ class AddCarCubit extends Cubit<AddCarState> {
       await _carRepo.addCar(carToAdd);
 
       // --- 4. Emit Success ---
-      clear();
       emit(const AddCarState.addCarSuccess('Car added successfully!'));
       // Optionally reset fields here after success if needed
     } catch (error) {
@@ -384,24 +383,48 @@ class AddCarCubit extends Cubit<AddCarState> {
   }
 
   clear() {
+    // Reset basic information
     selectedCategory = null;
     selectedBrand = null;
     selectedModel = null;
     selectedYear = null;
+    selectedColor = null;
+    selectedOtherColor = false; // Reset other color flag
+
+    // Reset specifications
     selectedCarType = null;
     selectedTransmission = null;
     selectedFuelType = null;
-    selectedColor = null;
+    seatsController.clear();
+
+    // Reset rental details
+    priceController.clear();
+    locationController.clear();
+
+    // Reset features and description
     hasAC = null;
     hasDriver = null;
     hasBluetooth = null;
     hasGPS = null;
-    seatsController.clear();
-    priceController.clear();
-    locationController.clear();
     descriptionController.clear();
-    for (var element in selectedImages) {
-      element = null;
-    }
+    showFeatureValidationError = false; // Reset validation flag
+
+    // Reset images
+    selectedImages.fillRange(
+      0,
+      selectedImages.length,
+      null,
+    ); // Clear image list
+    currentCarouselIndex = 0; // Reset carousel index
+    // Optionally reset carousel position if needed (might cause slight jump if screen is still visible)
+    // if (carouselController.ready) {
+    //   carouselController.jumpToPage(0);
+    // }
+
+    // Reset the form state itself (optional, but good practice if you need to clear validation errors visually)
+    // formKey.currentState?.reset(); // Uncomment if needed
+
+    // Reset the cubit state
+    emit(const AddCarState.addCarClear());
   }
 }

@@ -8,6 +8,7 @@ import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_button.dart';
+import 'package:taggira/core/widgets/loading_dialog.dart';
 import 'package:taggira/features/car/cubit/add_car_cubit/add_car_cubit.dart';
 import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_basic_information.dart';
 import 'package:taggira/features/car/ui/widgets/addCar/add_car_screen_car_images.dart';
@@ -60,73 +61,65 @@ class _AddCarScreenState extends State<AddCarScreen> {
         ),
         leadingWidth: 70.w,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16.w,
-            vertical: 10.h,
-          ), // Adjusted padding
-          child: Form(
-            key: context.read<AddCarCubit>().formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Section 1: Images
-                const AddCarScreenCarImages(),
+      body: BlocConsumer<AddCarCubit, AddCarState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            addCarloading: () {
+              LoadingDialog.show(context);
+            },
+            addCarSuccess: (message) {
+              context.read<AddCarCubit>().clear();
+              context.pop();
+              context.pop();
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(message)));
+              print("Success: $message"); // Placeholder
+            },
+            addCarError: (message) {
+              LoadingDialog.hide(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(message), backgroundColor: Colors.red),
+              );
+              print("Error: $message"); // Placeholder
+            },
+          );
+        },
+        builder: (context, state) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.w,
+                vertical: 10.h,
+              ), // Adjusted padding
+              child: Form(
+                key: context.read<AddCarCubit>().formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Section 1: Images
+                    const AddCarScreenCarImages(),
 
-                const AddCarScreenScetionDivider(),
+                    const AddCarScreenScetionDivider(),
 
-                // Section 2: Basic Information
-                const AddCarScreenBasicInformation(),
-                const AddCarScreenScetionDivider(),
+                    // Section 2: Basic Information
+                    const AddCarScreenBasicInformation(),
+                    const AddCarScreenScetionDivider(),
 
-                // Section 3: Specifications
-                const AddCarScreenSpecifications(),
-                const AddCarScreenScetionDivider(),
+                    // Section 3: Specifications
+                    const AddCarScreenSpecifications(),
+                    const AddCarScreenScetionDivider(),
 
-                // Section 4: Rental Details
-                const AddCarScreenRentalDetails(),
-                const AddCarScreenScetionDivider(),
+                    // Section 4: Rental Details
+                    const AddCarScreenRentalDetails(),
+                    const AddCarScreenScetionDivider(),
 
-                // Section 5: Features (Using the refactored widget)
-                // No header needed here as the widget provides its own "Features" title
-                const AddCarScreenFeaturesAndDiscreption(),
+                    // Section 5: Features (Using the refactored widget)
+                    // No header needed here as the widget provides its own "Features" title
+                    const AddCarScreenFeaturesAndDiscreption(),
 
-                hSpace(30.h),
-                BlocConsumer<AddCarCubit, AddCarState>(
-                  listener: (context, state) {
-                    state.when(
-                      initial: () {
-                        // Do nothing or hide messages
-                      },
-                      addCarloading: () {
-                        // Show a loading indicator (e.g., a dialog or overlay)
-                        // You might want to manage a loading flag in the state itself
-                        // or use a separate loading state like this.
-                        // Example: showDialog(context: context, builder: (_) => LoadingDialog());
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Loading")),
-                        ); // Placeholder
-                      },
-                      addCarSuccess: (message) {
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(SnackBar(content: Text(message)));
-                        print("Success: $message"); // Placeholder
-                      },
-                      addCarError: (message) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(message),
-                            backgroundColor: Colors.red,
-                          ),
-                        );
-                        print("Error: $message"); // Placeholder
-                      },
-                    );
-                  },
-                  builder: (context, state) {
-                    return Center(
+                    hSpace(30.h),
+                    Center(
                       child: CustomButton(
                         onPressed:
                             isLoading
@@ -142,14 +135,14 @@ class _AddCarScreenState extends State<AddCarScreen> {
                                 },
                         text: "Add Car",
                       ),
-                    );
-                  },
+                    ),
+                    hSpace(20.h),
+                  ],
                 ),
-                hSpace(20.h),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
