@@ -5,10 +5,15 @@ import 'package:taggira/core/utils/extensions/app_extensions.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 
-class CarCard extends StatelessWidget {
-  final CarModel carModel;
-  const CarCard({super.key, required this.carModel});
+class CarCard extends StatefulWidget {
+  CarModel carModel;
+  CarCard({super.key, required this.carModel});
 
+  @override
+  State<CarCard> createState() => _CarCardState();
+}
+
+class _CarCardState extends State<CarCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,13 +28,16 @@ class CarCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.r),
-            child: Image.asset(
-              AppImges.carImagePlaceholder,
-              height: 80.h,
-              width: double.infinity,
-              fit: BoxFit.cover,
+          Hero(
+            tag: 'car-image-${widget.carModel.id}',
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: Image.asset(
+                AppImges.carImagePlaceholder,
+                height: 80.h,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           hSize(h: 8),
@@ -37,57 +45,100 @@ class CarCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "${carModel.brand} ${carModel.year}",
+                  "${widget.carModel.brand} ${widget.carModel.year}",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(
                     context,
-                  ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
+                  ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
                 ),
               ),
+              SizedBox(width: 4.w),
               GestureDetector(
-                onTap: () {},
-                child: Icon(
-                  carModel.isFavorite ?? false
-                      ? Icons.favorite
-                      : Icons.favorite_border_outlined,
+                onTap: () {
+                  setState(() {
+                    widget.carModel = widget.carModel.copyWith(
+                      isFavorite: !widget.carModel.isFavorite,
+                    );
+                  });
+                },
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  child: Icon(
+                    widget.carModel.isFavorite
+                        ? Icons.favorite
+                        : Icons.favorite_border_outlined,
+                    color:
+                        widget.carModel.isFavorite
+                            ? AppColors.orange
+                            : Colors.grey,
+                    size: 20.w,
+                    key: ValueKey<bool>(widget.carModel.isFavorite),
+                  ),
                 ),
               ),
             ],
           ),
           Text(
-            " ${carModel.model} • ${carModel.type.name} ",
+            "${widget.carModel.model} • ${widget.carModel.type.name}",
             style: Theme.of(
               context,
-            ).textTheme.bodySmall!.copyWith(color: AppColors.gray),
+            ).textTheme.bodySmall?.copyWith(color: AppColors.gray),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(height: 4.h),
           RichText(
             text: TextSpan(
-              text: "${carModel.pricePerDay} ",
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.w500,
+              text: "${widget.carModel.pricePerDay} ",
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w700,
                 color: AppColors.orange,
               ),
               children: [
                 TextSpan(
                   text: "EGP/day",
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(color: AppColors.gray),
                 ),
               ],
             ),
           ),
           const Spacer(),
-          const Divider(),
-          ElevatedButton(
-            onPressed: () {
-              //TODO: make the rent now screen
-            },
-            child: const SizedBox(
-              width: double.infinity,
-              child: Center(child: Text("Rent Now")),
+
+          // Divider with padding
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.h),
+            child: const Divider(height: 1),
+          ),
+
+          // Rent Now Button with animation
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            width: double.infinity,
+            height: 36.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.r),
+              color: AppColors.primary.withOpacity(0.6),
+            ),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(8.r),
+                onTap: () {
+                  // Handle rent now action
+                },
+                child: Center(
+                  child: Text(
+                    "Rent Now",
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],

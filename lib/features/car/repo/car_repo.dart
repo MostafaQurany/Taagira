@@ -7,4 +7,8 @@ abstract class CarRepo {
   Future<List<CarModel>> getAllCars();
   Future<CarModel?> getCarById(String carId);
   Future<List<CarModel>> searchCars(String query);
+
+  Future<void> addCarToFavorites(String carId);
+  Future<void> removeCarFromFavorites(String carId);
+  Future<List<CarModel>> getFavoriteCars();
 }
