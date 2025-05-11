@@ -30,9 +30,12 @@ class AppRouter {
     return CustomTransitionPage<T>(
       key: state.pageKey,
       child: child,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-          FadeTransition(opacity: animation, child: child),
-      transitionDuration: const Duration(milliseconds: 300), // Optional: customize duration
+      transitionsBuilder:
+          (context, animation, secondaryAnimation, child) =>
+              ScaleTransition(scale: animation, child: child),
+      transitionDuration: const Duration(
+        milliseconds: 300,
+      ), // Optional: customize duration
     );
   }
 
@@ -149,38 +152,31 @@ class AppRouter {
 
       // 3. Move CarCardDetailsScreen, CarPickDataRentScreen, and AddCarScreen to be top-level routes
       GoRoute(
-        path:
-            "/${Routes.carCardDetailsScreen}", // 4. Absolute path for top-level
+        path: "/${Routes.carCardDetailsScreen}",
         name: Routes.carCardDetailsScreen,
-        parentNavigatorKey: _rootNavigatorKey, // 5. Use root navigator
-        // Using pageBuilder to apply custom transition
+        parentNavigatorKey: _rootNavigatorKey,
         pageBuilder: (context, state) {
           final carModel = state.extra as CarModel;
-          return buildPageWithFadeTransition(
-            context: context,
-            state: state,
+          return MaterialPage(
+            key: state.pageKey,
             child: CarCardDetailsScreen(carModel: carModel),
           );
         },
         routes: [
           GoRoute(
-            path:
-                Routes.carPickDataRentScreen, // 5. Relative path for sub-route
+            path: Routes.carPickDataRentScreen,
             name: Routes.carPickDataRentScreen,
-            // parentNavigatorKey is inherited, but can be explicit:
-            // parentNavigatorKey: _rootNavigatorKey,
-            // Applying fade transition to sub-route as well
             pageBuilder: (context, state) {
               final carModel = state.extra as CarModel;
-              return buildPageWithFadeTransition(
-                context: context,
-                state: state,
+              return MaterialPage(
+                key: state.pageKey,
                 child: CarPickDataRentScreen(carModel: carModel),
               );
             },
           ),
         ],
       ),
+
       GoRoute(
         path: "/${Routes.addCarScreen}", // 4. Absolute path for top-level
         name: Routes.addCarScreen,

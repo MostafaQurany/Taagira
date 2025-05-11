@@ -77,13 +77,16 @@ class CarCardDetailsScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16.h),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.r),
-                      child: Image.asset(
-                        AppImges.carImagePlaceholder,
-                        height: 180.h,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
+                    Hero(
+                      tag: 'car-image-${carModel.id}',
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.r),
+                        child: Image.asset(
+                          AppImges.carImagePlaceholder,
+                          height: 180.h,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     SizedBox(height: 16.h),

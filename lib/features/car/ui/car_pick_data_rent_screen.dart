@@ -148,6 +148,7 @@ class CarPickDataRentScreenState extends State<CarPickDataRentScreen> {
                           color: AppColors.white,
                         ), // Text color for the in-between dates
                       ),
+                      enablePastDates: false,
                     ),
                     SizedBox(height: 16.h),
 

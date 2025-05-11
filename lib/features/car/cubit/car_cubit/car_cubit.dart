@@ -46,4 +46,7 @@ class CarCubit extends Cubit<CarState> {
       emit((state as GetAllCarsSuccess).copyWith(cars: filteredCars));
     }
   }
+
+
+  
 }

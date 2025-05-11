@@ -156,4 +156,22 @@ class CarDataSource implements CarRepo {
       );
     }
   }
+  
+  @override
+  Future<void> addCarToFavorites(String carId) {
+    // TODO: implement addCarToFavorites
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<List<CarModel>> getFavoriteCars() {
+    // TODO: implement getFavoriteCars
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> removeCarFromFavorites(String carId) {
+    // TODO: implement removeCarFromFavorites
+    throw UnimplementedError();
+  }
 }
