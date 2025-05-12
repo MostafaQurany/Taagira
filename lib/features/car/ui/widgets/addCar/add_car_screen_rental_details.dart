@@ -35,7 +35,7 @@ class _AddCarScreenRentalDetailsState extends State<AddCarScreenRentalDetails> {
             return null;
           },
         ),
-        hSpace(16.h),
+        hSize(16.h),
         CustomTextField(
           controller: context.read<AddCarCubit>().locationController,
           label: 'Location',

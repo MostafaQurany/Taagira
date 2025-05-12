@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 
-class LoadingDialog {
+class AppDialog {
   static void hide(BuildContext context) {
     if (context.canPop()) {
       context.pop();
     }
   }
 
-  static void show(BuildContext context) {
+  static void showLoading(BuildContext context) {
     showDialog(
       context: context,
       barrierDismissible: false, // Prevent closing on outside tap
       builder: (BuildContext context) {
         return Dialog(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
@@ -29,6 +29,37 @@ class LoadingDialog {
                 Text(
                   "Loading...",
                   style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  static void showError(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      barrierDismissible: true, // Prevent closing on outside tap
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Error... $message",
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: AppColors.primary,

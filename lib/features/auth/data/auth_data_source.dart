@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:taggira/features/user/model/user_model.dart';
 
 abstract class AuthDataSource {
   Future<void> getOTPMessage(String phoneNumber);
@@ -7,6 +10,7 @@ abstract class AuthDataSource {
 }
 
 class AuthDataSourceImpl extends AuthDataSource {
+  final fireStore = FirebaseFirestore.instance;
   final firebaseAuth = FirebaseAuth.instance;
 
   int? forceResendingToken;
@@ -44,17 +48,17 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future<String> verifyOTP(String otp) async {
-    print(verificationId);
+    print("verificationId$verificationId");
     try {
       final PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId!,
         smsCode: otp,
       );
-      UserCredential userCredential =
-          await firebaseAuth.signInWithCredential(credential);
-      return userCredential.user!.uid;
+      final res = await firebaseAuth.signInWithCredential(credential);
+      return res.user?.uid ?? "userId";
     } catch (e) {
-      throw e.toString();
+      debugPrint('OTP verification failed: $e');
+      throw Exception("OTP verification failed. Please try again.");
     }
   }
 }

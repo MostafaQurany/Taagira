@@ -24,8 +24,12 @@ mixin _$AuthState {
     required TResult Function() successGetOtp,
     required TResult Function(String message) errorGetOtp,
     required TResult Function() loadingVerifyOtp,
-    required TResult Function(String userID) successVerifyOtp,
-    required TResult Function() successCreateUser,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -34,8 +38,12 @@ mixin _$AuthState {
     TResult? Function()? successGetOtp,
     TResult? Function(String message)? errorGetOtp,
     TResult? Function()? loadingVerifyOtp,
-    TResult? Function(String userID)? successVerifyOtp,
-    TResult? Function()? successCreateUser,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -44,8 +52,12 @@ mixin _$AuthState {
     TResult Function()? successGetOtp,
     TResult Function(String message)? errorGetOtp,
     TResult Function()? loadingVerifyOtp,
-    TResult Function(String userID)? successVerifyOtp,
-    TResult Function()? successCreateUser,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,7 +68,13 @@ mixin _$AuthState {
     required TResult Function(ErrorGetOtp value) errorGetOtp,
     required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
     required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
     required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -66,7 +84,12 @@ mixin _$AuthState {
     TResult? Function(ErrorGetOtp value)? errorGetOtp,
     TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -76,7 +99,12 @@ mixin _$AuthState {
     TResult Function(ErrorGetOtp value)? errorGetOtp,
     TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -149,8 +177,12 @@ class _$InitialImpl implements _Initial {
     required TResult Function() successGetOtp,
     required TResult Function(String message) errorGetOtp,
     required TResult Function() loadingVerifyOtp,
-    required TResult Function(String userID) successVerifyOtp,
-    required TResult Function() successCreateUser,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
   }) {
     return initial();
   }
@@ -163,8 +195,12 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? successGetOtp,
     TResult? Function(String message)? errorGetOtp,
     TResult? Function()? loadingVerifyOtp,
-    TResult? Function(String userID)? successVerifyOtp,
-    TResult? Function()? successCreateUser,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
   }) {
     return initial?.call();
   }
@@ -177,8 +213,12 @@ class _$InitialImpl implements _Initial {
     TResult Function()? successGetOtp,
     TResult Function(String message)? errorGetOtp,
     TResult Function()? loadingVerifyOtp,
-    TResult Function(String userID)? successVerifyOtp,
-    TResult Function()? successCreateUser,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -196,7 +236,13 @@ class _$InitialImpl implements _Initial {
     required TResult Function(ErrorGetOtp value) errorGetOtp,
     required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
     required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
     required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
   }) {
     return initial(this);
   }
@@ -210,7 +256,12 @@ class _$InitialImpl implements _Initial {
     TResult? Function(ErrorGetOtp value)? errorGetOtp,
     TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
   }) {
     return initial?.call(this);
   }
@@ -224,7 +275,12 @@ class _$InitialImpl implements _Initial {
     TResult Function(ErrorGetOtp value)? errorGetOtp,
     TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -286,8 +342,12 @@ class _$LoadingGetOtpImpl implements LoadingGetOtp {
     required TResult Function() successGetOtp,
     required TResult Function(String message) errorGetOtp,
     required TResult Function() loadingVerifyOtp,
-    required TResult Function(String userID) successVerifyOtp,
-    required TResult Function() successCreateUser,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
   }) {
     return loadingGetOtp();
   }
@@ -300,8 +360,12 @@ class _$LoadingGetOtpImpl implements LoadingGetOtp {
     TResult? Function()? successGetOtp,
     TResult? Function(String message)? errorGetOtp,
     TResult? Function()? loadingVerifyOtp,
-    TResult? Function(String userID)? successVerifyOtp,
-    TResult? Function()? successCreateUser,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
   }) {
     return loadingGetOtp?.call();
   }
@@ -314,8 +378,12 @@ class _$LoadingGetOtpImpl implements LoadingGetOtp {
     TResult Function()? successGetOtp,
     TResult Function(String message)? errorGetOtp,
     TResult Function()? loadingVerifyOtp,
-    TResult Function(String userID)? successVerifyOtp,
-    TResult Function()? successCreateUser,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (loadingGetOtp != null) {
@@ -333,7 +401,13 @@ class _$LoadingGetOtpImpl implements LoadingGetOtp {
     required TResult Function(ErrorGetOtp value) errorGetOtp,
     required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
     required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
     required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
   }) {
     return loadingGetOtp(this);
   }
@@ -347,7 +421,12 @@ class _$LoadingGetOtpImpl implements LoadingGetOtp {
     TResult? Function(ErrorGetOtp value)? errorGetOtp,
     TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
   }) {
     return loadingGetOtp?.call(this);
   }
@@ -361,7 +440,12 @@ class _$LoadingGetOtpImpl implements LoadingGetOtp {
     TResult Function(ErrorGetOtp value)? errorGetOtp,
     TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (loadingGetOtp != null) {
@@ -423,8 +507,12 @@ class _$SuccessGetOtpImpl implements SuccessGetOtp {
     required TResult Function() successGetOtp,
     required TResult Function(String message) errorGetOtp,
     required TResult Function() loadingVerifyOtp,
-    required TResult Function(String userID) successVerifyOtp,
-    required TResult Function() successCreateUser,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
   }) {
     return successGetOtp();
   }
@@ -437,8 +525,12 @@ class _$SuccessGetOtpImpl implements SuccessGetOtp {
     TResult? Function()? successGetOtp,
     TResult? Function(String message)? errorGetOtp,
     TResult? Function()? loadingVerifyOtp,
-    TResult? Function(String userID)? successVerifyOtp,
-    TResult? Function()? successCreateUser,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
   }) {
     return successGetOtp?.call();
   }
@@ -451,8 +543,12 @@ class _$SuccessGetOtpImpl implements SuccessGetOtp {
     TResult Function()? successGetOtp,
     TResult Function(String message)? errorGetOtp,
     TResult Function()? loadingVerifyOtp,
-    TResult Function(String userID)? successVerifyOtp,
-    TResult Function()? successCreateUser,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (successGetOtp != null) {
@@ -470,7 +566,13 @@ class _$SuccessGetOtpImpl implements SuccessGetOtp {
     required TResult Function(ErrorGetOtp value) errorGetOtp,
     required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
     required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
     required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
   }) {
     return successGetOtp(this);
   }
@@ -484,7 +586,12 @@ class _$SuccessGetOtpImpl implements SuccessGetOtp {
     TResult? Function(ErrorGetOtp value)? errorGetOtp,
     TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
   }) {
     return successGetOtp?.call(this);
   }
@@ -498,7 +605,12 @@ class _$SuccessGetOtpImpl implements SuccessGetOtp {
     TResult Function(ErrorGetOtp value)? errorGetOtp,
     TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (successGetOtp != null) {
@@ -587,8 +699,12 @@ class _$ErrorGetOtpImpl implements ErrorGetOtp {
     required TResult Function() successGetOtp,
     required TResult Function(String message) errorGetOtp,
     required TResult Function() loadingVerifyOtp,
-    required TResult Function(String userID) successVerifyOtp,
-    required TResult Function() successCreateUser,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
   }) {
     return errorGetOtp(message);
   }
@@ -601,8 +717,12 @@ class _$ErrorGetOtpImpl implements ErrorGetOtp {
     TResult? Function()? successGetOtp,
     TResult? Function(String message)? errorGetOtp,
     TResult? Function()? loadingVerifyOtp,
-    TResult? Function(String userID)? successVerifyOtp,
-    TResult? Function()? successCreateUser,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
   }) {
     return errorGetOtp?.call(message);
   }
@@ -615,8 +735,12 @@ class _$ErrorGetOtpImpl implements ErrorGetOtp {
     TResult Function()? successGetOtp,
     TResult Function(String message)? errorGetOtp,
     TResult Function()? loadingVerifyOtp,
-    TResult Function(String userID)? successVerifyOtp,
-    TResult Function()? successCreateUser,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (errorGetOtp != null) {
@@ -634,7 +758,13 @@ class _$ErrorGetOtpImpl implements ErrorGetOtp {
     required TResult Function(ErrorGetOtp value) errorGetOtp,
     required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
     required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
     required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
   }) {
     return errorGetOtp(this);
   }
@@ -648,7 +778,12 @@ class _$ErrorGetOtpImpl implements ErrorGetOtp {
     TResult? Function(ErrorGetOtp value)? errorGetOtp,
     TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
   }) {
     return errorGetOtp?.call(this);
   }
@@ -662,7 +797,12 @@ class _$ErrorGetOtpImpl implements ErrorGetOtp {
     TResult Function(ErrorGetOtp value)? errorGetOtp,
     TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (errorGetOtp != null) {
@@ -732,8 +872,12 @@ class _$LoadingVerifyOtpImpl implements LoadingVerifyOtp {
     required TResult Function() successGetOtp,
     required TResult Function(String message) errorGetOtp,
     required TResult Function() loadingVerifyOtp,
-    required TResult Function(String userID) successVerifyOtp,
-    required TResult Function() successCreateUser,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
   }) {
     return loadingVerifyOtp();
   }
@@ -746,8 +890,12 @@ class _$LoadingVerifyOtpImpl implements LoadingVerifyOtp {
     TResult? Function()? successGetOtp,
     TResult? Function(String message)? errorGetOtp,
     TResult? Function()? loadingVerifyOtp,
-    TResult? Function(String userID)? successVerifyOtp,
-    TResult? Function()? successCreateUser,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
   }) {
     return loadingVerifyOtp?.call();
   }
@@ -760,8 +908,12 @@ class _$LoadingVerifyOtpImpl implements LoadingVerifyOtp {
     TResult Function()? successGetOtp,
     TResult Function(String message)? errorGetOtp,
     TResult Function()? loadingVerifyOtp,
-    TResult Function(String userID)? successVerifyOtp,
-    TResult Function()? successCreateUser,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (loadingVerifyOtp != null) {
@@ -779,7 +931,13 @@ class _$LoadingVerifyOtpImpl implements LoadingVerifyOtp {
     required TResult Function(ErrorGetOtp value) errorGetOtp,
     required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
     required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
     required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
   }) {
     return loadingVerifyOtp(this);
   }
@@ -793,7 +951,12 @@ class _$LoadingVerifyOtpImpl implements LoadingVerifyOtp {
     TResult? Function(ErrorGetOtp value)? errorGetOtp,
     TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
   }) {
     return loadingVerifyOtp?.call(this);
   }
@@ -807,7 +970,12 @@ class _$LoadingVerifyOtpImpl implements LoadingVerifyOtp {
     TResult Function(ErrorGetOtp value)? errorGetOtp,
     TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (loadingVerifyOtp != null) {
@@ -828,7 +996,9 @@ abstract class _$$SuccessVerifyOtpImplCopyWith<$Res> {
     $Res Function(_$SuccessVerifyOtpImpl) then,
   ) = __$$SuccessVerifyOtpImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userID});
+  $Res call({UserModel userModel});
+
+  $UserModelCopyWith<$Res> get userModel;
 }
 
 /// @nodoc
@@ -844,29 +1014,39 @@ class __$$SuccessVerifyOtpImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? userID = null}) {
+  $Res call({Object? userModel = null}) {
     return _then(
       _$SuccessVerifyOtpImpl(
-        null == userID
-            ? _value.userID
-            : userID // ignore: cast_nullable_to_non_nullable
-                as String,
+        null == userModel
+            ? _value.userModel
+            : userModel // ignore: cast_nullable_to_non_nullable
+                as UserModel,
       ),
     );
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get userModel {
+    return $UserModelCopyWith<$Res>(_value.userModel, (value) {
+      return _then(_value.copyWith(userModel: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
-  const _$SuccessVerifyOtpImpl(this.userID);
+  const _$SuccessVerifyOtpImpl(this.userModel);
 
   @override
-  final String userID;
+  final UserModel userModel;
 
   @override
   String toString() {
-    return 'AuthState.successVerifyOtp(userID: $userID)';
+    return 'AuthState.successVerifyOtp(userModel: $userModel)';
   }
 
   @override
@@ -874,11 +1054,12 @@ class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessVerifyOtpImpl &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userID);
+  int get hashCode => Object.hash(runtimeType, userModel);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -899,10 +1080,14 @@ class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
     required TResult Function() successGetOtp,
     required TResult Function(String message) errorGetOtp,
     required TResult Function() loadingVerifyOtp,
-    required TResult Function(String userID) successVerifyOtp,
-    required TResult Function() successCreateUser,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
   }) {
-    return successVerifyOtp(userID);
+    return successVerifyOtp(userModel);
   }
 
   @override
@@ -913,10 +1098,14 @@ class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
     TResult? Function()? successGetOtp,
     TResult? Function(String message)? errorGetOtp,
     TResult? Function()? loadingVerifyOtp,
-    TResult? Function(String userID)? successVerifyOtp,
-    TResult? Function()? successCreateUser,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
   }) {
-    return successVerifyOtp?.call(userID);
+    return successVerifyOtp?.call(userModel);
   }
 
   @override
@@ -927,12 +1116,16 @@ class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
     TResult Function()? successGetOtp,
     TResult Function(String message)? errorGetOtp,
     TResult Function()? loadingVerifyOtp,
-    TResult Function(String userID)? successVerifyOtp,
-    TResult Function()? successCreateUser,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (successVerifyOtp != null) {
-      return successVerifyOtp(userID);
+      return successVerifyOtp(userModel);
     }
     return orElse();
   }
@@ -946,7 +1139,13 @@ class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
     required TResult Function(ErrorGetOtp value) errorGetOtp,
     required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
     required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
     required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
   }) {
     return successVerifyOtp(this);
   }
@@ -960,7 +1159,12 @@ class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
     TResult? Function(ErrorGetOtp value)? errorGetOtp,
     TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
   }) {
     return successVerifyOtp?.call(this);
   }
@@ -974,7 +1178,12 @@ class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
     TResult Function(ErrorGetOtp value)? errorGetOtp,
     TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (successVerifyOtp != null) {
@@ -985,9 +1194,10 @@ class _$SuccessVerifyOtpImpl implements SuccessVerifyOtp {
 }
 
 abstract class SuccessVerifyOtp implements AuthState {
-  const factory SuccessVerifyOtp(final String userID) = _$SuccessVerifyOtpImpl;
+  const factory SuccessVerifyOtp(final UserModel userModel) =
+      _$SuccessVerifyOtpImpl;
 
-  String get userID;
+  UserModel get userModel;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -997,44 +1207,74 @@ abstract class SuccessVerifyOtp implements AuthState {
 }
 
 /// @nodoc
-abstract class _$$SuccessCreateUserImplCopyWith<$Res> {
-  factory _$$SuccessCreateUserImplCopyWith(
-    _$SuccessCreateUserImpl value,
-    $Res Function(_$SuccessCreateUserImpl) then,
-  ) = __$$SuccessCreateUserImplCopyWithImpl<$Res>;
+abstract class _$$ErrorVerifyOtpImplCopyWith<$Res> {
+  factory _$$ErrorVerifyOtpImplCopyWith(
+    _$ErrorVerifyOtpImpl value,
+    $Res Function(_$ErrorVerifyOtpImpl) then,
+  ) = __$$ErrorVerifyOtpImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
-class __$$SuccessCreateUserImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$SuccessCreateUserImpl>
-    implements _$$SuccessCreateUserImplCopyWith<$Res> {
-  __$$SuccessCreateUserImplCopyWithImpl(
-    _$SuccessCreateUserImpl _value,
-    $Res Function(_$SuccessCreateUserImpl) _then,
+class __$$ErrorVerifyOtpImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$ErrorVerifyOtpImpl>
+    implements _$$ErrorVerifyOtpImplCopyWith<$Res> {
+  __$$ErrorVerifyOtpImplCopyWithImpl(
+    _$ErrorVerifyOtpImpl _value,
+    $Res Function(_$ErrorVerifyOtpImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null}) {
+    return _then(
+      _$ErrorVerifyOtpImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 
-class _$SuccessCreateUserImpl implements SuccessCreateUser {
-  const _$SuccessCreateUserImpl();
+class _$ErrorVerifyOtpImpl implements ErrorVerifyOtp {
+  const _$ErrorVerifyOtpImpl(this.message);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthState.successCreateUser()';
+    return 'AuthState.errorVerifyOtp(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessCreateUserImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorVerifyOtpImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorVerifyOtpImplCopyWith<_$ErrorVerifyOtpImpl> get copyWith =>
+      __$$ErrorVerifyOtpImplCopyWithImpl<_$ErrorVerifyOtpImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1044,10 +1284,14 @@ class _$SuccessCreateUserImpl implements SuccessCreateUser {
     required TResult Function() successGetOtp,
     required TResult Function(String message) errorGetOtp,
     required TResult Function() loadingVerifyOtp,
-    required TResult Function(String userID) successVerifyOtp,
-    required TResult Function() successCreateUser,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
   }) {
-    return successCreateUser();
+    return errorVerifyOtp(message);
   }
 
   @override
@@ -1058,10 +1302,14 @@ class _$SuccessCreateUserImpl implements SuccessCreateUser {
     TResult? Function()? successGetOtp,
     TResult? Function(String message)? errorGetOtp,
     TResult? Function()? loadingVerifyOtp,
-    TResult? Function(String userID)? successVerifyOtp,
-    TResult? Function()? successCreateUser,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
   }) {
-    return successCreateUser?.call();
+    return errorVerifyOtp?.call(message);
   }
 
   @override
@@ -1072,12 +1320,16 @@ class _$SuccessCreateUserImpl implements SuccessCreateUser {
     TResult Function()? successGetOtp,
     TResult Function(String message)? errorGetOtp,
     TResult Function()? loadingVerifyOtp,
-    TResult Function(String userID)? successVerifyOtp,
-    TResult Function()? successCreateUser,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
-    if (successCreateUser != null) {
-      return successCreateUser();
+    if (errorVerifyOtp != null) {
+      return errorVerifyOtp(message);
     }
     return orElse();
   }
@@ -1091,7 +1343,228 @@ class _$SuccessCreateUserImpl implements SuccessCreateUser {
     required TResult Function(ErrorGetOtp value) errorGetOtp,
     required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
     required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
     required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
+  }) {
+    return errorVerifyOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(LoadingGetOtp value)? loadingGetOtp,
+    TResult? Function(SuccessGetOtp value)? successGetOtp,
+    TResult? Function(ErrorGetOtp value)? errorGetOtp,
+    TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
+    TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
+    TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
+  }) {
+    return errorVerifyOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoadingGetOtp value)? loadingGetOtp,
+    TResult Function(SuccessGetOtp value)? successGetOtp,
+    TResult Function(ErrorGetOtp value)? errorGetOtp,
+    TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
+    TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
+    TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
+    required TResult orElse(),
+  }) {
+    if (errorVerifyOtp != null) {
+      return errorVerifyOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorVerifyOtp implements AuthState {
+  const factory ErrorVerifyOtp(final String message) = _$ErrorVerifyOtpImpl;
+
+  String get message;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorVerifyOtpImplCopyWith<_$ErrorVerifyOtpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessCreateUserImplCopyWith<$Res> {
+  factory _$$SuccessCreateUserImplCopyWith(
+    _$SuccessCreateUserImpl value,
+    $Res Function(_$SuccessCreateUserImpl) then,
+  ) = __$$SuccessCreateUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user});
+
+  $UserModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$SuccessCreateUserImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SuccessCreateUserImpl>
+    implements _$$SuccessCreateUserImplCopyWith<$Res> {
+  __$$SuccessCreateUserImplCopyWithImpl(
+    _$SuccessCreateUserImpl _value,
+    $Res Function(_$SuccessCreateUserImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? user = null}) {
+    return _then(
+      _$SuccessCreateUserImpl(
+        null == user
+            ? _value.user
+            : user // ignore: cast_nullable_to_non_nullable
+                as UserModel,
+      ),
+    );
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SuccessCreateUserImpl implements SuccessCreateUser {
+  const _$SuccessCreateUserImpl(this.user);
+
+  @override
+  final UserModel user;
+
+  @override
+  String toString() {
+    return 'AuthState.successCreateUser(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessCreateUserImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessCreateUserImplCopyWith<_$SuccessCreateUserImpl> get copyWith =>
+      __$$SuccessCreateUserImplCopyWithImpl<_$SuccessCreateUserImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingGetOtp,
+    required TResult Function() successGetOtp,
+    required TResult Function(String message) errorGetOtp,
+    required TResult Function() loadingVerifyOtp,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
+  }) {
+    return successCreateUser(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingGetOtp,
+    TResult? Function()? successGetOtp,
+    TResult? Function(String message)? errorGetOtp,
+    TResult? Function()? loadingVerifyOtp,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
+  }) {
+    return successCreateUser?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingGetOtp,
+    TResult Function()? successGetOtp,
+    TResult Function(String message)? errorGetOtp,
+    TResult Function()? loadingVerifyOtp,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
+    required TResult orElse(),
+  }) {
+    if (successCreateUser != null) {
+      return successCreateUser(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(LoadingGetOtp value) loadingGetOtp,
+    required TResult Function(SuccessGetOtp value) successGetOtp,
+    required TResult Function(ErrorGetOtp value) errorGetOtp,
+    required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
+    required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
+    required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
   }) {
     return successCreateUser(this);
   }
@@ -1105,7 +1578,12 @@ class _$SuccessCreateUserImpl implements SuccessCreateUser {
     TResult? Function(ErrorGetOtp value)? errorGetOtp,
     TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
   }) {
     return successCreateUser?.call(this);
   }
@@ -1119,7 +1597,12 @@ class _$SuccessCreateUserImpl implements SuccessCreateUser {
     TResult Function(ErrorGetOtp value)? errorGetOtp,
     TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
     TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
     TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
     required TResult orElse(),
   }) {
     if (successCreateUser != null) {
@@ -1130,5 +1613,675 @@ class _$SuccessCreateUserImpl implements SuccessCreateUser {
 }
 
 abstract class SuccessCreateUser implements AuthState {
-  const factory SuccessCreateUser() = _$SuccessCreateUserImpl;
+  const factory SuccessCreateUser(final UserModel user) =
+      _$SuccessCreateUserImpl;
+
+  UserModel get user;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SuccessCreateUserImplCopyWith<_$SuccessCreateUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserExitStateImplCopyWith<$Res> {
+  factory _$$UserExitStateImplCopyWith(
+    _$UserExitStateImpl value,
+    $Res Function(_$UserExitStateImpl) then,
+  ) = __$$UserExitStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isUserExsit, UserModel user});
+
+  $UserModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$UserExitStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$UserExitStateImpl>
+    implements _$$UserExitStateImplCopyWith<$Res> {
+  __$$UserExitStateImplCopyWithImpl(
+    _$UserExitStateImpl _value,
+    $Res Function(_$UserExitStateImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? isUserExsit = null, Object? user = null}) {
+    return _then(
+      _$UserExitStateImpl(
+        null == isUserExsit
+            ? _value.isUserExsit
+            : isUserExsit // ignore: cast_nullable_to_non_nullable
+                as bool,
+        null == user
+            ? _value.user
+            : user // ignore: cast_nullable_to_non_nullable
+                as UserModel,
+      ),
+    );
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UserExitStateImpl implements UserExitState {
+  const _$UserExitStateImpl(this.isUserExsit, this.user);
+
+  @override
+  final bool isUserExsit;
+  @override
+  final UserModel user;
+
+  @override
+  String toString() {
+    return 'AuthState.userExitState(isUserExsit: $isUserExsit, user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserExitStateImpl &&
+            (identical(other.isUserExsit, isUserExsit) ||
+                other.isUserExsit == isUserExsit) &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isUserExsit, user);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserExitStateImplCopyWith<_$UserExitStateImpl> get copyWith =>
+      __$$UserExitStateImplCopyWithImpl<_$UserExitStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingGetOtp,
+    required TResult Function() successGetOtp,
+    required TResult Function(String message) errorGetOtp,
+    required TResult Function() loadingVerifyOtp,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
+  }) {
+    return userExitState(isUserExsit, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingGetOtp,
+    TResult? Function()? successGetOtp,
+    TResult? Function(String message)? errorGetOtp,
+    TResult? Function()? loadingVerifyOtp,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
+  }) {
+    return userExitState?.call(isUserExsit, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingGetOtp,
+    TResult Function()? successGetOtp,
+    TResult Function(String message)? errorGetOtp,
+    TResult Function()? loadingVerifyOtp,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
+    required TResult orElse(),
+  }) {
+    if (userExitState != null) {
+      return userExitState(isUserExsit, user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(LoadingGetOtp value) loadingGetOtp,
+    required TResult Function(SuccessGetOtp value) successGetOtp,
+    required TResult Function(ErrorGetOtp value) errorGetOtp,
+    required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
+    required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
+    required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
+  }) {
+    return userExitState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(LoadingGetOtp value)? loadingGetOtp,
+    TResult? Function(SuccessGetOtp value)? successGetOtp,
+    TResult? Function(ErrorGetOtp value)? errorGetOtp,
+    TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
+    TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
+    TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
+  }) {
+    return userExitState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoadingGetOtp value)? loadingGetOtp,
+    TResult Function(SuccessGetOtp value)? successGetOtp,
+    TResult Function(ErrorGetOtp value)? errorGetOtp,
+    TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
+    TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
+    TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
+    required TResult orElse(),
+  }) {
+    if (userExitState != null) {
+      return userExitState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserExitState implements AuthState {
+  const factory UserExitState(final bool isUserExsit, final UserModel user) =
+      _$UserExitStateImpl;
+
+  bool get isUserExsit;
+  UserModel get user;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserExitStateImplCopyWith<_$UserExitStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessCreateUserGoToProfileImplCopyWith<$Res> {
+  factory _$$SuccessCreateUserGoToProfileImplCopyWith(
+    _$SuccessCreateUserGoToProfileImpl value,
+    $Res Function(_$SuccessCreateUserGoToProfileImpl) then,
+  ) = __$$SuccessCreateUserGoToProfileImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel userModel});
+
+  $UserModelCopyWith<$Res> get userModel;
+}
+
+/// @nodoc
+class __$$SuccessCreateUserGoToProfileImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SuccessCreateUserGoToProfileImpl>
+    implements _$$SuccessCreateUserGoToProfileImplCopyWith<$Res> {
+  __$$SuccessCreateUserGoToProfileImplCopyWithImpl(
+    _$SuccessCreateUserGoToProfileImpl _value,
+    $Res Function(_$SuccessCreateUserGoToProfileImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? userModel = null}) {
+    return _then(
+      _$SuccessCreateUserGoToProfileImpl(
+        null == userModel
+            ? _value.userModel
+            : userModel // ignore: cast_nullable_to_non_nullable
+                as UserModel,
+      ),
+    );
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get userModel {
+    return $UserModelCopyWith<$Res>(_value.userModel, (value) {
+      return _then(_value.copyWith(userModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SuccessCreateUserGoToProfileImpl
+    implements SuccessCreateUserGoToProfile {
+  const _$SuccessCreateUserGoToProfileImpl(this.userModel);
+
+  @override
+  final UserModel userModel;
+
+  @override
+  String toString() {
+    return 'AuthState.successCreateUserGoToProfile(userModel: $userModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessCreateUserGoToProfileImpl &&
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userModel);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessCreateUserGoToProfileImplCopyWith<
+    _$SuccessCreateUserGoToProfileImpl
+  >
+  get copyWith => __$$SuccessCreateUserGoToProfileImplCopyWithImpl<
+    _$SuccessCreateUserGoToProfileImpl
+  >(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingGetOtp,
+    required TResult Function() successGetOtp,
+    required TResult Function(String message) errorGetOtp,
+    required TResult Function() loadingVerifyOtp,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
+  }) {
+    return successCreateUserGoToProfile(userModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingGetOtp,
+    TResult? Function()? successGetOtp,
+    TResult? Function(String message)? errorGetOtp,
+    TResult? Function()? loadingVerifyOtp,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
+  }) {
+    return successCreateUserGoToProfile?.call(userModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingGetOtp,
+    TResult Function()? successGetOtp,
+    TResult Function(String message)? errorGetOtp,
+    TResult Function()? loadingVerifyOtp,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
+    required TResult orElse(),
+  }) {
+    if (successCreateUserGoToProfile != null) {
+      return successCreateUserGoToProfile(userModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(LoadingGetOtp value) loadingGetOtp,
+    required TResult Function(SuccessGetOtp value) successGetOtp,
+    required TResult Function(ErrorGetOtp value) errorGetOtp,
+    required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
+    required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
+    required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
+  }) {
+    return successCreateUserGoToProfile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(LoadingGetOtp value)? loadingGetOtp,
+    TResult? Function(SuccessGetOtp value)? successGetOtp,
+    TResult? Function(ErrorGetOtp value)? errorGetOtp,
+    TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
+    TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
+    TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
+  }) {
+    return successCreateUserGoToProfile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoadingGetOtp value)? loadingGetOtp,
+    TResult Function(SuccessGetOtp value)? successGetOtp,
+    TResult Function(ErrorGetOtp value)? errorGetOtp,
+    TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
+    TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
+    TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
+    required TResult orElse(),
+  }) {
+    if (successCreateUserGoToProfile != null) {
+      return successCreateUserGoToProfile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SuccessCreateUserGoToProfile implements AuthState {
+  const factory SuccessCreateUserGoToProfile(final UserModel userModel) =
+      _$SuccessCreateUserGoToProfileImpl;
+
+  UserModel get userModel;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SuccessCreateUserGoToProfileImplCopyWith<
+    _$SuccessCreateUserGoToProfileImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessGetUserGoToHomeImplCopyWith<$Res> {
+  factory _$$SuccessGetUserGoToHomeImplCopyWith(
+    _$SuccessGetUserGoToHomeImpl value,
+    $Res Function(_$SuccessGetUserGoToHomeImpl) then,
+  ) = __$$SuccessGetUserGoToHomeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel userModel});
+
+  $UserModelCopyWith<$Res> get userModel;
+}
+
+/// @nodoc
+class __$$SuccessGetUserGoToHomeImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SuccessGetUserGoToHomeImpl>
+    implements _$$SuccessGetUserGoToHomeImplCopyWith<$Res> {
+  __$$SuccessGetUserGoToHomeImplCopyWithImpl(
+    _$SuccessGetUserGoToHomeImpl _value,
+    $Res Function(_$SuccessGetUserGoToHomeImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? userModel = null}) {
+    return _then(
+      _$SuccessGetUserGoToHomeImpl(
+        null == userModel
+            ? _value.userModel
+            : userModel // ignore: cast_nullable_to_non_nullable
+                as UserModel,
+      ),
+    );
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get userModel {
+    return $UserModelCopyWith<$Res>(_value.userModel, (value) {
+      return _then(_value.copyWith(userModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SuccessGetUserGoToHomeImpl implements SuccessGetUserGoToHome {
+  const _$SuccessGetUserGoToHomeImpl(this.userModel);
+
+  @override
+  final UserModel userModel;
+
+  @override
+  String toString() {
+    return 'AuthState.successGetUserGoToHome(userModel: $userModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessGetUserGoToHomeImpl &&
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userModel);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessGetUserGoToHomeImplCopyWith<_$SuccessGetUserGoToHomeImpl>
+  get copyWith =>
+      __$$SuccessGetUserGoToHomeImplCopyWithImpl<_$SuccessGetUserGoToHomeImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingGetOtp,
+    required TResult Function() successGetOtp,
+    required TResult Function(String message) errorGetOtp,
+    required TResult Function() loadingVerifyOtp,
+    required TResult Function(UserModel userModel) successVerifyOtp,
+    required TResult Function(String message) errorVerifyOtp,
+    required TResult Function(UserModel user) successCreateUser,
+    required TResult Function(bool isUserExsit, UserModel user) userExitState,
+    required TResult Function(UserModel userModel) successCreateUserGoToProfile,
+    required TResult Function(UserModel userModel) successGetUserGoToHome,
+  }) {
+    return successGetUserGoToHome(userModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingGetOtp,
+    TResult? Function()? successGetOtp,
+    TResult? Function(String message)? errorGetOtp,
+    TResult? Function()? loadingVerifyOtp,
+    TResult? Function(UserModel userModel)? successVerifyOtp,
+    TResult? Function(String message)? errorVerifyOtp,
+    TResult? Function(UserModel user)? successCreateUser,
+    TResult? Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult? Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult? Function(UserModel userModel)? successGetUserGoToHome,
+  }) {
+    return successGetUserGoToHome?.call(userModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingGetOtp,
+    TResult Function()? successGetOtp,
+    TResult Function(String message)? errorGetOtp,
+    TResult Function()? loadingVerifyOtp,
+    TResult Function(UserModel userModel)? successVerifyOtp,
+    TResult Function(String message)? errorVerifyOtp,
+    TResult Function(UserModel user)? successCreateUser,
+    TResult Function(bool isUserExsit, UserModel user)? userExitState,
+    TResult Function(UserModel userModel)? successCreateUserGoToProfile,
+    TResult Function(UserModel userModel)? successGetUserGoToHome,
+    required TResult orElse(),
+  }) {
+    if (successGetUserGoToHome != null) {
+      return successGetUserGoToHome(userModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(LoadingGetOtp value) loadingGetOtp,
+    required TResult Function(SuccessGetOtp value) successGetOtp,
+    required TResult Function(ErrorGetOtp value) errorGetOtp,
+    required TResult Function(LoadingVerifyOtp value) loadingVerifyOtp,
+    required TResult Function(SuccessVerifyOtp value) successVerifyOtp,
+    required TResult Function(ErrorVerifyOtp value) errorVerifyOtp,
+    required TResult Function(SuccessCreateUser value) successCreateUser,
+    required TResult Function(UserExitState value) userExitState,
+    required TResult Function(SuccessCreateUserGoToProfile value)
+    successCreateUserGoToProfile,
+    required TResult Function(SuccessGetUserGoToHome value)
+    successGetUserGoToHome,
+  }) {
+    return successGetUserGoToHome(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(LoadingGetOtp value)? loadingGetOtp,
+    TResult? Function(SuccessGetOtp value)? successGetOtp,
+    TResult? Function(ErrorGetOtp value)? errorGetOtp,
+    TResult? Function(LoadingVerifyOtp value)? loadingVerifyOtp,
+    TResult? Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult? Function(ErrorVerifyOtp value)? errorVerifyOtp,
+    TResult? Function(SuccessCreateUser value)? successCreateUser,
+    TResult? Function(UserExitState value)? userExitState,
+    TResult? Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult? Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
+  }) {
+    return successGetUserGoToHome?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoadingGetOtp value)? loadingGetOtp,
+    TResult Function(SuccessGetOtp value)? successGetOtp,
+    TResult Function(ErrorGetOtp value)? errorGetOtp,
+    TResult Function(LoadingVerifyOtp value)? loadingVerifyOtp,
+    TResult Function(SuccessVerifyOtp value)? successVerifyOtp,
+    TResult Function(ErrorVerifyOtp value)? errorVerifyOtp,
+    TResult Function(SuccessCreateUser value)? successCreateUser,
+    TResult Function(UserExitState value)? userExitState,
+    TResult Function(SuccessCreateUserGoToProfile value)?
+    successCreateUserGoToProfile,
+    TResult Function(SuccessGetUserGoToHome value)? successGetUserGoToHome,
+    required TResult orElse(),
+  }) {
+    if (successGetUserGoToHome != null) {
+      return successGetUserGoToHome(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SuccessGetUserGoToHome implements AuthState {
+  const factory SuccessGetUserGoToHome(final UserModel userModel) =
+      _$SuccessGetUserGoToHomeImpl;
+
+  UserModel get userModel;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SuccessGetUserGoToHomeImplCopyWith<_$SuccessGetUserGoToHomeImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }

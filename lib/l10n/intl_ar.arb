@@ -5,5 +5,12 @@
   "phoneNumber": "Phone Number",
   "enterTheValidPhoneNumber": "Enter the valid phone number",
   "enterTheValidName": "Enter the valid name",
-  "name": "Name"
+  "name": "Name",
+  "phoneVerification": "Phone Verification",
+  "otp": "OTP",
+  "justEnterYourPhoneNumberForEasyLoginIn": "Just enter your phone number for easy login in",
+  "resendOtpIn": "Resend OTP in ",
+  "didntReceiveTheCode": "Didn't receive the code? ",
+  "resendAgain": "Resend Again",
+  "enterThe6digitCodeSentToYourPhoneNumber": "Enter the 6-digit code sent to your phone number."
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/core/theme/app_colors.dart';
-import 'package:taggira/core/utils/extensions/app_extensions.dart';
 import 'package:taggira/core/utils/helper/app_constance.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
+import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/generated/l10n.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -23,15 +23,19 @@ class RegisterScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  hSize(h: AppConstance.screenSpacingTop),
+                  hSize(AppConstance.screenSpacingTop),
                   Text(
                     S.of(context).withTaagiranRentingIsEasy,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodySmall!.copyWith(color: AppColors.white),
                   ),
-                  hSize(h: 20),
+                  hSize(20),
                   Text(
                     "Lorem ipsum dolor sit amet consectetur. Elit cras mattis nibh habitasse consequat enim posuere",
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodySmall!.copyWith(color: AppColors.white),
                   ),
                   const Spacer(),
                   SizedBox(
@@ -48,7 +52,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () => context.pushNamed(Routes.signUpScreen),
+                      onPressed: () => context.pushNamed(Routes.loginScreen),
                       child: Text(S.of(context).letsGetStarted),
                     ),
                   ),

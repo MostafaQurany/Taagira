@@ -22,15 +22,32 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "didntReceiveTheCode": MessageLookupByLibrary.simpleMessage(
+      "Didn\'t receive the code? ",
+    ),
+    "enterThe6digitCodeSentToYourPhoneNumber":
+        MessageLookupByLibrary.simpleMessage(
+          "Enter the 6-digit code sent to your phone number.",
+        ),
     "enterTheValidName": MessageLookupByLibrary.simpleMessage(
       "Enter the valid name",
     ),
     "enterTheValidPhoneNumber": MessageLookupByLibrary.simpleMessage(
       "Enter the valid phone number",
     ),
+    "justEnterYourPhoneNumberForEasyLoginIn":
+        MessageLookupByLibrary.simpleMessage(
+          "Just enter your phone number for easy login in",
+        ),
     "loginTo": MessageLookupByLibrary.simpleMessage("Login To"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "otp": MessageLookupByLibrary.simpleMessage("OTP"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "phoneVerification": MessageLookupByLibrary.simpleMessage(
+      "Phone Verification",
+    ),
+    "resendAgain": MessageLookupByLibrary.simpleMessage("Resend Again"),
+    "resendOtpIn": MessageLookupByLibrary.simpleMessage("Resend OTP in "),
     "taagira": MessageLookupByLibrary.simpleMessage("Taagira"),
     "withPhoneNumber": MessageLookupByLibrary.simpleMessage(
       "With Phone Number",

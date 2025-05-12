@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.isLoading = false,
+    
     super.key,
   });
   @override
@@ -18,7 +19,6 @@ class CustomButton extends StatelessWidget {
     return isLoading
         ? const LoadingCircle()
         : SizedBox(
-          width: double.infinity,
           height: 50.h,
           child: TextButton(
             style: TextButton.styleFrom(

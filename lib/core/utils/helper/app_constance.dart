@@ -19,5 +19,6 @@ class AppConstance {
 }
 
 class AppCollections {
-  static const String userCollection = "user";
+  static const String usersCollection = "users";
+  static const String carsCollection = "cars";
 }

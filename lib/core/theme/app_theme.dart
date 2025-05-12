@@ -41,6 +41,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
+          disabledBackgroundColor: AppColors.softPrimary,
         ),
       ),
       dividerTheme: const DividerThemeData(

@@ -56,7 +56,7 @@ class _AddCarScreenCarImagesState extends State<AddCarScreenCarImages> {
             context,
           ).textTheme.bodyMedium?.copyWith(color: AppColors.gray),
         ),
-        hSpace(12.h),
+        hSize(12.h),
         CarouselSlider.builder(
           carouselController:
               context
@@ -137,7 +137,7 @@ class _AddCarScreenCarImagesState extends State<AddCarScreenCarImages> {
                                 size: 40.sp,
                                 color: AppColors.primary,
                               ),
-                              hSpace(8.h),
+                              hSize(8.h),
                               Text(
                                 'Add Image ${index + 1}',
                                 style: Theme.of(context).textTheme.bodySmall
@@ -150,7 +150,7 @@ class _AddCarScreenCarImagesState extends State<AddCarScreenCarImages> {
             );
           },
         ),
-        hSpace(10.h),
+        hSize(10.h),
         // --- Carousel Indicator Dots ---
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

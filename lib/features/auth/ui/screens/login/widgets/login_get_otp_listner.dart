@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taggira/core/routes/routes.dart';
+import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/loading_dialog.dart';
 import 'package:taggira/features/auth/cubit/auth_cubit.dart';
 
@@ -20,15 +21,15 @@ class LoginGetOtpListener extends StatelessWidget {
       listener: (context, state) {
         state.whenOrNull(
           loadingGetOtp: () {
-            LoadingDialog.show(context);
+            AppDialog.showLoading(context);
           },
           successGetOtp: () {
-            LoadingDialog.hide(context);
+            AppDialog.hide(context);
             context.pushNamed(Routes.otpScreen);
           },
           errorGetOtp: (message) {
-            LoadingDialog.hide(context);
-            print(message);
+            AppDialog.hide(context);
+            AppDialog.showError(context, message);
           },
         );
       },

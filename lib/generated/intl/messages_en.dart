@@ -23,6 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "and": MessageLookupByLibrary.simpleMessage("And "),
+    "didntReceiveTheCode": MessageLookupByLibrary.simpleMessage(
+      "Didn\'t receive the code? ",
+    ),
+    "enterThe6digitCodeSentToYourPhoneNumber":
+        MessageLookupByLibrary.simpleMessage(
+          "Enter the 6-digit code sent to your phone number.",
+        ),
     "enterTheValidName": MessageLookupByLibrary.simpleMessage(
       "Enter the valid name",
     ),
@@ -30,13 +37,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enter the valid phone number",
     ),
     "iAgreeToThe": MessageLookupByLibrary.simpleMessage("I Agree To The "),
+    "justEnterYourPhoneNumberForEasyLoginIn":
+        MessageLookupByLibrary.simpleMessage(
+          "Just enter your phone number for easy login in",
+        ),
     "letsGetStarted": MessageLookupByLibrary.simpleMessage(
       "Let\'s get started",
     ),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginTo": MessageLookupByLibrary.simpleMessage("Login To"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "otp": MessageLookupByLibrary.simpleMessage("OTP"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "phoneVerification": MessageLookupByLibrary.simpleMessage(
+      "Phone Verification",
+    ),
     "pleaseEnterValidNumber": MessageLookupByLibrary.simpleMessage(
       "Please Enter Valid Number",
     ),
@@ -44,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please Enter Valid Phone Number",
     ),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy."),
+    "resendAgain": MessageLookupByLibrary.simpleMessage("Resend Again"),
+    "resendOtpIn": MessageLookupByLibrary.simpleMessage("Resend OTP in "),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
     "signUpTo": MessageLookupByLibrary.simpleMessage("Sign Up To"),
     "taagira": MessageLookupByLibrary.simpleMessage("Taagira"),

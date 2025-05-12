@@ -123,7 +123,7 @@ class _AddCarScreenBasicInformationState
                   "If you can't find the Brand or Model, please suggest it below.",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                hSpace(16.h),
+                hSize(16.h),
                 CustomTextField(
                   controller: brandController,
                   label: 'Suggested Brand',
@@ -132,7 +132,7 @@ class _AddCarScreenBasicInformationState
                     return null;
                   },
                 ),
-                hSpace(12.h),
+                hSize(12.h),
                 CustomTextField(
                   controller: modelController,
                   label: 'Suggested Model',
@@ -146,7 +146,10 @@ class _AddCarScreenBasicInformationState
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Cancel', style: TextStyle(color: AppColors.gray)),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: AppColors.gray),
+              ),
               onPressed: () {
                 brandController.clear();
                 modelController.clear();
@@ -249,14 +252,14 @@ class _AddCarScreenBasicInformationState
             ),
           ],
         ),
-        hSpace(8.h),
+        hSize(8.h),
 
         // --- Category Selection ---
         Text(
           'Select Category:',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
-        hSpace(8.h),
+        hSize(8.h),
         Wrap(
           spacing: 8.w,
           runSpacing: 8.h,
@@ -288,7 +291,7 @@ class _AddCarScreenBasicInformationState
                 );
               }).toList(),
         ),
-        hSpace(16.h),
+        hSize(16.h),
 
         // --- Brand Selection (Conditional) ---
         if (context.read<AddCarCubit>().selectedCategory != null) ...[
@@ -296,7 +299,7 @@ class _AddCarScreenBasicInformationState
             'Select Brand:',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
-          hSpace(8.h),
+          hSize(8.h),
           if (currentBrands.isEmpty)
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h),
@@ -338,7 +341,7 @@ class _AddCarScreenBasicInformationState
                     );
                   }).toList(),
             ),
-          hSpace(16.h),
+          hSize(16.h),
         ],
 
         // --- Model Selection (Conditional) ---
@@ -347,7 +350,7 @@ class _AddCarScreenBasicInformationState
             'Select Model:',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
-          hSpace(8.h),
+          hSize(8.h),
           if (currentModels.isEmpty)
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h),
@@ -386,7 +389,7 @@ class _AddCarScreenBasicInformationState
                     );
                   }).toList(),
             ),
-          hSpace(16.h),
+          hSize(16.h),
         ],
 
         // --- Year and Color Input (Conditional on Brand Selection) ---
@@ -395,7 +398,7 @@ class _AddCarScreenBasicInformationState
           Row(
             children: [
               Text("Year: ", style: Theme.of(context).textTheme.headlineSmall),
-              wSpace(20),
+              wSize(20),
               Expanded(
                 child: DropdownButtonFormField<int>(
                   value: context.read<AddCarCubit>().selectedYear,
@@ -439,14 +442,14 @@ class _AddCarScreenBasicInformationState
               ),
             ],
           ),
-          hSpace(16.h),
+          hSize(16.h),
 
           // --- Color Palette Selection ---
           Text(
             'Select Color:',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
-          hSpace(10.h),
+          hSize(10.h),
           Wrap(
             spacing: 12.w, // Horizontal space between swatches
             runSpacing: 12.h, // Vertical space between rows

@@ -41,7 +41,7 @@ class AppRouter {
 
   static final router = GoRouter(
     navigatorKey: _rootNavigatorKey, // 2. Assign it to GoRouter
-    initialLocation: "/${Routes.carHomeScreen}",
+    initialLocation: "/",
     debugLogDiagnostics: true,
     routes: [
       // RegisterScreen (no AuthCubit)
@@ -61,25 +61,32 @@ class AppRouter {
       ),
 
       // OTPScreen (with AuthCubit)
-      GoRoute(
-        path: '/${Routes.otpScreen}',
-        name: Routes.otpScreen,
-        builder:
-            (context, state) => BlocProvider(
-              create: (context) => getIt<AuthCubit>(),
-              child: const OtpScreen(),
-            ),
-      ),
 
       // LoginScreen (with AuthCubit)
       GoRoute(
         path: '/${Routes.loginScreen}',
         name: Routes.loginScreen,
         builder:
-            (context, state) => BlocProvider(
-              create: (context) => getIt<AuthCubit>(),
+            (context, state) => BlocProvider.value(
+              value: getIt<AuthCubit>(),
               child: const LoginScreen(),
             ),
+        routes: [
+          GoRoute(
+            path: '/${Routes.otpScreen}',
+            name: Routes.otpScreen,
+            pageBuilder: (context, state) {
+              return buildPageWithFadeTransition(
+                context: context,
+                state: state,
+                child: BlocProvider.value(
+                  value: getIt<AuthCubit>(),
+                  child: const OtpScreen(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
 
       // Home Screen

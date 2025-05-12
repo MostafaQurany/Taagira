@@ -46,7 +46,7 @@ class _AddCarRadioGropsState extends State<AddCarRadioGrops> {
       children: [
         const AddCarScreenSectionHeader(title: 'Features'),
 
-        hSpace(8),
+        hSize(8),
         _buildRadioGroup(
           label: 'GPS:',
           groupValue: widget.hasGPS, // Use passed value

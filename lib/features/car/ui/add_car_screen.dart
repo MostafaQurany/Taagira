@@ -65,7 +65,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
         listener: (context, state) {
           state.whenOrNull(
             addCarloading: () {
-              LoadingDialog.show(context);
+              AppDialog.showLoading(context);
             },
             addCarSuccess: (message) {
               context.read<AddCarCubit>().clear();
@@ -77,7 +77,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
               print("Success: $message"); // Placeholder
             },
             addCarError: (message) {
-              LoadingDialog.hide(context);
+              AppDialog.hide(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(message), backgroundColor: Colors.red),
               );
@@ -118,7 +118,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                     // No header needed here as the widget provides its own "Features" title
                     const AddCarScreenFeaturesAndDiscreption(),
 
-                    hSpace(30.h),
+                    hSize(30),
                     Center(
                       child: CustomButton(
                         onPressed:
@@ -136,7 +136,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                         text: "Add Car",
                       ),
                     ),
-                    hSpace(20.h),
+                    hSize(20),
                   ],
                 ),
               ),

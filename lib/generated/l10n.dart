@@ -199,6 +199,71 @@ class S {
   String get name {
     return Intl.message('Name', name: 'name', desc: '', args: []);
   }
+
+  /// `Phone Verification`
+  String get phoneVerification {
+    return Intl.message(
+      'Phone Verification',
+      name: 'phoneVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTP`
+  String get otp {
+    return Intl.message('OTP', name: 'otp', desc: '', args: []);
+  }
+
+  /// `Just enter your phone number for easy login in`
+  String get justEnterYourPhoneNumberForEasyLoginIn {
+    return Intl.message(
+      'Just enter your phone number for easy login in',
+      name: 'justEnterYourPhoneNumberForEasyLoginIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend OTP in `
+  String get resendOtpIn {
+    return Intl.message(
+      'Resend OTP in ',
+      name: 'resendOtpIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Didn't receive the code? `
+  String get didntReceiveTheCode {
+    return Intl.message(
+      'Didn\'t receive the code? ',
+      name: 'didntReceiveTheCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend Again`
+  String get resendAgain {
+    return Intl.message(
+      'Resend Again',
+      name: 'resendAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the 6-digit code sent to your phone number.`
+  String get enterThe6digitCodeSentToYourPhoneNumber {
+    return Intl.message(
+      'Enter the 6-digit code sent to your phone number.',
+      name: 'enterThe6digitCodeSentToYourPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
