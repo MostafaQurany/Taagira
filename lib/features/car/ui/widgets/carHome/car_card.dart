@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taggira/core/theme/app_colors.dart';
-import 'package:taggira/core/utils/extensions/app_extensions.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
+import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 
 class CarCard extends StatefulWidget {
@@ -40,7 +40,7 @@ class _CarCardState extends State<CarCard> {
               ),
             ),
           ),
-          hSize(h: 8),
+          hSize(8),
           Row(
             children: [
               Expanded(

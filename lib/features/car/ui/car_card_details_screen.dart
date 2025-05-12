@@ -177,7 +177,7 @@ class CarCardDetailsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            hSpace(10),
+            hSize(10),
 
             Row(
               children: [
@@ -187,7 +187,7 @@ class CarCardDetailsScreen extends StatelessWidget {
                     context,
                   ).textTheme.headlineMedium!.copyWith(color: AppColors.orange),
                 ),
-                wSpace(30),
+                wSize(30),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
@@ -204,7 +204,7 @@ class CarCardDetailsScreen extends StatelessWidget {
                 ),
               ],
             ),
-            hSpace(10),
+            hSize(10),
           ],
         ),
       ),

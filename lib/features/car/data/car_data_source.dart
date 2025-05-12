@@ -5,7 +5,16 @@ import 'package:taggira/core/utils/server/app_exceptions_handler.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 import 'package:taggira/features/car/repo/car_repo.dart';
 
-class CarDataSource implements CarRepo {
+abstract class CarDataSource {
+  Future<void> addCar(CarModel carModel);
+  Future<void> deleteCar(String carId);
+  Future<List<CarModel>> getAllCars();
+  Future<CarModel?> getCarById(String carId);
+  Future<List<CarModel>> searchCars(String query);
+  Future<void> updateCar(CarModel carModel);
+}
+
+class CarDataSourceImpl implements CarDataSource {
   // Get the Firestore instance
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -155,23 +164,5 @@ class CarDataSource implements CarRepo {
         message: 'An unexpected error occurred: ${e.toString()}',
       );
     }
-  }
-  
-  @override
-  Future<void> addCarToFavorites(String carId) {
-    // TODO: implement addCarToFavorites
-    throw UnimplementedError();
-  }
-  
-  @override
-  Future<List<CarModel>> getFavoriteCars() {
-    // TODO: implement getFavoriteCars
-    throw UnimplementedError();
-  }
-  
-  @override
-  Future<void> removeCarFromFavorites(String carId) {
-    // TODO: implement removeCarFromFavorites
-    throw UnimplementedError();
   }
 }

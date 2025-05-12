@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/core/theme/app_colors.dart';
-import 'package:taggira/core/utils/extensions/app_extensions.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
+import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_text_field.dart';
 import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
 import 'package:taggira/features/car/ui/widgets/carHome/car_card_builder.dart';
@@ -51,7 +51,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 toolbarHeight: 120.h,
                 title: Column(
                   children: [
-                    hSize(h: 14),
+                    hSize(14),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -94,7 +94,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                         ),
                       ],
                     ),
-                    hSize(h: 14),
+                    hSize(14),
                     CustomTextField(
                       controller: TextEditingController(),
                       hint: 'Search by brand, model, or year...',
@@ -113,7 +113,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      hSize(h: 16),
+                      hSize(16),
                       Text(
                         "All Cars",
                         style: TextStyle(
@@ -121,7 +121,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      hSize(h: 16),
+                      hSize(16),
                     ],
                   ),
                 ),

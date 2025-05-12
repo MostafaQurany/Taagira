@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:taggira/core/utils/extensions/app_extensions.dart';
+import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_text_field.dart';
 import 'package:taggira/features/auth/cubit/auth_cubit.dart';
 import 'package:taggira/generated/l10n.dart';
@@ -32,7 +32,7 @@ class SignUpScreenTextFieldsState extends State<SignUpScreenTextFields> {
               return null;
             },
           ),
-          hSize(h: 20),
+          hSize( 20),
           Row(
             children: [
               Expanded(

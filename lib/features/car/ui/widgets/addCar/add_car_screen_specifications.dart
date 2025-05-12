@@ -39,7 +39,7 @@ class _AddCarScreenSpecificationsState
               ),
           validator: (v) => v == null ? 'Car Type is required' : null,
         ),
-        hSpace(16.h),
+        hSize(16.h),
         AddCarDropDownMenu<CarTransmission>(
           label: 'Transmission',
           value: context.read<AddCarCubit>().selectedTransmission,
@@ -53,7 +53,7 @@ class _AddCarScreenSpecificationsState
               ),
           validator: (v) => v == null ? 'Transmission is required' : null,
         ),
-        hSpace(16.h),
+        hSize(16.h),
         AddCarDropDownMenu<CarFuelType>(
           label: 'Fuel Type',
           value: context.read<AddCarCubit>().selectedFuelType,
@@ -65,7 +65,7 @@ class _AddCarScreenSpecificationsState
               ),
           validator: (v) => v == null ? 'Fuel Type is required' : null,
         ),
-        hSpace(16.h),
+        hSize(16.h),
         CustomTextField(
           controller: context.read<AddCarCubit>().seatsController,
           label: 'Number of Seats',

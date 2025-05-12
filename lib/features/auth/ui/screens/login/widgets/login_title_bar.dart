@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/theme/app_text_styles.dart';
+import 'package:taggira/generated/l10n.dart';
 
 class LoginTitleBar extends StatelessWidget {
   const LoginTitleBar({super.key});
@@ -9,20 +10,20 @@ class LoginTitleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 15.h,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 8.h,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text("Login To", style: Theme.of(context).textTheme.displayLarge),
+        Text(S.of(context).loginTo, style: Theme.of(context).textTheme.titleMedium),
         Text(
           "Taagira",
-          style: Theme.of(context).textTheme.displayLarge!.copyWith(
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontFamily: MyTextStyles.seymourOne,
             color: AppColors.primary,
           ),
         ),
         Text(
           "With Phone Number",
-          style: Theme.of(context).textTheme.displayLarge,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
       ],
     );
