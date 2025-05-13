@@ -15,14 +15,14 @@ class LoginTitleBar extends StatelessWidget {
       children: [
         Text(S.of(context).loginTo, style: Theme.of(context).textTheme.titleMedium),
         Text(
-          "Taagira",
+          S.of(context).taagira,
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontFamily: MyTextStyles.seymourOne,
             color: AppColors.primary,
           ),
         ),
         Text(
-          "With Phone Number",
+          S.of(context).withPhoneNumber,
           style: Theme.of(context).textTheme.titleMedium,
         ),
       ],

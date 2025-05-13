@@ -10,4 +10,5 @@ class Routes {
   static const String addCarScreen = "addCarScreen";
   static const String carPickDataRentScreen = "carPickDataRentScreen";
   static const String favoriteCarsScreen = "FavoriteCarsScreen";
+  static const String carRentConfirmScreen = "CarRentConfirmScreen";
 }
