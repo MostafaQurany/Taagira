@@ -9,6 +9,7 @@ import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_text_field.dart';
 import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
 import 'package:taggira/features/car/ui/widgets/carHome/car_card_builder.dart';
+import 'package:taggira/features/user/cubit/user_cubit.dart';
 
 class CarHomeScreen extends StatefulWidget {
   const CarHomeScreen({super.key});
@@ -20,7 +21,7 @@ class CarHomeScreen extends StatefulWidget {
 class _CarHomeScreenState extends State<CarHomeScreen> {
   @override
   void initState() {
-    context.read<CarCubit>().fetchingCar();
+    context.read<CarCubit>().fetchingCar(context.read<UserCubit>().user!.id);
     super.initState();
   }
 
@@ -38,7 +39,9 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
           backgroundColor: AppColors.darkerWhite,
           color: AppColors.primary,
           onRefresh: () async {
-            await context.read<CarCubit>().fetchingCar();
+            context.read<CarCubit>().fetchingCar(
+              context.read<UserCubit>().user!.id,
+            );
           },
           child: CustomScrollView(
             //  key: const PageStorageKey('car_home_scroll'),

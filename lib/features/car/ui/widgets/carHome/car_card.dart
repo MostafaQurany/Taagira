@@ -1,13 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
+import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
 import 'package:taggira/features/car/models/car_model.dart';
+import 'package:taggira/features/car/ui/widgets/favoriteCar/favorite_car_icon.dart';
+import 'package:taggira/features/user/cubit/user_cubit.dart';
 
 class CarCard extends StatefulWidget {
   CarModel carModel;
-  CarCard({super.key, required this.carModel});
+  bool isShow;
+  CarCard({super.key, required this.carModel, this.isShow = false});
 
   @override
   State<CarCard> createState() => _CarCardState();
@@ -53,29 +61,11 @@ class _CarCardState extends State<CarCard> {
                   ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
                 ),
               ),
-              SizedBox(width: 4.w),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    widget.carModel = widget.carModel.copyWith(
-                      isFavorite: !widget.carModel.isFavorite,
-                    );
-                  });
-                },
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  child: Icon(
-                    widget.carModel.isFavorite
-                        ? Icons.favorite
-                        : Icons.favorite_border_outlined,
-                    color:
-                        widget.carModel.isFavorite
-                            ? AppColors.orange
-                            : Colors.grey,
-                    size: 20.w,
-                    key: ValueKey<bool>(widget.carModel.isFavorite),
-                  ),
-                ),
+              wSize(20),
+
+              FavoriteCarIcon(
+                carId: widget.carModel.id,
+                isFavorite: widget.carModel.isFavorite,
               ),
             ],
           ),
@@ -127,7 +117,10 @@ class _CarCardState extends State<CarCard> {
               child: InkWell(
                 borderRadius: BorderRadius.circular(8.r),
                 onTap: () {
-                  // Handle rent now action
+                  context.pushNamed(
+                    Routes.carCardDetailsScreen,
+                    extra: widget.carModel,
+                  );
                 },
                 child: Center(
                   child: Text(

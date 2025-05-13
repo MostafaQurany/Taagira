@@ -18,51 +18,49 @@ class CarCardBuilder extends StatelessWidget {
               current is GetAllCarsSuccess ||
               current is GetAllCarsError,
       builder: (context, state) {
-        return state.maybeWhen(
-          getAllCarsLoading: () {
-            return const SliverToBoxAdapter(
-              child: Center(child: CircularProgressIndicator()),
-            );
-          },
-          getAllCarsSuccess: (cars) {
-            final carsToShow = cars;
-            if (carsToShow.isEmpty) {
-              return const SliverToBoxAdapter(
-                child: Center(child: Text('No cars found.')),
-              );
-            }
-            return SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.w,
-                  mainAxisSpacing: 20.h,
-                  childAspectRatio: 0.8,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  childCount: carsToShow.length,
-                  (context, index) {
-                    final car = carsToShow[index];
-                    return GestureDetector(
-                      onTap: () {
-                        context.pushNamed(
-                          Routes.carCardDetailsScreen,
-                          extra: car,
+        return switch (state) {
+          GetAllCarsLoading() => const SliverToBoxAdapter(
+            child: Center(child: CircularProgressIndicator()),
+          ),
+
+          GetAllCarsSuccess(:final cars) =>
+            cars.isEmpty
+                ? const SliverToBoxAdapter(
+                  child: Center(child: Text('No cars found.')),
+                )
+                : SliverPadding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  sliver: SliverGrid(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10.w,
+                      mainAxisSpacing: 20.h,
+                      childAspectRatio: 0.8,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: cars.length,
+                      (context, index) {
+                        var car = cars[index];
+                        return GestureDetector(
+                          onTap: () {
+                            context.pushNamed(
+                              Routes.carCardDetailsScreen,
+                              extra: car,
+                            );
+                          },
+                          child: CarCard(carModel: car),
                         );
                       },
-                      child: CarCard(carModel: car),
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ),
-            );
-          },
-          getAllCarsError: (e) {
-            return SliverToBoxAdapter(child: Text(e));
-          },
-          orElse: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
-        );
+
+          GetAllCarsError(:final error) => SliverToBoxAdapter(
+            child: Text(error),
+          ),
+
+          _ => const SliverToBoxAdapter(child: SizedBox.shrink()),
+        };
       },
     );
   }

@@ -9,4 +9,5 @@ class Routes {
   static const String carHomeScreen = "carHomeScreen";
   static const String addCarScreen = "addCarScreen";
   static const String carPickDataRentScreen = "carPickDataRentScreen";
+  static const String favoriteCarsScreen = "FavoriteCarsScreen";
 }

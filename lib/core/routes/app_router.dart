@@ -15,7 +15,10 @@ import 'package:taggira/features/auth/ui/screens/sign%20up/sign_up_screen.dart';
 import 'package:taggira/features/car/ui/car_card_details_screen.dart';
 import 'package:taggira/features/car/ui/car_home_screen.dart';
 import 'package:taggira/features/car/ui/car_pick_data_rent_screen.dart';
+import 'package:taggira/features/car/ui/favorite_cars_screen.dart';
 import 'package:taggira/features/home/ui/home_layout.dart';
+import 'package:taggira/features/home/ui/splash_screen.dart';
+import 'package:taggira/features/user/cubit/user_cubit.dart';
 
 class AppRouter {
   // 1. Define a root navigator key
@@ -44,9 +47,14 @@ class AppRouter {
     initialLocation: "/",
     debugLogDiagnostics: true,
     routes: [
-      // RegisterScreen (no AuthCubit)
-      GoRoute(path: '/', builder: (context, state) => const RegisterScreen()),
-
+      GoRoute(
+        path: '/',
+        builder:
+            (context, state) => BlocProvider.value(
+              value: getIt<UserCubit>(),
+              child: const SplashScreen(),
+            ),
+      ),
       // SignUpScreen (with AuthCubit)
       GoRoute(
         path: '/${Routes.signUpScreen}',
@@ -59,8 +67,6 @@ class AppRouter {
               child: const SignUpScreen(),
             ),
       ),
-
-      // OTPScreen (with AuthCubit)
 
       // LoginScreen (with AuthCubit)
       GoRoute(
@@ -93,7 +99,13 @@ class AppRouter {
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           // Return the HomeLayout widget and pass the navigationShell
-          return HomeLayout(navigationShell: navigationShell);
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<CarCubit>()),
+              BlocProvider.value(value: getIt<UserCubit>()),
+            ],
+            child: HomeLayout(navigationShell: navigationShell),
+          );
         },
         branches: [
           // Branch 1: Home
@@ -102,11 +114,7 @@ class AppRouter {
               GoRoute(
                 path: "/${Routes.carHomeScreen}",
                 name: Routes.carHomeScreen,
-                builder:
-                    (context, state) => BlocProvider(
-                      create: (context) => getIt<CarCubit>(),
-                      child: const CarHomeScreen(),
-                    ),
+                builder: (context, state) => const CarHomeScreen(),
               ),
             ],
           ),
@@ -114,10 +122,9 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/favorites',
-                builder:
-                    (context, state) =>
-                        const FavoritesScreen(), // Your actual favorites screen
+                path: "/${Routes.favoriteCarsScreen}",
+                name: Routes.favoriteCarsScreen,
+                builder: (context, state) => const FavoriteCarsScreen(),
               ),
             ],
           ),
@@ -166,7 +173,10 @@ class AppRouter {
           final carModel = state.extra as CarModel;
           return MaterialPage(
             key: state.pageKey,
-            child: CarCardDetailsScreen(carModel: carModel),
+            child: BlocProvider(
+              create: (context) => getIt<CarCubit>(),
+              child: CarCardDetailsScreen(carModel: carModel),
+            ),
           );
         },
         routes: [
@@ -205,13 +215,6 @@ class AppRouter {
 }
 
 // --- Placeholder Screens (replace with your actual screens) ---
-
-class FavoritesScreen extends StatelessWidget {
-  const FavoritesScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Center(child: Text('Favorites Screen'));
-}
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});

@@ -63,11 +63,11 @@ class _AddCarScreenState extends State<AddCarScreen> {
       ),
       body: BlocConsumer<AddCarCubit, AddCarState>(
         listener: (context, state) {
-          state.whenOrNull(
-            addCarloading: () {
+          switch (state) {
+            case AddCarLoading():
               AppDialog.showLoading(context);
-            },
-            addCarSuccess: (message) {
+              break;
+            case AddCarSuccess(:final message):
               context.read<AddCarCubit>().clear();
               context.pop();
               context.pop();
@@ -75,15 +75,15 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 context,
               ).showSnackBar(SnackBar(content: Text(message)));
               print("Success: $message"); // Placeholder
-            },
-            addCarError: (message) {
+              break;
+            case AddCarError(:final message):
               AppDialog.hide(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(message), backgroundColor: Colors.red),
               );
               print("Error: $message"); // Placeholder
-            },
-          );
+              break;
+          }
         },
         builder: (context, state) {
           return SingleChildScrollView(

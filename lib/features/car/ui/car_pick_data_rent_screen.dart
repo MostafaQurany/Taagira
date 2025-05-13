@@ -135,6 +135,7 @@ class CarPickDataRentScreenState extends State<CarPickDataRentScreen> {
                             .headlineSmall!
                             .copyWith(color: AppColors.primary),
                         textStyle: Theme.of(context).textTheme.bodyMedium,
+
                         // Customize the appearance of the selected range
                         selectionColor:
                             AppColors
@@ -198,20 +199,40 @@ class CarPickDataRentScreenState extends State<CarPickDataRentScreen> {
 
   // Widget to build a date information box
   Widget _buildDateBox(String label, DateTime? date) {
-    return Column(
-      children: [
-        Text(
-          label,
-          style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-        ),
-        SizedBox(height: 4.h),
-        Text(
-          date != null
-              ? '${date.day}-${date.month}-${date.year}'
-              : '--/--/----',
-          style: TextStyle(fontSize: 14.sp, color: Colors.blue),
-        ),
-      ],
+    return Container(
+      decoration: BoxDecoration(
+        color:
+            Theme.of(context).brightness == Brightness.light
+                ? AppColors.primary
+                : AppColors.darkGray,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+      child: Column(
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(height: 4.h),
+          Text(
+            date != null
+                ? '${date.day}-${date.month}-${date.year}'
+                : '--/--/----',
+            style: TextStyle(
+              fontSize: 14.sp,
+              color:
+                  Theme.of(context).brightness == Brightness.light
+                      ? AppColors.white
+                      : AppColors.primary,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:taggira/features/auth/repo/auth_repo.dart';
 import 'package:taggira/features/car/cubit/add_car_cubit/add_car_cubit.dart';
 import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
 import 'package:taggira/features/car/data/car_data_source.dart';
+import 'package:taggira/features/car/data/user_favorite_car_data_source.dart';
 import 'package:taggira/features/car/repo/car_repo.dart';
 import 'package:taggira/features/user/cubit/user_cubit.dart';
 import 'package:taggira/features/user/data/user_data_scourse.dart';
@@ -34,7 +35,10 @@ _car() {
   getIt
     //  database
     ..registerLazySingleton<CarDataSource>(() => CarDataSourceImpl())
-    ..registerLazySingleton<CarRepo>(() => CarRepoImpl(getIt()))
+    ..registerLazySingleton<UserFavoriteCarDataSource>(
+      () => UserFavoriteCarDataSourceImpl(),
+    )
+    ..registerLazySingleton<CarRepo>(() => CarRepoImpl(getIt(), getIt()))
     // cubit
     ..registerFactory<AddCarCubit>(() => AddCarCubit(getIt()))
     ..registerFactory<CarCubit>(() => CarCubit(getIt()));

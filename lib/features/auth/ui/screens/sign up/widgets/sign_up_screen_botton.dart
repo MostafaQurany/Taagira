@@ -24,32 +24,29 @@ class _SignUpScreenBottonState extends State<SignUpScreenBotton> {
             current is ErrorGetOtp;
       },
       listener: (context, state) {
-        state.whenOrNull(
-          loadingGetOtp: () {
+        switch (state) {
+          case LoadingGetOtp():
             _loading = true;
-          },
-          successGetOtp: () {
+            break;
+
+          case SuccessGetOtp():
             print("success");
             _loading = false;
 
-            // context.read<UserCubit>().updateUser(
-            //       User(
-            //         id: "id",
-            //         name: context.read<AuthCubit>().nameController.text,
-            //         phoneNumber: context.read<AuthCubit>().phnController.text,
-            //         gender: 'gender',
-            //         nationalId: 'nationalId',
-            //         nationalIdImage: 'nationalIdImage',
-            //         validNationalId: false,
-            //         birthDate: 'birthDate',
-            //       ),
-            //     );
+            // Optional: update user here
+            // context.read<UserCubit>().updateUser(...);
+
             context.pushNamed(Routes.otpScreen);
-          },
-          errorGetOtp: (message) {
+            break;
+
+          case ErrorGetOtp(:final message):
             _loading = false;
-          },
-        );
+            break;
+
+          default:
+            // Do nothing (equivalent to `whenOrNull`)
+            break;
+        }
       },
       buildWhen: (previous, current) {
         return current is LoadingGetOtp ||
