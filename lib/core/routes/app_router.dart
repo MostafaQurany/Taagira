@@ -15,6 +15,7 @@ import 'package:taggira/features/auth/ui/screens/sign%20up/sign_up_screen.dart';
 import 'package:taggira/features/car/ui/car_card_details_screen.dart';
 import 'package:taggira/features/car/ui/car_home_screen.dart';
 import 'package:taggira/features/car/ui/car_pick_data_rent_screen.dart';
+import 'package:taggira/features/car/ui/car_rent_confirm_screen.dart';
 import 'package:taggira/features/car/ui/favorite_cars_screen.dart';
 import 'package:taggira/features/home/ui/home_layout.dart';
 import 'package:taggira/features/home/ui/splash_screen.dart';
@@ -181,7 +182,7 @@ class AppRouter {
         },
         routes: [
           GoRoute(
-            path: Routes.carPickDataRentScreen,
+            path: "/${Routes.carPickDataRentScreen}",
             name: Routes.carPickDataRentScreen,
             pageBuilder: (context, state) {
               final carModel = state.extra as CarModel;
@@ -190,6 +191,26 @@ class AppRouter {
                 child: CarPickDataRentScreen(carModel: carModel),
               );
             },
+            routes: [
+              GoRoute(
+                path: "/${Routes.carRentConfirmScreen}",
+                name: Routes.carRentConfirmScreen,
+                pageBuilder: (context, state) {
+                  // TODO: edit this where send reall data
+                  return MaterialPage(
+                    key: state.pageKey,
+                    child: const CarRentConfirmScreen(
+                      userName: "Ahmed",
+                      carModel: "A3",
+                      carBrand: "Audi",
+                      carColor: "Red",
+                      pickDate: "14 May 2025",
+                      returnDate: "17 May 2025",
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ],
       ),

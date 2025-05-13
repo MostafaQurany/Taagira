@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/features/car/models/car_model.dart';
@@ -170,21 +172,23 @@ class CarPickDataRentScreenState extends State<CarPickDataRentScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  // TODO: Call CarCubit.submitBooking(pickupDate, returnDate);
-                  if (pickupDate != null && returnDate != null) {
-                    print('Pickup Date: $pickupDate, Return Date: $returnDate');
-                    // You can now proceed with the booking using the selected dates
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                          'Please select both pickup and return dates.',
-                        ),
-                      ),
-                    );
-                  }
-                },
+                onPressed:
+                    pickupDate == null || returnDate == null
+                        ? null
+                        : () {
+                          if (pickupDate != null && returnDate != null) {
+                            // TODO: upload the request from to the firebase where data will be carId , userId , pickupDate , returnDate , reqId and timeStamp
+                            context.pushNamed(Routes.carRentConfirmScreen);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Please select both pickup and return dates.',
+                                ),
+                              ),
+                            );
+                          }
+                        },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 12.h),
                 ),

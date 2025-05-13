@@ -25,4 +25,5 @@ class AppCollections {
   static const String usersCollection = "users";
   static const String carsCollection = "cars";
   static const String favoritesCollection = "favorites";
+  static const String requestsCollection = "requests";
 }
