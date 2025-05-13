@@ -205,40 +205,48 @@ class _OtpScreenState extends State<OtpScreen> {
                             current is SuccessGetUserGoToHome;
                       },
                       listener: (context, state) {
-                        state.whenOrNull(
-                          loadingVerifyOtp: () {
+                        switch (state) {
+                          case LoadingVerifyOtp():
                             setState(() {
                               _isLoading = true;
                             });
                             AppDialog.showLoading(context);
-                          },
-                          errorVerifyOtp: (message) {
+                            break;
+
+                          case ErrorVerifyOtp(:final message):
                             setState(() {
                               _isLoading = false;
                             });
                             AppDialog.hide(context);
                             AppDialog.showError(context, message);
-                          },
-                          successVerifyOtp: (userModel) {
+                            break;
+
+                          case SuccessVerifyOtp(:final userModel):
                             context.read<AuthCubit>().checkUser(userModel);
-                          },
-                          userExitState: (isUserExsit, user) {
+                            break;
+
+                          case UserExitState(:final isUserExsit, :final user):
                             if (isUserExsit) {
                               context.read<AuthCubit>().getUser(user);
                             } else {
                               context.read<AuthCubit>().createNewUser(user);
                             }
-                          },
-                          successCreateUserGoToProfile: (UserModel user) {
-                            _isLoading = false;
-                            context.goNamed(Routes.carHomeScreen);
-                          },
+                            break;
 
-                          successGetUserGoToHome: (UserModel user) {
+                          case SuccessCreateUserGoToProfile(:final userModel):
                             _isLoading = false;
                             context.goNamed(Routes.carHomeScreen);
-                          },
-                        );
+                            break;
+
+                          case SuccessGetUserGoToHome(:final userModel):
+                            _isLoading = false;
+                            context.goNamed(Routes.carHomeScreen);
+                            break;
+
+                          default:
+                            // no-op — equivalent to whenOrNull fallback
+                            break;
+                        }
                       },
                       buildWhen: (previous, current) {
                         return current is LoadingVerifyOtp ||
@@ -273,19 +281,25 @@ class _OtpScreenState extends State<OtpScreen> {
                               current is SuccessGetOtp ||
                               current is ErrorGetOtp,
                       listener: (context, state) {
-                        state.whenOrNull(
-                          loadingGetOtp: () {
+                        switch (state) {
+                          case LoadingGetOtp():
                             // Optionally show a small loading indicator or disable resend text
-                          },
-                          successGetOtp: () {
+                            break;
+
+                          case SuccessGetOtp():
                             _startResendTimer(); // Restart timer
-                          },
-                          errorGetOtp: (message) {
+                            break;
+
+                          case ErrorGetOtp(:final message):
                             setState(() {
                               _canResendOtp = true;
                             });
-                          },
-                        );
+                            break;
+
+                          default:
+                            // Do nothing (same as whenOrNull fallback)
+                            break;
+                        }
                       },
                       child: RichText(
                         textAlign: TextAlign.center,

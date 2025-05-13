@@ -45,7 +45,7 @@ enum CarFuelType {
 }
 
 @freezed
-class CarModel with _$CarModel {
+abstract class CarModel with _$CarModel {
   const factory CarModel({
     required String id,
     required String ownerId,

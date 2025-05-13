@@ -1,6 +1,7 @@
 // lib/features/car/data/car_data_source.dart
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:taggira/core/utils/helper/app_constance.dart';
 import 'package:taggira/core/utils/server/app_exceptions_handler.dart';
 import 'package:taggira/features/car/models/car_model.dart';
 import 'package:taggira/features/car/repo/car_repo.dart';
@@ -21,10 +22,8 @@ class CarDataSourceImpl implements CarDataSource {
   // Define the collection reference for better readability
   late final CollectionReference<Map<String, dynamic>> _carsCollection;
 
-  CarDataSource() {
-    _carsCollection = _firestore.collection(
-      'cars',
-    ); // Use 'cars' as the collection name
+  CarDataSourceImpl() {
+    _carsCollection = _firestore.collection(AppCollections.carsCollection);
   }
 
   @override

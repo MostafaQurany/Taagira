@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:taggira/core/di/di.dart';
 import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
 import 'package:taggira/core/widgets/custom_button.dart';
+import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
 import 'package:taggira/features/car/models/car_model.dart';
+import 'package:taggira/features/car/ui/widgets/favoriteCar/favorite_car_icon.dart';
+import 'package:taggira/features/user/cubit/user_cubit.dart';
 
 class CarCardDetailsScreen extends StatelessWidget {
-  final CarModel carModel;
-  const CarCardDetailsScreen({super.key, required this.carModel});
+  CarModel carModel;
+  CarCardDetailsScreen({super.key, required this.carModel});
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +76,39 @@ class CarCardDetailsScreen extends StatelessWidget {
                       subtitle: const Text(
                         '0111033083\n7649 Church Close, Port Yolanda',
                       ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.favorite_border),
-                        onPressed: () {},
-                      ),
+                      // trailing: BlocConsumer<CarCubit, CarState>(
+                      //   listenWhen:
+                      //       (previous, current) =>
+                      //           current is RemoveFavoriteCarsSuccess ||
+                      //           current is AddFavoriteCarsSuccess,
+                      //   listener: (context, state) {
+                      //     if (state is RemoveFavoriteCarsSuccess) {
+                      //       carModel = carModel.copyWith(isFavorite: false);
+                      //     }
+                      //     if (state is AddFavoriteCarsSuccess) {
+                      //       carModel = carModel.copyWith(isFavorite: true);
+                      //     }
+                      //   },
+                      //   buildWhen:
+                      //       (previous, current) =>
+                      //           current is RemoveFavoriteCarsSuccess ||
+                      //           current is AddFavoriteCarsSuccess,
+                      //   builder: (context, state) {
+                      //     if (state is RemoveFavoriteCarsSuccess) {
+                      //       carModel = carModel.copyWith(isFavorite: false);
+                      //     }
+                      //     if (state is AddFavoriteCarsSuccess) {
+                      //       carModel = carModel.copyWith(isFavorite: true);
+                      //     }
+                      //     return BlocProvider.value(
+                      //       value: getIt<UserCubit>(),
+                      //       child: FavoriteCarIcon(
+                      //         carId: carModel.id,
+                      //         isFavorite: carModel.isFavorite,
+                      //       ),
+                      //     );
+                      //   },
+                      // ),
                     ),
                     SizedBox(height: 16.h),
                     Hero(

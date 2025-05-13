@@ -19,19 +19,25 @@ class LoginGetOtpListener extends StatelessWidget {
               current is SuccessGetOtp ||
               current is ErrorGetOtp,
       listener: (context, state) {
-        state.whenOrNull(
-          loadingGetOtp: () {
+        switch (state) {
+          case LoadingGetOtp():
             AppDialog.showLoading(context);
-          },
-          successGetOtp: () {
+            break;
+
+          case SuccessGetOtp():
             AppDialog.hide(context);
             context.pushNamed(Routes.otpScreen);
-          },
-          errorGetOtp: (message) {
+            break;
+
+          case ErrorGetOtp(:final message):
             AppDialog.hide(context);
             AppDialog.showError(context, message);
-          },
-        );
+            break;
+
+          default:
+            // Do nothing (equivalent to whenOrNull)
+            break;
+        }
       },
       child: child,
     );

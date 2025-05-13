@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:taggira/core/utils/server/server_result.dart';
 import 'package:taggira/features/auth/repo/auth_repo.dart';
 import 'package:taggira/features/user/cubit/user_cubit.dart';
 import 'package:taggira/features/user/model/user_model.dart';
@@ -15,13 +16,11 @@ class AuthCubit extends Cubit<AuthState> {
   final UserRepo _userRepo;
 
   TextEditingController phoneController = TextEditingController();
-
   TextEditingController nameController = TextEditingController();
   TextEditingController phnController = TextEditingController();
   TextEditingController genderController = TextEditingController();
   TextEditingController otpEditingController = TextEditingController();
 
-  // global key
   final GlobalKey<FormState> globalKey = GlobalKey();
 
   bool isTermEnabled = false;
@@ -31,78 +30,85 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._authRepo, this._userRepo, this._userCubit)
     : super(const AuthState.initial());
 
-  getOtp() async {
+  Future<void> getOtp() async {
     emit(const AuthState.loadingGetOtp());
 
     final res = await _authRepo.getOTPMessage(
       "+$country${phoneController.text}",
     );
-    res.when(
-      success: (data) {
-        Future.delayed(
-          const Duration(milliseconds: 500),
-        ).then((value) => emit(const AuthState.successGetOtp()));
-      },
-      error: (message) {
+
+    switch (res) {
+      case ServerSuccess():
+        await Future.delayed(const Duration(milliseconds: 500));
+        emit(const AuthState.successGetOtp());
+        break;
+
+      case ServerError(:final message):
         emit(AuthState.errorGetOtp(message));
-      },
-    );
+        break;
+    }
   }
 
-  verifyOtp(String otp) async {
+  Future<void> verifyOtp(String otp) async {
     emit(const AuthState.loadingVerifyOtp());
+
     final res = await _authRepo.verifyOTP(otp);
-    res.map(
-      success: (res) {
+
+    switch (res) {
+      case ServerSuccess(:final data):
         emit(
           AuthState.successVerifyOtp(
-            UserModel(id: res.data, phone: "+$country${phoneController.text}"),
+            UserModel(id: data, phone: "+$country${phoneController.text}"),
           ),
         );
-      },
-      error: (res) {
-        emit(AuthState.errorVerifyOtp(res.message));
-      },
-    );
+        break;
+
+      case ServerError(:final message):
+        emit(AuthState.errorVerifyOtp(message));
+        break;
+    }
   }
 
-  checkUser(UserModel user) async {
+  Future<void> checkUser(UserModel user) async {
     final res = await _userRepo.isUserExit(user.id);
 
-    res.map(
-      success: (res) {
-        emit(AuthState.userExitState(res.data, user));
-      },
-      error: (res) {
-        emit(AuthState.errorVerifyOtp(res.message));
-      },
-    );
+    switch (res) {
+      case ServerSuccess(:final data):
+        emit(AuthState.userExitState(data, user));
+        break;
+
+      case ServerError(:final message):
+        emit(AuthState.errorVerifyOtp(message));
+        break;
+    }
   }
 
-  createNewUser(UserModel user) async {
+  Future<void> createNewUser(UserModel user) async {
     final res = await _userRepo.createNewUser(user);
 
-    res.map(
-      success: (res) {
-        emit(AuthState.successCreateUserGoToProfile(res.data));
-      },
-      error: (res) {
-        emit(AuthState.errorVerifyOtp(res.message));
-      },
-    );
+    switch (res) {
+      case ServerSuccess(:final data):
+        emit(AuthState.successCreateUserGoToProfile(data));
+        break;
+
+      case ServerError(:final message):
+        emit(AuthState.errorVerifyOtp(message));
+        break;
+    }
   }
 
-  getUser(UserModel user) async {
+  Future<void> getUser(UserModel user) async {
     final res = await _userRepo.getUser(user.id);
 
-    res.map(
-      success: (res) {
-        _userCubit.updateUser(res.data);
-        emit(AuthState.successGetUserGoToHome(res.data));
-      },
-      error: (res) {
-        emit(AuthState.errorVerifyOtp(res.message));
-      },
-    );
+    switch (res) {
+      case ServerSuccess(:final data):
+        _userCubit.updateUser(data);
+        emit(AuthState.successGetUserGoToHome(data));
+        break;
+
+      case ServerError(:final message):
+        emit(AuthState.errorVerifyOtp(message));
+        break;
+    }
   }
 }
