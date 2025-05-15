@@ -7,45 +7,44 @@ library;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taggira/core/utils/helper/app_constance.dart';
+import 'package:taggira/features/requests/models/request_model.dart';
+import 'package:taggira/features/requests/repo/requests_repo.dart';
 
-enum RequestState { waiting, booked, done, cancelled, rejected }
+abstract class RequestsDataSource {
+  Future<void> createRentRequest({required RequestModel requestModel});
+  Stream<List<RequestModel>> getRequestsStream({
+    required String userId,
+    RequestModelState state = RequestModelState.all,
+    DateTime? date,
+  });
+  Future<void> cancelRequest(String requestId);
+}
 
-class RentCarDataSource {
+class RequestsDataSourceImpl implements RequestsDataSource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   // 1. Create Request
-  Future<void> createRentRequest({
-    required String userId,
-    required String carId,
-    required DateTime pickUpDate,
-    required DateTime returnDate,
-  }) async {
+  @override
+  Future<void> createRentRequest({required RequestModel requestModel}) async {
     final docRef =
         _firestore.collection(AppCollections.requestsCollection).doc();
     final now = Timestamp.now();
 
-    await docRef.set({
-      "requestId": docRef.id,
-      "userId": userId,
-      "carId": carId,
-      "pickUpDate": Timestamp.fromDate(pickUpDate),
-      "returnDate": Timestamp.fromDate(returnDate),
-      "createdAt": now,
-      "requestState": RequestState.waiting.name,
-    });
+    await docRef.set(requestModel.toJson());
   }
 
   // 2. Stream Requests (optionally filtered by state or date)
-  Stream<List<Map<String, dynamic>>> getRequestsStream({
+  @override
+  Stream<List<RequestModel>> getRequestsStream({
     required String userId,
-    RequestState? state,
+    RequestModelState state = RequestModelState.all,
     DateTime? date,
   }) {
     Query<Map<String, dynamic>> query = _firestore
         .collection(AppCollections.requestsCollection)
         .where("userId", isEqualTo: userId);
 
-    if (state != null) {
+    if (state != RequestModelState.all) {
       query = query.where("requestState", isEqualTo: state.name);
     }
 
@@ -61,12 +60,19 @@ class RentCarDataSource {
           .where("pickUpDate", isLessThan: end);
     }
 
-    return query.snapshots().map(
-      (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
-    );
+    return query
+        .orderBy("createdAt", descending: true)
+        .snapshots()
+        .map(
+          (snapshot) =>
+              snapshot.docs
+                  .map((doc) => RequestModel.fromJson(doc.data()))
+                  .toList(),
+        );
   }
 
   // 3. Cancel Request (only if it's in 'waiting' state)
+  @override
   Future<void> cancelRequest(String requestId) async {
     final docRef = _firestore
         .collection(AppCollections.requestsCollection)
@@ -78,10 +84,10 @@ class RentCarDataSource {
     }
 
     final currentState = snapshot.data()?['requestState'];
-    if (currentState != RequestState.waiting.name) {
+    if (currentState != RequestModelState.waiting.name) {
       throw Exception("Only waiting requests can be cancelled.");
     }
 
-    await docRef.update({"requestState": RequestState.cancelled.name});
+    await docRef.update({"requestState": RequestModelState.cancelled.name});
   }
 }

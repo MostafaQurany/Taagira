@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/theme/app_text_styles.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
+import 'package:taggira/features/car/models/car_model.dart';
+import 'package:taggira/features/user/cubit/user_cubit.dart';
 import 'package:taggira/generated/l10n.dart';
 
 class CarRentConfirmScreen extends StatelessWidget {
   //TODO: add save the request to pdf
-  final String userName;
-  final String carModel;
-  final String carBrand;
-  final String carColor;
-  final String pickDate;
+  final CarModel carModel;
   final String returnDate;
-
+  final String pickDate;
   const CarRentConfirmScreen({
-    super.key,
-    required this.userName,
     required this.carModel,
-    required this.carBrand,
-    required this.carColor,
-    required this.pickDate,
     required this.returnDate,
+    required this.pickDate,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final user = context.read<UserCubit>().user!;
     return Scaffold(
       body: SafeArea(
         bottom: false,
@@ -36,7 +35,7 @@ class CarRentConfirmScreen extends StatelessWidget {
             hSize(24),
             Center(
               child: Text(
-                "Congratulations, $userName 👏",
+                "Congratulations, ${user.phone} 👏",
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
@@ -101,7 +100,7 @@ class CarRentConfirmScreen extends StatelessWidget {
                     children: [
                       const Icon(Icons.directions_car, size: 20),
                       wSize(8),
-                      Text("$carBrand • $carModel  "),
+                      Text("${carModel.brand} • ${carModel.model}  "),
                     ],
                   ),
                   hSize(8),
@@ -148,8 +147,24 @@ class CarRentConfirmScreen extends StatelessWidget {
                       const Text("WhatsApp: +966 555 000 123"),
                     ],
                   ),
+
                   hSize(24),
                 ],
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  context.goNamed(Routes.carHomeScreen);
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                ),
+                child: const Text("Continue"),
               ),
             ),
           ],

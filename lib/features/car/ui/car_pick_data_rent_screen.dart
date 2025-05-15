@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:taggira/core/routes/routes.dart';
 import 'package:taggira/core/theme/app_colors.dart';
+import 'package:taggira/core/utils/helper/app_formater.dart';
 import 'package:taggira/core/utils/helper/app_imges.dart';
+import 'package:taggira/core/widgets/loading_dialog.dart';
 import 'package:taggira/features/car/models/car_model.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart'; // Import the date range picker package
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:taggira/features/requests/cubit/cubit/request_cubit.dart';
+import 'package:taggira/features/user/cubit/user_cubit.dart';
+import 'package:taggira/features/user/model/user_model.dart'; // Import the date range picker package
 
 class CarPickDataRentScreen extends StatefulWidget {
   final CarModel carModel;
@@ -169,30 +176,62 @@ class CarPickDataRentScreenState extends State<CarPickDataRentScreen> {
             ),
 
             // Continue button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed:
-                    pickupDate == null || returnDate == null
-                        ? null
-                        : () {
-                          if (pickupDate != null && returnDate != null) {
-                            // TODO: upload the request from to the firebase where data will be carId , userId , pickupDate , returnDate , reqId and timeStamp
-                            context.pushNamed(Routes.carRentConfirmScreen);
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Please select both pickup and return dates.',
+            BlocListener<RequestCubit, RequestState>(
+              listenWhen:
+                  (previous, current) =>
+                      current is CreateRequestLoading ||
+                      current is CreateRequestSuccess ||
+                      current is CreateRequestError,
+              listener: (context, state) {
+                if (state case CreateRequestLoading()) {
+                  AppDialog.showLoading(context);
+                } else if (state case CreateRequestSuccess()) {
+                  AppDialog.hide(context);
+
+                  context.pushNamed(
+                    Routes.carRentConfirmScreen,
+                    extra: {
+                      "carModel": widget.carModel,
+                      "returnDate": DateFormat(
+                        'EEE, M/d/y',
+                      ).format(returnDate!),
+                      "pickDate": DateFormat('EEE, M/d/y').format(pickupDate!),
+                    },
+                  );
+                } else if (state case CreateRequestError(:final message)) {
+                  AppDialog.hide(context);
+                  AppDialog.showError(context, message);
+                }
+              },
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed:
+                      pickupDate == null || returnDate == null
+                          ? null
+                          : () {
+                            if (pickupDate != null && returnDate != null) {
+                              context.read<RequestCubit>().createRequest(
+                                context.read<UserCubit>().user!.id,
+                                widget.carModel.id,
+                                pickupDate!,
+                                returnDate!,
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Please select both pickup and return dates.',
+                                  ),
                                 ),
-                              ),
-                            );
-                          }
-                        },
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 12.h),
+                              );
+                            }
+                          },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 12.h),
+                  ),
+                  child: const Text('Continue'),
                 ),
-                child: const Text('Continue'),
               ),
             ),
           ],
