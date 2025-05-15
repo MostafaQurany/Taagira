@@ -679,4 +679,134 @@ $UserModelCopyWith<$Res> get userModel {
 }
 }
 
+/// @nodoc
+
+
+class LoadingLogOut implements AuthState {
+  const LoadingLogOut();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadingLogOut);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.loadingLogOut()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SuccessLogOut implements AuthState {
+  const SuccessLogOut();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SuccessLogOut);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthState.successLogOut()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class ErrorLogOut implements AuthState {
+  const ErrorLogOut(this.message);
+  
+
+ final  String message;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ErrorLogOutCopyWith<ErrorLogOut> get copyWith => _$ErrorLogOutCopyWithImpl<ErrorLogOut>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorLogOut&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'AuthState.errorLogOut(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ErrorLogOutCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $ErrorLogOutCopyWith(ErrorLogOut value, $Res Function(ErrorLogOut) _then) = _$ErrorLogOutCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$ErrorLogOutCopyWithImpl<$Res>
+    implements $ErrorLogOutCopyWith<$Res> {
+  _$ErrorLogOutCopyWithImpl(this._self, this._then);
+
+  final ErrorLogOut _self;
+  final $Res Function(ErrorLogOut) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(ErrorLogOut(
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

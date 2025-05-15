@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taggira/core/di/di.dart';
 import 'package:taggira/core/theme/app_colors.dart';
 import 'package:taggira/core/utils/helper/extension.dart';
+import 'package:taggira/features/auth/cubit/auth_cubit.dart';
 import 'package:taggira/features/profile/cubit/cubit/app_theme_cubit.dart';
 import 'package:taggira/features/profile/ui/widgets/log_out_button.dart';
 import 'package:taggira/features/profile/ui/widgets/profile_menu_item.dart';
@@ -106,7 +108,10 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                 ),
               ),
               hSize(24),
-              const LogOutButton(),
+              BlocProvider(
+                create: (context) => getIt<AuthCubit>(),
+                child: const LogOutButton(),
+              ),
             ],
           ),
         ),

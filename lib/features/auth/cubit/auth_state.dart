@@ -17,9 +17,15 @@ class AuthState with _$AuthState {
   const factory AuthState.successCreateUser(UserModel user) = SuccessCreateUser;
 
   //* user
-  const factory AuthState.userExitState(bool isUserExsit , UserModel user) = UserExitState;
+  const factory AuthState.userExitState(bool isUserExsit, UserModel user) =
+      UserExitState;
   const factory AuthState.successCreateUserGoToProfile(UserModel userModel) =
       SuccessCreateUserGoToProfile;
   const factory AuthState.successGetUserGoToHome(UserModel userModel) =
       SuccessGetUserGoToHome;
+
+  //* logOut
+  const factory AuthState.loadingLogOut() = LoadingLogOut;
+  const factory AuthState.successLogOut() = SuccessLogOut;
+  const factory AuthState.errorLogOut(String message) = ErrorLogOut;
 }

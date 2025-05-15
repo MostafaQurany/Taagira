@@ -6,6 +6,7 @@ import '../../../core/utils/server/server_result.dart';
 abstract class AuthRepo {
   Future<ServerResult<void>> getOTPMessage(String phoneNumber);
   Future<ServerResult<String>> verifyOTP(String otp);
+  Future<ServerResult<void>> logOut();
 }
 
 class AuthRepoImpl extends AuthRepo {
@@ -27,6 +28,16 @@ class AuthRepoImpl extends AuthRepo {
     try {
       final res = await signUpDataSource.verifyOTP(otp);
       return ServerResult<String>.success(res);
+    } catch (e) {
+      return ServerResult.error(e.toString());
+    }
+  }
+
+  @override
+  Future<ServerResult<void>> logOut() async {
+    try {
+      await signUpDataSource.logOut();
+      return const ServerResult<void>.success(null);
     } catch (e) {
       return ServerResult.error(e.toString());
     }

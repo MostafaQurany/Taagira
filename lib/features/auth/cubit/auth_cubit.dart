@@ -111,4 +111,20 @@ class AuthCubit extends Cubit<AuthState> {
         break;
     }
   }
+
+  Future<void> logOutUser() async {
+    emit(const AuthState.loadingLogOut());
+
+    final res = await _authRepo.logOut();
+
+    switch (res) {
+      case ServerSuccess():
+        emit(const AuthState.successLogOut());
+        break;
+
+      case ServerError(:final message):
+        emit(AuthState.errorLogOut(message));
+        break;
+    }
+  }
 }

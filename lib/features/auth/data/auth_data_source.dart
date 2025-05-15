@@ -7,6 +7,7 @@ abstract class AuthDataSource {
   Future<void> getOTPMessage(String phoneNumber);
 
   Future<String> verifyOTP(String otp);
+  Future<void> logOut();
 }
 
 class AuthDataSourceImpl extends AuthDataSource {
@@ -59,6 +60,16 @@ class AuthDataSourceImpl extends AuthDataSource {
     } catch (e) {
       debugPrint('OTP verification failed: $e');
       throw Exception("OTP verification failed. Please try again.");
+    }
+  }
+
+  @override
+  Future<void> logOut() async {
+    try {
+      await firebaseAuth.signOut();
+    } catch (e) {
+      debugPrint('Sign Out failed: $e');
+      throw Exception("Sign Out . Please try again.");
     }
   }
 }
