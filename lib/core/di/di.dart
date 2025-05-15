@@ -7,6 +7,9 @@ import 'package:taggira/features/car/cubit/car_cubit/car_cubit.dart';
 import 'package:taggira/features/car/data/car_data_source.dart';
 import 'package:taggira/features/car/data/user_favorite_car_data_source.dart';
 import 'package:taggira/features/car/repo/car_repo.dart';
+import 'package:taggira/features/requests/cubit/cubit/request_cubit.dart';
+import 'package:taggira/features/requests/data/requests_data_source.dart';
+import 'package:taggira/features/requests/repo/requests_repo.dart';
 import 'package:taggira/features/user/cubit/user_cubit.dart';
 import 'package:taggira/features/user/data/user_data_scourse.dart';
 import 'package:taggira/features/user/repo/user_repo.dart';
@@ -17,6 +20,7 @@ void setupDI() {
   _auth();
   _car();
   _user();
+  _request();
 }
 
 _auth() {
@@ -41,7 +45,7 @@ _car() {
     ..registerLazySingleton<CarRepo>(() => CarRepoImpl(getIt(), getIt()))
     // cubit
     ..registerFactory<AddCarCubit>(() => AddCarCubit(getIt()))
-    ..registerFactory<CarCubit>(() => CarCubit(getIt()));
+    ..registerLazySingleton<CarCubit>(() => CarCubit(getIt()));
 }
 
 _user() {
@@ -52,4 +56,14 @@ _user() {
     ..registerLazySingleton<UserDataScourse>(() => UserDataScourseImple())
     ..registerLazySingleton<UserRepo>(() => UserRepoImple(getIt()))
     ..registerLazySingleton<UserCubit>(() => UserCubit());
+}
+
+_request() {
+  getIt
+    // database
+    ..registerLazySingleton<RequestsDataSource>(() => RequestsDataSourceImpl())
+    // repo
+    ..registerLazySingleton<RequestsRepo>(() => RequestsRepoImpl(getIt()))
+    // cubit
+    ..registerLazySingleton<RequestCubit>(() => RequestCubit(getIt()));
 }

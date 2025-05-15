@@ -9,7 +9,7 @@ abstract class CarRepo {
   Future<void> updateCar(CarModel carModel);
   Future<void> deleteCar(String carId);
   Future<List<CarModel>> getAllCars();
-  Future<CarModel?> getCarById(String carId);
+  Future<CarModel> getCarById(String carId);
   Future<List<CarModel>> searchCars(String query);
 
   // ** Favorite methods **/
@@ -76,7 +76,7 @@ class CarRepoImpl implements CarRepo {
   }
 
   @override
-  Future<CarModel?> getCarById(String carId) async {
+  Future<CarModel> getCarById(String carId) async {
     try {
       return await _carDataSource.getCarById(carId);
     } catch (e) {

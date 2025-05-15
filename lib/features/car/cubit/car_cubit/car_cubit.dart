@@ -48,6 +48,10 @@ class CarCubit extends Cubit<CarState> {
     }
   }
 
+  Future<CarModel> getCarById(String carId) async {
+    return await carRepo.getCarById(carId);
+  }
+
   // ───── Favorite ───── //
 
   Stream<List<String>> getStreamCarFavorites({required String userId}) {
@@ -67,9 +71,6 @@ class CarCubit extends Cubit<CarState> {
     } catch (e) {
       emit(CarState.favoriteCarsError(e.toString()));
     }
-    // }
-    // Future<void> removeFavorite({required String userId, required String carId});
-    // Future<List<String>> getAllFavoriteCarsIds({required String userId});
   }
 
   Future<void> removeFavorite({
@@ -85,8 +86,5 @@ class CarCubit extends Cubit<CarState> {
     } catch (e) {
       emit(CarState.favoriteCarsError(e.toString()));
     }
-    // }
-    // Future<void> removeFavorite({required String userId, required String carId});
-    // Future<List<String>> getAllFavoriteCarsIds({required String userId});
   }
 }

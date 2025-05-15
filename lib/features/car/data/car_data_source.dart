@@ -10,7 +10,7 @@ abstract class CarDataSource {
   Future<void> addCar(CarModel carModel);
   Future<void> deleteCar(String carId);
   Future<List<CarModel>> getAllCars();
-  Future<CarModel?> getCarById(String carId);
+  Future<CarModel> getCarById(String carId);
   Future<List<CarModel>> searchCars(String query);
   Future<void> updateCar(CarModel carModel);
 }
@@ -69,16 +69,11 @@ class CarDataSourceImpl implements CarDataSource {
   }
 
   @override
-  Future<CarModel?> getCarById(String carId) async {
+  Future<CarModel> getCarById(String carId) async {
     try {
       final docSnapshot = await _carsCollection.doc(carId).get();
 
-      if (docSnapshot.exists && docSnapshot.data() != null) {
-        // If the document exists, parse it into a CarModel
-        return CarModel.fromJson(docSnapshot.data()!);
-      } else {
-        return null;
-      }
+      return CarModel.fromJson(docSnapshot.data()!);
     } on FirebaseException catch (e) {
       throw DatabaseException(
         message: e.message ?? 'Failed to get car by ID from Firestore',

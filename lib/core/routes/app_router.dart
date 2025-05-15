@@ -19,6 +19,8 @@ import 'package:taggira/features/car/ui/car_rent_confirm_screen.dart';
 import 'package:taggira/features/car/ui/favorite_cars_screen.dart';
 import 'package:taggira/features/home/ui/home_layout.dart';
 import 'package:taggira/features/home/ui/splash_screen.dart';
+import 'package:taggira/features/requests/cubit/cubit/request_cubit.dart';
+import 'package:taggira/features/requests/ui/request_screen.dart';
 import 'package:taggira/features/user/cubit/user_cubit.dart';
 
 class AppRouter {
@@ -102,7 +104,7 @@ class AppRouter {
           // Return the HomeLayout widget and pass the navigationShell
           return MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => getIt<CarCubit>()),
+              BlocProvider.value(value: getIt<CarCubit>()),
               BlocProvider.value(value: getIt<UserCubit>()),
             ],
             child: HomeLayout(navigationShell: navigationShell),
@@ -144,10 +146,17 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/recent',
+                path: "/${Routes.requestsScreen}",
+                name: Routes.requestsScreen,
                 builder:
-                    (context, state) =>
-                        const RecentCarsScreen(), // Your actual recent cars screen
+                    (context, state) => MultiBlocProvider(
+                      providers: [
+                        BlocProvider.value(value: getIt<CarCubit>()),
+                        BlocProvider.value(value: getIt<RequestCubit>()),
+                        BlocProvider.value(value: getIt<UserCubit>()),
+                      ],
+                      child: const RequestsScreen(),
+                    ), // Your actual recent cars screen
               ),
             ],
           ),
@@ -174,8 +183,12 @@ class AppRouter {
           final carModel = state.extra as CarModel;
           return MaterialPage(
             key: state.pageKey,
-            child: BlocProvider(
-              create: (context) => getIt<CarCubit>(),
+            child: MultiBlocProvider(
+              providers: [
+                BlocProvider.value(value: getIt<CarCubit>()),
+
+                BlocProvider.value(value: getIt<UserCubit>()),
+              ],
               child: CarCardDetailsScreen(carModel: carModel),
             ),
           );
@@ -188,7 +201,13 @@ class AppRouter {
               final carModel = state.extra as CarModel;
               return MaterialPage(
                 key: state.pageKey,
-                child: CarPickDataRentScreen(carModel: carModel),
+                child: MultiBlocProvider(
+                  providers: [
+                    BlocProvider.value(value: getIt<RequestCubit>()),
+                    BlocProvider.value(value: getIt<UserCubit>()),
+                  ],
+                  child: CarPickDataRentScreen(carModel: carModel),
+                ),
               );
             },
             routes: [
@@ -197,15 +216,20 @@ class AppRouter {
                 name: Routes.carRentConfirmScreen,
                 pageBuilder: (context, state) {
                   // TODO: edit this where send reall data
+                  Map<String, dynamic> data =
+                      state.extra as Map<String, dynamic>;
                   return MaterialPage(
                     key: state.pageKey,
-                    child: const CarRentConfirmScreen(
-                      userName: "Ahmed",
-                      carModel: "A3",
-                      carBrand: "Audi",
-                      carColor: "Red",
-                      pickDate: "14 May 2025",
-                      returnDate: "17 May 2025",
+                    child: MultiBlocProvider(
+                      providers: [
+                        BlocProvider.value(value: getIt<RequestCubit>()),
+                        BlocProvider.value(value: getIt<UserCubit>()),
+                      ],
+                      child: CarRentConfirmScreen(
+                        carModel: data["carModel"],
+                        pickDate: data["pickDate"],
+                        returnDate: data["returnDate"],
+                      ),
                     ),
                   );
                 },
@@ -242,13 +266,6 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       const Center(child: Text('Chat Screen'));
-}
-
-class RecentCarsScreen extends StatelessWidget {
-  const RecentCarsScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Center(child: Text('Recent Cars Screen'));
 }
 
 class ProfileScreen extends StatelessWidget {
