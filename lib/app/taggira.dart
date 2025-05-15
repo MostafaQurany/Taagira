@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taggira/core/routes/app_router.dart';
 import 'package:taggira/core/theme/app_theme.dart';
+import 'package:taggira/features/profile/cubit/cubit/app_theme_cubit.dart';
 import 'package:taggira/generated/l10n.dart';
 
 class Taagira extends StatelessWidget {
@@ -17,28 +19,36 @@ class Taagira extends StatelessWidget {
       splitScreenMode: true,
       useInheritedMediaQuery: true,
       builder: (context, child) {
-        return MaterialApp.router(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          //? App Theme
-          themeMode: ThemeMode.dark,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
+        return BlocProvider(
+          create: (context) => AppThemeCubit(),
+          child: BlocBuilder<AppThemeCubit, ThemeMode>(
+            builder: (context, themeMode) {
+              return MaterialApp.router(
+                title: 'Flutter Demo',
+                debugShowCheckedModeBanner: false,
+                //? App Theme
+                themeMode: themeMode,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
 
-          //? localization
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
+                //? localization
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
 
-          //? routing
-          routerDelegate: AppRouter.router.routerDelegate,
-          // routerConfig: AppRouter.router,
-          routeInformationProvider: AppRouter.router.routeInformationProvider,
-          routeInformationParser: AppRouter.router.routeInformationParser,
+                //? routing
+                routerDelegate: AppRouter.router.routerDelegate,
+                // routerConfig: AppRouter.router,
+                routeInformationProvider:
+                    AppRouter.router.routeInformationProvider,
+                routeInformationParser: AppRouter.router.routeInformationParser,
+              );
+            },
+          ),
         );
       },
     );

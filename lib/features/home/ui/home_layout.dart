@@ -23,10 +23,10 @@ class HomeLayout extends StatelessWidget {
             icon: Icon(Icons.favorite),
             label: 'Favorite', // Replace with localization later
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat', // Replace with localization later
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.chat),
+          //   label: 'Chat', // Replace with localization later
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.car_rental), // Assuming you have a 'recent' icon
             label: 'Rental', // Replace with localization later

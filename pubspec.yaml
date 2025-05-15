@@ -19,6 +19,8 @@ dependencies:
   firebase_storage: ^12.4.5
   # state management
   flutter_bloc: ^9.1.1
+  hydrated_bloc: ^10.0.0
+  path_provider: ^2.1.5
   # auto genirate
   freezed_annotation: ^3.0.0
   json_annotation: ^4.8.0

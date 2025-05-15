@@ -11,6 +11,7 @@ abstract class UserModel with _$UserModel {
     required String phone,
     String? urlPhoto,
     String? nationalId,
+    String? imageUrl,
     DateTime? birthday,
   }) = _UserModel;
 

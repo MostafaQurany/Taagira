@@ -1,8 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:taggira/core/theme/app_colors.dart';
+import 'package:taggira/core/theme/app_text_styles.dart';
+import 'package:taggira/core/utils/helper/app_constance.dart';
+import 'package:taggira/core/utils/helper/extension.dart';
 
 class AppFormatter {
   static DateTime? getBirthdateFromNationalId(String nationalId) {
@@ -62,18 +67,84 @@ class AppFormatter {
   static Color getStatusColor(String state) {
     switch (state) {
       case 'waiting':
-        return Colors.orange;
+        return AppColors.orange;
       case 'booked':
-        return Colors.blue;
+        return AppColors.green;
       case 'done':
-        return Colors.green;
+        return AppColors.primary;
       case 'cancelled':
-        return Colors.red;
+        return Colors.blueGrey;
       case 'rejected':
-        return Colors.grey;
+        return Colors.red;
       default:
         return Colors.black;
     }
+  }
+
+  static Widget getStatusMessage(String state) {
+    switch (state) {
+      case 'waiting':
+        return _getStatusMessageWidget(
+          message: "New Booking",
+          textColor: getStatusColor(state),
+          icon: Icons.watch_later_outlined,
+        );
+      case 'booked':
+        return _getStatusMessageWidget(
+          message: "Confirmed",
+          textColor: getStatusColor(state),
+          icon: Icons.check_outlined,
+        );
+      case 'done':
+        return _getStatusMessageWidget(
+          message: "Completed",
+          textColor: getStatusColor(state),
+          icon: Icons.check_circle,
+        );
+      case 'cancelled':
+        return _getStatusMessageWidget(
+          message: "Cancelled",
+          textColor: getStatusColor(state),
+          icon: Icons.cancel,
+        );
+      case 'rejected':
+        return _getStatusMessageWidget(
+          message: "Rejected",
+          textColor: getStatusColor(state),
+          icon: Icons.cancel_outlined,
+        );
+      default:
+        return _getStatusMessageWidget(
+          message: "New Booking",
+          textColor: getStatusColor(state),
+          icon: Icons.watch_later_outlined,
+        );
+    }
+  }
+
+  static _getStatusMessageWidget({
+    required String message,
+    required IconData icon,
+    required Color textColor,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          message,
+          style: TextStyle(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w700,
+            fontFamily: MyTextStyles.openSans,
+            color: textColor,
+          ),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+        wSize(5),
+        Icon(icon, color: textColor, size: 16.sp),
+      ],
+    );
   }
 }
 

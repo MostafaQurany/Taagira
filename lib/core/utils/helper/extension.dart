@@ -13,3 +13,9 @@ extension MySnakeBar on BuildContext {
 extension TextThemeStyles on BuildContext {
   void textTheme() => Theme.of(this).textTheme;
 }
+
+extension MyStringExtension on String? {
+  bool get isNullOrEmpty {
+    return this == null || this == '';
+  }
+}

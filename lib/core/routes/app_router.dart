@@ -19,6 +19,7 @@ import 'package:taggira/features/car/ui/car_rent_confirm_screen.dart';
 import 'package:taggira/features/car/ui/favorite_cars_screen.dart';
 import 'package:taggira/features/home/ui/home_layout.dart';
 import 'package:taggira/features/home/ui/splash_screen.dart';
+import 'package:taggira/features/profile/ui/profile_layout.dart';
 import 'package:taggira/features/requests/cubit/cubit/request_cubit.dart';
 import 'package:taggira/features/requests/ui/request_screen.dart';
 import 'package:taggira/features/user/cubit/user_cubit.dart';
@@ -131,17 +132,7 @@ class AppRouter {
               ),
             ],
           ),
-          // Branch 3: Chat
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/chat',
-                builder:
-                    (context, state) =>
-                        const ChatScreen(), // Your actual chat screen
-              ),
-            ],
-          ),
+
           // Branch 4: Recent
           StatefulShellBranch(
             routes: [
@@ -167,7 +158,7 @@ class AppRouter {
                 path: '/profile',
                 builder:
                     (context, state) =>
-                        const ProfileScreen(), // Your actual profile screen
+                        const ProfileLayout(), // Your actual profile screen
               ),
             ],
           ),
@@ -257,20 +248,4 @@ class AppRouter {
       ),
     ],
   );
-}
-
-// --- Placeholder Screens (replace with your actual screens) ---
-
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Center(child: Text('Chat Screen'));
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Center(child: Text('Profile Screen'));
 }

@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserModel {
 
- String get id; String? get name; String get phone; String? get urlPhoto; String? get nationalId; DateTime? get birthday;
+ String get id; String? get name; String get phone; String? get urlPhoto; String? get nationalId; String? get imageUrl; DateTime? get birthday;
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $UserModelCopyWith<UserModel> get copyWith => _$UserModelCopyWithImpl<UserModel>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.urlPhoto, urlPhoto) || other.urlPhoto == urlPhoto)&&(identical(other.nationalId, nationalId) || other.nationalId == nationalId)&&(identical(other.birthday, birthday) || other.birthday == birthday));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.urlPhoto, urlPhoto) || other.urlPhoto == urlPhoto)&&(identical(other.nationalId, nationalId) || other.nationalId == nationalId)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.birthday, birthday) || other.birthday == birthday));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,phone,urlPhoto,nationalId,birthday);
+int get hashCode => Object.hash(runtimeType,id,name,phone,urlPhoto,nationalId,imageUrl,birthday);
 
 @override
 String toString() {
-  return 'UserModel(id: $id, name: $name, phone: $phone, urlPhoto: $urlPhoto, nationalId: $nationalId, birthday: $birthday)';
+  return 'UserModel(id: $id, name: $name, phone: $phone, urlPhoto: $urlPhoto, nationalId: $nationalId, imageUrl: $imageUrl, birthday: $birthday)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $UserModelCopyWith<$Res>  {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) _then) = _$UserModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String? name, String phone, String? urlPhoto, String? nationalId, DateTime? birthday
+ String id, String? name, String phone, String? urlPhoto, String? nationalId, String? imageUrl, DateTime? birthday
 });
 
 
@@ -66,13 +66,14 @@ class _$UserModelCopyWithImpl<$Res>
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = freezed,Object? phone = null,Object? urlPhoto = freezed,Object? nationalId = freezed,Object? birthday = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = freezed,Object? phone = null,Object? urlPhoto = freezed,Object? nationalId = freezed,Object? imageUrl = freezed,Object? birthday = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String,urlPhoto: freezed == urlPhoto ? _self.urlPhoto : urlPhoto // ignore: cast_nullable_to_non_nullable
 as String?,nationalId: freezed == nationalId ? _self.nationalId : nationalId // ignore: cast_nullable_to_non_nullable
+as String?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String?,birthday: freezed == birthday ? _self.birthday : birthday // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));
@@ -85,7 +86,7 @@ as DateTime?,
 @JsonSerializable()
 
 class _UserModel implements UserModel {
-  const _UserModel({required this.id, this.name, required this.phone, this.urlPhoto, this.nationalId, this.birthday});
+  const _UserModel({required this.id, this.name, required this.phone, this.urlPhoto, this.nationalId, this.imageUrl, this.birthday});
   factory _UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 
 @override final  String id;
@@ -93,6 +94,7 @@ class _UserModel implements UserModel {
 @override final  String phone;
 @override final  String? urlPhoto;
 @override final  String? nationalId;
+@override final  String? imageUrl;
 @override final  DateTime? birthday;
 
 /// Create a copy of UserModel
@@ -108,16 +110,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.urlPhoto, urlPhoto) || other.urlPhoto == urlPhoto)&&(identical(other.nationalId, nationalId) || other.nationalId == nationalId)&&(identical(other.birthday, birthday) || other.birthday == birthday));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.urlPhoto, urlPhoto) || other.urlPhoto == urlPhoto)&&(identical(other.nationalId, nationalId) || other.nationalId == nationalId)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.birthday, birthday) || other.birthday == birthday));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,phone,urlPhoto,nationalId,birthday);
+int get hashCode => Object.hash(runtimeType,id,name,phone,urlPhoto,nationalId,imageUrl,birthday);
 
 @override
 String toString() {
-  return 'UserModel(id: $id, name: $name, phone: $phone, urlPhoto: $urlPhoto, nationalId: $nationalId, birthday: $birthday)';
+  return 'UserModel(id: $id, name: $name, phone: $phone, urlPhoto: $urlPhoto, nationalId: $nationalId, imageUrl: $imageUrl, birthday: $birthday)';
 }
 
 
@@ -128,7 +130,7 @@ abstract mixin class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Re
   factory _$UserModelCopyWith(_UserModel value, $Res Function(_UserModel) _then) = __$UserModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String? name, String phone, String? urlPhoto, String? nationalId, DateTime? birthday
+ String id, String? name, String phone, String? urlPhoto, String? nationalId, String? imageUrl, DateTime? birthday
 });
 
 
@@ -145,13 +147,14 @@ class __$UserModelCopyWithImpl<$Res>
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = freezed,Object? phone = null,Object? urlPhoto = freezed,Object? nationalId = freezed,Object? birthday = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = freezed,Object? phone = null,Object? urlPhoto = freezed,Object? nationalId = freezed,Object? imageUrl = freezed,Object? birthday = freezed,}) {
   return _then(_UserModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String,urlPhoto: freezed == urlPhoto ? _self.urlPhoto : urlPhoto // ignore: cast_nullable_to_non_nullable
 as String?,nationalId: freezed == nationalId ? _self.nationalId : nationalId // ignore: cast_nullable_to_non_nullable
+as String?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String?,birthday: freezed == birthday ? _self.birthday : birthday // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));

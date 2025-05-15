@@ -9,6 +9,7 @@ import 'package:taggira/features/car/models/car_model.dart';
 import 'package:taggira/features/car/repo/car_repo.dart';
 import 'package:taggira/features/requests/cubit/cubit/request_cubit.dart';
 import 'package:taggira/features/requests/models/request_model.dart';
+import 'package:taggira/features/requests/ui/widgets/request_car_card.dart';
 
 class RequestsScreen extends StatefulWidget {
   const RequestsScreen({super.key});
@@ -139,55 +140,7 @@ class _RequestsScreenState extends State<RequestsScreen> {
         }
 
         final car = snapshot.data!;
-        return Card(
-          margin: const EdgeInsets.only(bottom: 12),
-          child: ListTile(
-            contentPadding: const EdgeInsets.all(12),
-            leading:
-                car.images.isNotEmpty
-                    ? ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: Image.network(
-                        car.images[0],
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                    : const Icon(Icons.car_rental, size: 40),
-            title: Text("${car.brand} ${car.model}"),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 4),
-                Text(
-                  "Status: ${request.requestState.name}",
-                  style: TextStyle(
-                    color: AppFormatter.getStatusColor(
-                      request.requestState.name,
-                    ),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Text(
-                  "Pickup: ${AppFormatter.formatDateTime(request.pickUpDate)}",
-                ),
-                Text(
-                  "Return: ${AppFormatter.formatDateTime(request.returnDate)}",
-                ),
-              ],
-            ),
-            trailing:
-                request.requestState == RequestModelState.waiting
-                    ? IconButton(
-                      icon: const Icon(Icons.cancel, color: Colors.red),
-                      onPressed: () {
-                        // TODO: cancel request
-                      },
-                    )
-                    : null,
-          ),
-        );
+        return RequestCarCard(car: car, request: request);
       },
     );
   }

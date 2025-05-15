@@ -34,6 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
           case ServerSuccess(:final data):
             context.read<UserCubit>().updateUser(data);
             context.goNamed(Routes.carHomeScreen);
+
             break;
           case ServerError(:final message):
             context.goNamed(Routes.loginScreen);
@@ -43,7 +44,9 @@ class _SplashScreenState extends State<SplashScreen> {
         context.goNamed(Routes.loginScreen);
       }
     } else {
-      context.goNamed(Routes.loginScreen);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        context.goNamed(Routes.loginScreen);
+      });
     }
   }
 
